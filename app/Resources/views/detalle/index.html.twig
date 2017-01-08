@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Detalles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>Fechaemision</th>
+                <th>Cantidad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for detalle in detalles %}
+            <tr>
+                <td><a href="{{ path('detalle_show', { 'id': detalle.id }) }}">{{ detalle.id }}</a></td>
+                <td>{{ detalle.numero }}</td>
+                <td>{% if detalle.fechaEmision %}{{ detalle.fechaEmision|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('detalle_show', { 'id': detalle.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('detalle_edit', { 'id': detalle.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('detalle_new') }}">Create a new detalle</a>
+        </li>
+    </ul>
+{% endblock %}

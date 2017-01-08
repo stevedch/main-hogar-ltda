@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Detalle</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ detalle.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ detalle.numero }}</td>
+            </tr>
+            <tr>
+                <th>Fechaemision</th>
+                <td>{% if detalle.fechaEmision %}{{ detalle.fechaEmision|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ detalle.cantidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('detalle_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('detalle_edit', { 'id': detalle.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

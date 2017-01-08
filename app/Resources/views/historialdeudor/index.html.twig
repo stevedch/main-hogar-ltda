@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Historialdeudors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Documentopendientepago</th>
+                <th>Montototaldeuda</th>
+                <th>Fechaultimopago</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historialDeudor in historialDeudors %}
+            <tr>
+                <td><a href="{{ path('historialdeudor_show', { 'id': historialDeudor.id }) }}">{{ historialDeudor.id }}</a></td>
+                <td>{{ historialDeudor.documentoPendientePago }}</td>
+                <td>{{ historialDeudor.montoTotalDeuda }}</td>
+                <td>{% if historialDeudor.fechaUltimoPago %}{{ historialDeudor.fechaUltimoPago|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('historialdeudor_show', { 'id': historialDeudor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('historialdeudor_edit', { 'id': historialDeudor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('historialdeudor_new') }}">Create a new historialDeudor</a>
+        </li>
+    </ul>
+{% endblock %}

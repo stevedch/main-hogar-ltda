@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vendedores list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Porcentajecomision</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vendedore in vendedores %}
+            <tr>
+                <td><a href="{{ path('vendedores_show', { 'id': vendedore.id }) }}">{{ vendedore.id }}</a></td>
+                <td>{{ vendedore.porcentajeComision }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vendedores_show', { 'id': vendedore.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vendedores_edit', { 'id': vendedore.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vendedores_new') }}">Create a new vendedore</a>
+        </li>
+    </ul>
+{% endblock %}

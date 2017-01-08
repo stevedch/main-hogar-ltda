@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cobradores list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Porcentajecomision</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cobradore in cobradores %}
+            <tr>
+                <td><a href="{{ path('cobradores_show', { 'id': cobradore.id }) }}">{{ cobradore.id }}</a></td>
+                <td>{{ cobradore.porcentajeComision }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cobradores_show', { 'id': cobradore.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cobradores_edit', { 'id': cobradore.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cobradores_new') }}">Create a new cobradore</a>
+        </li>
+    </ul>
+{% endblock %}

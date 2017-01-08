@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Historialdeudor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historialDeudor.id }}</td>
+            </tr>
+            <tr>
+                <th>Documentopendientepago</th>
+                <td>{{ historialDeudor.documentoPendientePago }}</td>
+            </tr>
+            <tr>
+                <th>Montototaldeuda</th>
+                <td>{{ historialDeudor.montoTotalDeuda }}</td>
+            </tr>
+            <tr>
+                <th>Fechaultimopago</th>
+                <td>{% if historialDeudor.fechaUltimoPago %}{{ historialDeudor.fechaUltimoPago|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('historialdeudor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('historialdeudor_edit', { 'id': historialDeudor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

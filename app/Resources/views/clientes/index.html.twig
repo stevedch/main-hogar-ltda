@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Clientes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Domicilioparticular</th>
+                <th>Domiciliolaboral</th>
+                <th>Fonoredfija</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Fechaaperturacuenta</th>
+                <th>Numerocuenta</th>
+                <th>Creditoautorizado</th>
+                <th>Fechapagopactada</th>
+                <th>Totalcargos</th>
+                <th>Totalabonos</th>
+                <th>Estado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td><a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a></td>
+                <td>{{ cliente.domicilioParticular }}</td>
+                <td>{{ cliente.domicilioLaboral }}</td>
+                <td>{{ cliente.fonoRedFija }}</td>
+                <td>{{ cliente.celular }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{% if cliente.fechaAperturaCuenta %}{{ cliente.fechaAperturaCuenta|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ cliente.numeroCuenta }}</td>
+                <td>{{ cliente.creditoAutorizado }}</td>
+                <td>{% if cliente.fechaPagoPactada %}{{ cliente.fechaPagoPactada|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ cliente.totalCargos }}</td>
+                <td>{{ cliente.totalAbonos }}</td>
+                <td>{{ cliente.estado }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('clientes_show', { 'id': cliente.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clientes_new') }}">Create a new cliente</a>
+        </li>
+    </ul>
+{% endblock %}

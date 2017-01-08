@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cliente</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cliente.id }}</td>
+            </tr>
+            <tr>
+                <th>Domicilioparticular</th>
+                <td>{{ cliente.domicilioParticular }}</td>
+            </tr>
+            <tr>
+                <th>Domiciliolaboral</th>
+                <td>{{ cliente.domicilioLaboral }}</td>
+            </tr>
+            <tr>
+                <th>Fonoredfija</th>
+                <td>{{ cliente.fonoRedFija }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ cliente.celular }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ cliente.email }}</td>
+            </tr>
+            <tr>
+                <th>Fechaaperturacuenta</th>
+                <td>{% if cliente.fechaAperturaCuenta %}{{ cliente.fechaAperturaCuenta|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Numerocuenta</th>
+                <td>{{ cliente.numeroCuenta }}</td>
+            </tr>
+            <tr>
+                <th>Creditoautorizado</th>
+                <td>{{ cliente.creditoAutorizado }}</td>
+            </tr>
+            <tr>
+                <th>Fechapagopactada</th>
+                <td>{% if cliente.fechaPagoPactada %}{{ cliente.fechaPagoPactada|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Totalcargos</th>
+                <td>{{ cliente.totalCargos }}</td>
+            </tr>
+            <tr>
+                <th>Totalabonos</th>
+                <td>{{ cliente.totalAbonos }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ cliente.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('clientes_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

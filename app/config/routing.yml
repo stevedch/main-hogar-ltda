@@ -1,0 +1,13 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+app_admin_usuarios:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+login_check:
+    path:   /login_check
+
+logout:
+    path: /logout

@@ -1,0 +1,24 @@
+detalle_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Detalle:index" }
+    methods:  GET
+
+detalle_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Detalle:show" }
+    methods:  GET
+
+detalle_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Detalle:new" }
+    methods:  [GET, POST]
+
+detalle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Detalle:edit" }
+    methods:  [GET, POST]
+
+detalle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Detalle:delete" }
+    methods:  DELETE
