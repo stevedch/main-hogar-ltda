@@ -29,7 +29,6 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $authenticationUtils = $this->get('security.authentication_utils');
 
         $session = $request->getSession();
 
@@ -42,9 +41,6 @@ class DefaultController extends Controller
             $error = $session->get(Security::AUTHENTICATION_ERROR);
             $session->remove(Security::AUTHENTICATION_ERROR);
         }
-
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('default/index.html.twig', [
             'is_login' => true,
