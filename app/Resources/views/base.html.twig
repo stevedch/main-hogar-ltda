@@ -34,12 +34,15 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('login') }}">Login</a></li>
+                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
-{% block body %}{% endblock %}
+{% block body %}
+    {% block main_content %}{% endblock %}
+{% endblock %}
+
 
 {% javascripts
 'bundles/app/js/jquery-3.1.1.min.js'

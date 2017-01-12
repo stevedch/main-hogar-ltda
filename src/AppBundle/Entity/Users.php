@@ -60,5 +60,92 @@ class Users extends BaseUser
      */
     protected $status = self::STATUS_ACTIVE;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRut()
+    {
+        return $this->rut;
+    }
+
+    /**
+     * @param int $rut
+     */
+    public function setRut(int $rut)
+    {
+        $this->rut = $rut;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMothersLastName()
+    {
+        return $this->mothersLastName;
+    }
+
+    /**
+     * @param string $mothersLastName
+     */
+    public function setMothersLastName(string $mothersLastName)
+    {
+        $this->mothersLastName = $mothersLastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+    }
 }
 
