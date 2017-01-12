@@ -75,6 +75,27 @@ assetic:
     filters:
         cssrewrite: ~
 
+framework:
+    router:
+        resource: '%kernel.root_dir%/config/routing.yml'
+        strict_requirements: ~
+    secret: '%secret%'
+    translator: ~
+    form: ~
+    csrf_protection: ~
+    serializer:
+        enabled: true
+    templating:
+        engines: [twig]
+    validation:
+        enable_annotations: true
+    default_locale: es
+    http_method_override: true
+    session:
+        handler_id: ~
+    fragments: ~
+    assets: ~
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
