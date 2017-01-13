@@ -1,54 +1,57 @@
 {% extends '::base.html.twig' %}
 
 {% block main_content %}
-    <style>
-        .login {
-            border: 1px solid #ccc;
-            padding: 20px 40px;
-            width: 450px;
-            margin: 20px auto
-        }
+    {% if app.user is null %}
+        <style>
+            .login {
+                border: 1px solid #ccc;
+                padding: 20px 40px;
+                width: 450px;
+                margin: 20px auto
+            }
 
-        .login .help {
-            margin: 30px 0
-        }
+            .login .help {
+                margin: 30px 0
+            }
 
-        .login .error {
-            padding: 10px;
-            margin-top: 30px
-        }
-    </style>
-    <div class="row login">
-        <div>
-            <h2 class="text-center">Iniciar sesión</h2>
+            .login .error {
+                padding: 10px;
+                margin-top: 30px
+            }
+        </style>
+        <div class="row login">
+            <div>
+                <h2 class="text-center">Iniciar sesión</h2>
 
-            {% if error %}
-                <div class="error bg-danger">
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
-                </div>
-            {% endif %}
-
-            <form action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-
-                <div class="form-group">
-                    <label for="name">Nombre de usuario *</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"
-                           class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Contraseña *</label>
-                    <input type="password" id="password" name="_password" required="required" class="form-control"/>
-                </div>
-
-                <div class="form-group">
-                    <div class="pull-right">
-                        <input type="submit" class="btn btn-warning" id="_submit" name="_submit"
-                               value="Iniciar Sesión"/>
+                {% if error %}
+                    <div class="error bg-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
                     </div>
-                </div>
-            </form>
+                {% endif %}
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                    <div class="form-group">
+                        <label for="name">Nombre de usuario *</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}"
+                               required="required"
+                               class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña *</label>
+                        <input type="password" id="password" name="_password" required="required" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="pull-right">
+                            <input type="submit" class="btn btn-warning" id="_submit" name="_submit"
+                                   value="Iniciar Sesión"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock main_content %}

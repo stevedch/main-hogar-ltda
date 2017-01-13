@@ -6,13 +6,11 @@ use AppBundle\Entity\Users;
 use AppBundle\Form\UsersType;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
-use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use FOS\UserBundle\Event\FormEvent;
 
@@ -29,7 +27,6 @@ class UsersController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $users = $em->getRepository('AppBundle:Users')->findAll();
 
         return $this->render('users/index.html.twig', array(
@@ -39,7 +36,8 @@ class UsersController extends Controller
 
     /**
      * Creates a new user entity.
-     *
+     * @param Request $request
+     * @return null|RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -109,7 +107,9 @@ class UsersController extends Controller
 
     /**
      * Displays a form to edit an existing user entity.
-     *
+     * @param Request $request
+     * @param Users $user
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Users $user)
     {
@@ -132,7 +132,9 @@ class UsersController extends Controller
 
     /**
      * Deletes a user entity.
-     *
+     * @param Request $request
+     * @param Users $user
+     * @return RedirectResponse
      */
     public function deleteAction(Request $request, Users $user)
     {

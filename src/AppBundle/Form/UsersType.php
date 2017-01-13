@@ -7,8 +7,10 @@ use FOS\UserBundle\Model\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,10 +22,18 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rut')
-            ->add('name')
-            ->add('lastName')
-            ->add('mothersLastName')
+            ->add('rut', IntegerType::class, array(
+                'label' => 'Rut',
+            ))
+            ->add('name', TextType::class, array(
+                'label' => 'Nombres',
+            ))
+            ->add('lastName', TextType::class, array(
+                'label' => 'Apellido Paterno',
+            ))
+            ->add('mothersLastName', TextType::class, array(
+                'label' => 'Apellido Materno',
+            ))
             ->add('email', EmailType::class, array(
                 'label' => 'form.email',
                 'translation_domain' => 'FOSUserBundle'
@@ -40,6 +50,7 @@ class UsersType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
             ->add('roles', ChoiceType::class, array(
+                'label' => 'Tipo de rol',
                 'required' => false,
                 'multiple' => true,
                 'choices' => array(
@@ -47,7 +58,7 @@ class UsersType extends AbstractType
                     'Cobrador' => 'ROLE_COBRADOR',
                     'Gerente de finanzas' => 'ROLE_GERENTE_FINANZAS',
                     'Gerente de ventas' => 'ROLE_GERENTE_VENTAS',
-                ),
+                )
             ));
     }
 
