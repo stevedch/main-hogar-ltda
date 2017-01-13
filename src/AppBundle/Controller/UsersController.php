@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use FOS\UserBundle\Event\FormEvent;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -68,8 +69,8 @@ class UsersController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
+                //$url = $this->generateUrl('fos_user_registration_confirmed');
+                $response = $this->redirectToRoute('users_index');
             }
 
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));

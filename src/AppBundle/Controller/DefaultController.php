@@ -49,6 +49,11 @@ class DefaultController extends Controller
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
 
+
+        if ($this->getUser()) {
+            return $this->redirectToRoute('users_index');
+        }
+
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,

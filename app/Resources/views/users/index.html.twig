@@ -6,13 +6,13 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Rut</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Motherslastname</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +23,14 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.mothersLastName }}</td>
-                <td>{{ user.status }}</td>
+                <td>{{ user.status|trans }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('users_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('users_edit', { 'id': user.id }) }}">edit</a>
+                            <a href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
