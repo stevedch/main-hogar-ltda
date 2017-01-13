@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Users list</h1>
-
-    <table>
+    <h1>Listado de usuarios</h1>
+    <table class="table table-bordered table-responsive">
         <thead>
-            <tr>
-                <th>#</th>
-                <th>Rut</th>
-                <th>Nombres</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
+        <tr>
+            <th>#</th>
+            <th>Rut</th>
+            <th>Nombres</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
         </thead>
         <tbody>
         {% for user in users %}
@@ -25,20 +24,14 @@
                 <td>{{ user.mothersLastName }}</td>
                 <td>{{ user.status|trans }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-xs btn-success" href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
+                    {% set is_enabled = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'disabled'%}
+                    <a class="btn btn-xs btn-warning {{ is_enabled }}" href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
     <ul>
         <li>
             <a href="{{ path('users_new') }}">Create a new user</a>

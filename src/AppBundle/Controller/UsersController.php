@@ -69,17 +69,15 @@ class UsersController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                //$url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = $this->redirectToRoute('users_index');
+                $response = $this->redirectToRoute('users_show', ['id' => $user->getId()]);
             }
 
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
             return $response;
         }
 
-        $event = new FormEvent($form, $request);
-        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
+        //$event = new FormEvent($form, $request);
+        //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
 
         if (null !== $response = $event->getResponse()) {
             return $response;

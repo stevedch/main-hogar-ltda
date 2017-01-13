@@ -3,7 +3,6 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Users;
-use FOS\UserBundle\Model\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -54,6 +53,7 @@ class UsersType extends AbstractType
                 'required' => false,
                 'multiple' => true,
                 'choices' => array(
+                    'Administrador general' => 'ROLE_ADMIN_GENERAL',
                     'Vendedor' => 'ROLE_VENDEDOR',
                     'Cobrador' => 'ROLE_COBRADOR',
                     'Gerente de finanzas' => 'ROLE_GERENTE_FINANZAS',

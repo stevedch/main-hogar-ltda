@@ -4,12 +4,12 @@ users_index:
     methods:  GET
 
 users_show:
-    path:     /{id}/show
+    path:     /{id}/perfil
     defaults: { _controller: "AppBundle:Users:show" }
     methods:  GET
 
 users_new:
-    path:     /new
+    path:     /nuevo-usuario
     defaults: { _controller: "AppBundle:Users:new" }
     methods:  [GET, POST]
 

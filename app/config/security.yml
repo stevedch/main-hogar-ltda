@@ -21,10 +21,12 @@ security:
     role_hierarchy:
         ROLE_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH  ]
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        ROLE_ADMIN_GENERAL: [ ROLE_SUPER_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
         ROLE_VENDEDOR: ROLE_ADMIN
         ROLE_COBRADOR: ROLE_ADMIN
         ROLE_GERENTE_FINANZAS: ROLE_ADMIN
         ROLE_GERENTE_VENTAS: ROLE_ADMIN
 
     access_control:
-            - { path: ^/admin, roles: ROLE_ADMIN }
+            - { path: ^/admin/vendedor, roles: ROLE_VENDEDOR }
+            - { path: ^/admin/usuarios, roles: ROLE_SUPER_ADMIN }
