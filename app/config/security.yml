@@ -28,5 +28,8 @@ security:
         ROLE_GERENTE_VENTAS: ROLE_ADMIN
 
     access_control:
-            - { path: ^/admin/vendedor, roles: ROLE_VENDEDOR }
             - { path: ^/admin/usuarios, roles: ROLE_SUPER_ADMIN }
+            - { path: ^/admin/gerente-finanzas, roles: ROLE_GERENTE_FINANZAS }
+            - { path: ^/admin/gerente-ventas, roles: ROLE_GERENTE_VENTAS }
+            - { path: ^/admin/vendedor, roles: ROLE_VENDEDOR }
+            - { path: ^/admin/cobrador, roles: ROLE_COBRADOR }
