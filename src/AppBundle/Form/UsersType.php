@@ -2,8 +2,13 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Users;
+use FOS\UserBundle\Model\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,11 +22,23 @@ class UsersType extends AbstractType
         $builder
             ->add('rut')
             ->add('name')
-            ->add('username')
-            ->add('password')
-            ->add('email')
             ->add('lastName')
             ->add('mothersLastName')
+            ->add('email', EmailType::class, array(
+                'label' => 'form.email',
+                'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('username', null, array(
+                'label' => 'form.username',
+                'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
+            ))
             ->add('roles', ChoiceType::class, array(
                 'required' => false,
                 'multiple' => true,
@@ -31,8 +48,7 @@ class UsersType extends AbstractType
                     'Gerente de finanzas' => 'ROLE_GERENTE_FINANZAS',
                     'Gerente de ventas' => 'ROLE_GERENTE_VENTAS',
                 ),
-            ))
-        ;
+            ));
     }
 
     /**
@@ -40,9 +56,12 @@ class UsersType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Users'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => Users::class,
+                'intention' => 'registration'
+            )
+        );
     }
 
     /**
@@ -50,8 +69,6 @@ class UsersType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_users';
+        return 'fos_user_registration';
     }
-
-
 }

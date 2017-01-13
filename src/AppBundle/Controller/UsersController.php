@@ -3,9 +3,18 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Users;
+use AppBundle\Form\UsersType;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Form\Factory\FactoryInterface;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\EncoderFactory;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use FOS\UserBundle\Event\FormEvent;
 
 /**
  * User controller.
@@ -34,29 +43,54 @@ class UsersController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new Users();
-        $form = $this->createForm('AppBundle\Form\UsersType', $user);
-        $form->handleRequest($request);
+        $form = $this->createForm(UsersType::class, new Users());
 
-        /** @var EncoderFactory  $factory */
-        $factory = $this->get('security.encoder_factory');
-        $encoder = $factory->getEncoder($user);
+        /** @var $userManager UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+        $user = $userManager->createUser();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $user->setSalt(md5(uniqid(null, true)));
-            $contrasenia = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-            $user->setPassword($contrasenia);
-            $em->persist($user);
-            $em->flush($user);
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
-            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
         }
 
-        return $this->render('users/new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
-        ));
+        $form->setData($user);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            $user = $form->getData();
+            $user->setEnabled(true);
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('fos_user_registration_confirmed');
+                $response = new RedirectResponse($url);
+            }
+
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            return $response;
+        }
+
+        $event = new FormEvent($form, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
+
+        if (null !== $response = $event->getResponse()) {
+            return $response;
+        }
+
+        return $this->render('@FOSUser/Registration/register.html.twig',
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -126,7 +160,6 @@ class UsersController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('users_delete', array('id' => $user->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
