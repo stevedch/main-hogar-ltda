@@ -1,0 +1,24 @@
+sellers_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Sellers:index" }
+    methods:  GET
+
+sellers_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Sellers:show" }
+    methods:  GET
+
+sellers_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Sellers:new" }
+    methods:  [GET, POST]
+
+sellers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Sellers:edit" }
+    methods:  [GET, POST]
+
+sellers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Sellers:delete" }
+    methods:  DELETE

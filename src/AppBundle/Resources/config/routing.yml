@@ -2,3 +2,6 @@ app_users:
     resource: "@AppBundle/Resources/config/routing/users.yml"
     prefix:   /usuarios
 
+app_sellers:
+    resource: "@AppBundle/Resources/config/routing/sellers.yml"
+    prefix:   /vendedores
