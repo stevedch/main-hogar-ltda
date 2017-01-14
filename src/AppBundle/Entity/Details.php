@@ -55,6 +55,14 @@ class Details
     protected $product;
 
     /**
+     * Details constructor.
+     */
+    public function __construct()
+    {
+        $this->dateOfIssue = new \DateTime('now');
+    }
+
+    /**
      * @return int
      */
     public function getId(): int

@@ -166,19 +166,18 @@ class SellersController extends Controller
             $em->persist($product);
 
             $details = new Details();
-            $details->setDateOfIssue(new \DateTime('now'));
+            // $details->setNumber(1212312);
             $details->setQuantity($product->getQuantity());
             $details->setProduct($product);
 
             /** @var Users $user */
             $user = $this->getUser();
 
-            $details->addMetadata('supplier', [
+            $details->addMetadata('seller', [
                 'id' => $user->getId(),
                 'fullName' => $user->getFullName()
             ]);
 
-            $details->setNumber(1212312);
             $em->persist($details);
             $em->flush();
 

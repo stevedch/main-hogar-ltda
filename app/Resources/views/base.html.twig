@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% stylesheets 'bundles/app/css/bootstrap.min.css' %}
-    <link rel="stylesheet" href="{{ asset_url }}"/>
-    {% endstylesheets %}
+
+    {% if app.environment == 'dev' %}
+        {% stylesheets 'bundles/app/css/bootstrap.min.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% else %}
+        {% stylesheets 'css/7c0c6ce.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endif %}
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
@@ -57,12 +64,19 @@
     {% block main_content %}{% endblock %}
 {% endblock %}
 
-{% javascripts
-'bundles/app/js/jquery-3.1.1.min.js'
-'bundles/app/js/bootstrap.js'
-'bundles/app/js/config.default.js' %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+{% if app.environment == 'dev' %}
+    {% javascripts
+    'bundles/app/js/jquery-3.1.1.min.js'
+    'bundles/app/js/bootstrap.js'
+    'bundles/app/js/config.default.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% else %}
+    {% javascripts 'js/4c2b1a3.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endif %}
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>
