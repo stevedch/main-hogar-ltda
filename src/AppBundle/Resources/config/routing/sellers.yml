@@ -37,3 +37,13 @@ sellers_details_c:
     path:     /detalles
     defaults: { _controller: "AppBundle:Sellers:listDetails" }
     methods:  GET
+
+sellers_list_product:
+    path:     /lista-productos
+    defaults: { _controller: "AppBundle:Sellers:listProducts" }
+    methods:  GET
+
+sellers_view_product:
+    path:     /{id}/producto
+    defaults: { _controller: "AppBundle:Sellers:showProduct" }
+    methods:  [GET, POST]

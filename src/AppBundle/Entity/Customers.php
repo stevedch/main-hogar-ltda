@@ -43,14 +43,14 @@ class Customers
     /**
      * @var string
      *
-     * @ORM\Column(name="fixed_network_phone", type="decimal", precision=20, scale=0, nullable=true)
+     * @ORM\Column(name="fixed_network_phone", type="string", nullable=false)
      */
     protected $fixedNetworkPhone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cell_phone", type="decimal", precision=20, scale=0, nullable=true)
+     * @ORM\Column(name="cell_phone", type="string", nullable=false)
      */
     protected $cellPhone;
 
@@ -107,17 +107,9 @@ class Customers
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=30, nullable=true)
+     * @ORM\Column(name="status", type="string", length=30, nullable=true)
      */
     protected $status = self::STATUS_ACTIVE;
-
-    /**
-     * @var Users
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Users")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $user;
-
 
 }
 

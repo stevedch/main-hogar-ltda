@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Detalle de producto</h1>
+
+    <table class="table table-bordered table-responsive">
+        <tbody>
+        <tr>
+            <th>#</th>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de producto</th>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <th>Cantidad</th>
+            <td>{{ product.quantity }}</td>
+        </tr>
+        <tr>
+            <th>Precio</th>
+            <td>{{ product.price }}</td>
+        </tr>
+        <tr>
+            <th>Precio neto</th>
+            <td>{{ product.priceNet }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ product.status|trans }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-xs btn-warning" href="{{ path('sellers_list_product') }}">Volver</a>
+        </div>
+    </div>
+{% endblock %}

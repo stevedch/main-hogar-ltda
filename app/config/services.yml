@@ -4,6 +4,8 @@ parameters:
 #    parameter_name: value
 
 services:
+    fos_user.doctrine_registry:
+        alias: doctrine
     doctrine.details_listener:
         class: AppBundle\EventListener\NumberGeneratorListener
         tags:
