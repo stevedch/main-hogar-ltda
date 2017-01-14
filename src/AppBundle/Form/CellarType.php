@@ -3,10 +3,11 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SellersType extends AbstractType
+class CellarType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,9 +15,9 @@ class SellersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('percentageCommission')
-            ->add('user')
-        ;
+            ->add('name', TextType::class, [
+                'label' => 'Nombre de Bodega'
+            ]);
     }
     
     /**
@@ -25,7 +26,7 @@ class SellersType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Sellers'
+            'data_class' => 'AppBundle\Entity\Cellar'
         ));
     }
 
@@ -34,7 +35,7 @@ class SellersType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_sellers';
+        return 'appbundle_cellar';
     }
 
 

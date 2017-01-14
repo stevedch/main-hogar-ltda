@@ -5,13 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Cellar
+ * Supplier
  *
- * @ORM\Table(name="cellar")
+ * @ORM\Table(name="supplier")
  * @ORM\Entity
  */
-class Cellar
+class Supplier
 {
+
     /**
      * @var integer
      *
@@ -29,12 +30,20 @@ class Cellar
     protected $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=30, nullable=true)
+     */
+    protected $address;
+
+    /**
      * @return int
      */
     public function getId()
     {
         return $this->id;
     }
+
     /**
      * @return string
      */
@@ -51,5 +60,20 @@ class Cellar
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress(string $address)
+    {
+        $this->address = $address;
+    }
 }
 

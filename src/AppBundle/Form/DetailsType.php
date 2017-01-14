@@ -2,11 +2,13 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Details;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SellersType extends AbstractType
+class DetailsType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,9 +16,8 @@ class SellersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('percentageCommission')
-            ->add('user')
-        ;
+            ->add('number', IntegerType::class, [])
+            ->add('quantity', IntegerType::class, []);
     }
     
     /**
@@ -25,7 +26,7 @@ class SellersType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Sellers'
+            'data_class' => Details::class
         ));
     }
 
@@ -34,8 +35,6 @@ class SellersType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_sellers';
+        return 'appbundle_details';
     }
-
-
 }

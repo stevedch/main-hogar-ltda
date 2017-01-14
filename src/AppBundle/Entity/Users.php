@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+
 /**
  * Users
  *
@@ -146,6 +147,12 @@ class Users extends BaseUser
     public function setStatus(string $status)
     {
         $this->status = $status;
+    }
+
+
+    public function getFullName()
+    {
+        return $this->getName() . ' ' . $this->getLastName() . ' ' . $this->getMothersLastName();
     }
 }
 

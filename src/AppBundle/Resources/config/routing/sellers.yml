@@ -22,3 +22,18 @@ sellers_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Sellers:delete" }
     methods:  DELETE
+
+sellers_supplier:
+    path:     /registrar-proveedor
+    defaults: { _controller: "AppBundle:Sellers:registerSupplier" }
+    methods:  [GET, POST]
+
+sellers_details:
+    path:     /{id}/detalles-compra
+    defaults: { _controller: "AppBundle:Sellers:detailsRegister" }
+    methods:  [GET, POST]
+
+sellers_details_c:
+    path:     /detalles
+    defaults: { _controller: "AppBundle:Sellers:listDetails" }
+    methods:  GET

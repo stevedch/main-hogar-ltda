@@ -2,9 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Cellar;
+use AppBundle\Entity\Details;
+use AppBundle\Entity\Products;
 use AppBundle\Entity\Sellers;
+use AppBundle\Entity\Supplier;
+use AppBundle\Entity\Users;
+use AppBundle\Form\SupplierType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Seller controller.
@@ -118,7 +125,93 @@ class SellersController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('sellers_delete', array('id' => $seller->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function registerSupplierAction(Request $request)
+    {
+        $supplier = new Supplier();
+
+        $form = $this->createForm(SupplierType::class, null);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $data = $form->getData();
+            $supplier->setName($data['name']);
+            $supplier->setAddress($data['address']);
+            $em->persist($supplier);
+
+            $cellar = new Cellar();
+            /** @var Cellar $dataCellar */
+            $dataCellar = $data['cellar'];
+            $cellar->setName($dataCellar->getName());
+            $em->persist($cellar);
+
+            $product = new Products();
+            /** @var Products $dataProduct */
+            $dataProduct = $data['product'];
+            $product->setName($dataProduct->getName());
+            $product->setQuantity($dataProduct->getQuantity());
+            $product->setPrice($dataProduct->getPrice());
+            $product->setPriceNet($dataProduct->getPriceNet());
+            $product->setCellar($cellar);
+            $product->setSupplier($supplier);
+            $em->persist($product);
+
+            $details = new Details();
+            $details->setDateOfIssue(new \DateTime('now'));
+            $details->setQuantity($product->getQuantity());
+            $details->setProduct($product);
+
+            /** @var Users $user */
+            $user = $this->getUser();
+
+            $details->addMetadata('supplier', [
+                'id' => $user->getId(),
+                'fullName' => $user->getFullName()
+            ]);
+
+            $details->setNumber(1212312);
+            $em->persist($details);
+            $em->flush();
+
+            return $this->redirectToRoute('sellers_details', array('id' => $details->getId()));
+        }
+
+        return $this->render('sellers/register/register.supplier.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @param Details $details
+     * @return Response
+     */
+    public function detailsRegisterAction(Details $details)
+    {
+        return $this->render('sellers/details/detail.html.twig', [
+            'detail' => $details
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function listDetailsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $details = $em->getRepository('AppBundle:Details')->findAll();
+
+        return $this->render('sellers/details/list.html.twig', [
+            'details' => $details
+        ]);
     }
 }

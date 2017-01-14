@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registar Proveedor</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-xs btn-warning" type="submit" value="Guardar" />
+    {{ form_end(form) }}
+{% endblock %}

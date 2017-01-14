@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Users;
 use AppBundle\Form\UsersType;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
@@ -13,7 +12,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use FOS\UserBundle\Event\FormEvent;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -163,4 +161,5 @@ class UsersController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
+
 }
