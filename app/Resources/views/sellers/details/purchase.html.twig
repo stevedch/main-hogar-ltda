@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Seller</h1>
+
+    {{ dump(detail) }}
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{#}{ seller.id }#}</td>
+        </tr>
+        <tr>
+            <th>Percentagecommission</th>
+            <td>{#{ seller.percentageCommission }#}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

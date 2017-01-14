@@ -57,3 +57,9 @@ sellers_customer_sale_details:
     path:     /{id}/detalle-venta
     defaults: { _controller: "AppBundle:Sellers:detailSale" }
     methods:  [GET, POST]
+
+sellers_view_detail_purchase:
+    path:     /{id}/detalle-compra
+    defaults: { _controller: "AppBundle:Sellers:detailPurchase" }
+    methods:  [GET, POST]
+

@@ -273,6 +273,17 @@ class SellersController extends Controller
     }
 
     /**
+     * @param Details $details
+     * @return Response
+     */
+    public function detailPurchaseAction(Details $details)
+    {
+        return $this->render('sellers/details/purchase.html.twig', [
+            'detail' => $details
+        ]);
+    }
+
+    /**
      * @param Products $product
      * @return Response
      * @internal param Products $products
