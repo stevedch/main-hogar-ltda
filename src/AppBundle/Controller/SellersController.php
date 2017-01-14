@@ -185,7 +185,7 @@ class SellersController extends Controller
             return $this->redirectToRoute('sellers_details', array('id' => $details->getId()));
         }
 
-        return $this->render('sellers/register/register.supplier.html.twig', [
+        return $this->render('sellers/register/register.html.twig', [
             'form' => $form->createView()
         ]);
     }
