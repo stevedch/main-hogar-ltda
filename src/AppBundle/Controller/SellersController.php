@@ -158,9 +158,11 @@ class SellersController extends Controller
             /** @var Products $dataProduct */
             $dataProduct = $data['product'];
             $product->setName($dataProduct->getName());
+
             $product->setQuantity($dataProduct->getQuantity());
             $product->setPrice($dataProduct->getPrice());
-            $product->setPriceNet($dataProduct->getPriceNet());
+            $this->calculatePriceNet($product);
+
             $product->setCellar($cellar);
             $product->setSupplier($supplier);
             $em->persist($product);
@@ -212,5 +214,20 @@ class SellersController extends Controller
         return $this->render('sellers/details/list.html.twig', [
             'details' => $details
         ]);
+    }
+
+    /**
+     * @param Products $products
+     * @return Products
+     */
+    private function calculatePriceNet(Products $products)
+    {
+        $quantity = $products->getQuantity();
+        $price = $products->getPrice();
+        $percentage = ($grossPrice =  $quantity * $price) * 0.1;
+        $priceNet = $grossPrice - $percentage;
+        $products->setPriceNet($priceNet);
+
+        return $products;
     }
 }

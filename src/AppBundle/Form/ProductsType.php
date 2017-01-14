@@ -25,9 +25,9 @@ class ProductsType extends AbstractType
             ->add('price', IntegerType::class, [
                 'label' => 'Precio de Producto'
             ])
-            ->add('priceNet', IntegerType::class, [
+            /**->add('priceNet', IntegerType::class, [
                 'label' => 'Precio Neto'
-            ])
+            ])*/
         ;
     }
     

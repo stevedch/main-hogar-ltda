@@ -5,7 +5,10 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
 
     {% if app.environment == 'dev' %}
-        {% stylesheets 'bundles/app/css/bootstrap.min.css' %}
+        {% stylesheets
+        'bundles/app/css/bootstrap.min.css'
+        'bundles/app/css/config.default.css'
+        %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% else %}
