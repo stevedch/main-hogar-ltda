@@ -79,3 +79,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\Users
+
+jms_di_extra:
+    locations:
+       all_bundles: false
+       bundles: [AppBundle]
+       directories: ["%kernel.root_dir%/../src"]

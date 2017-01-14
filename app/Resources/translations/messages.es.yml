@@ -1,5 +1,6 @@
 status:
    active: Activo
+   good: En buen estado
 
 registration:
       submit: Enviar

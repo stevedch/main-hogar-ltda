@@ -2,16 +2,18 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use JMS\DiExtraBundle\Annotation as Di;
 use AppBundle\Entity\Cellar;
 use AppBundle\Entity\Details;
 use AppBundle\Entity\Products;
 use AppBundle\Entity\Sellers;
 use AppBundle\Entity\Supplier;
 use AppBundle\Entity\Users;
+use AppBundle\Repository\ProductsRepository;
 use AppBundle\Form\SupplierType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Seller controller.
@@ -168,7 +170,6 @@ class SellersController extends Controller
             $em->persist($product);
 
             $details = new Details();
-            // $details->setNumber(1212312);
             $details->setQuantity($product->getQuantity());
             $details->setProduct($product);
 
@@ -203,6 +204,33 @@ class SellersController extends Controller
     }
 
     /**
+     * @param Products $product
+     * @return Response
+     * @internal param Products $products
+     */
+    public function showProductAction(Products $product)
+    {
+        return $this->render('sellers/product/show.html.twig', [
+            'product' => $product
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function listProductsAction(Request $request)
+    {
+        /** @var ProductsRepository $products */
+        $products = $this->getDoctrine()
+            ->getRepository('AppBundle:Products');
+
+        return $this->render('sellers/product/index.html.twig', [
+            'products' => $products->productAll()
+        ]);
+    }
+
+    /**
      * @param Request $request
      * @return Response
      */
@@ -224,7 +252,7 @@ class SellersController extends Controller
     {
         $quantity = $products->getQuantity();
         $price = $products->getPrice();
-        $percentage = ($grossPrice =  $quantity * $price) * 0.1;
+        $percentage = ($grossPrice = $quantity * $price) * 0.1;
         $priceNet = $grossPrice - $percentage;
         $products->setPriceNet($priceNet);
 

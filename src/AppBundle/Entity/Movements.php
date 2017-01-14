@@ -37,13 +37,6 @@ class Movements
     protected $documentNumber;
 
     /**
-     * @var Customers
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customers", inversedBy="")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $cliente;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="transaction_detail", type="string", length=30, nullable=true)
@@ -83,7 +76,7 @@ class Movements
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Collectors", inversedBy="")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    protected $cobrador;
+    protected $collector;
 
     /**
      * @var Sellers
@@ -91,6 +84,14 @@ class Movements
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $seller;
+
+
+    /**
+     * @var Customers
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Customers", inversedBy="")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    protected $client;
 
     /**
      * @var Details
