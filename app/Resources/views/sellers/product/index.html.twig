@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado de productos</h1>
-    <table class="table table-bordered table-responsive">
+    <div class="table-header">
+        Listado de productos
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
         <thead>
         <tr>
             <th>#</th>
@@ -32,3 +34,4 @@
         </tbody>
     </table>
 {% endblock %}
+

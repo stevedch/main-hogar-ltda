@@ -1,5 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ dump(details) }}
+    <div class="table-header">
+        Listado de Compras
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
+
+        <thead>
+        <tr>
+            <th>Numero de boleta</th>
+            <th>Fecha de emisión</th>
+            <th>Tipo de venta</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for detail in details %}
+            <tr>
+                <td><a href="{{ path('sellers_view_detail_purchase', { 'id': detail.id }) }}">{{ detail.number }}</a></td>
+                <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
+                <td>{{ detail.type|trans }}</td>
+                <td>
+                    <a class="btn btn-xs btn-success"
+                       href="{{ path('sellers_view_detail_purchase', { 'id': detail.id }) }}">Ver</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

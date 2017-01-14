@@ -66,9 +66,11 @@
     </nav>
 {% endif %}
 
-{% block body %}
-    {% block main_content %}{% endblock %}
-{% endblock %}
+<div class="container-fluid">
+    {% block body %}
+        {% block main_content %}{% endblock %}
+    {% endblock %}
+</div>
 
 {% if app.environment == 'dev' %}
     {% javascripts
