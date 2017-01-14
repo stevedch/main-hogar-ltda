@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Customers;
 use AppBundle\Form\CustomersType;
+use AppBundle\Form\DetailsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -146,7 +147,6 @@ class SellersController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-
             $data = $form->getData();
             $supplier->setName($data['name']);
             $supplier->setAddress($data['address']);
@@ -202,13 +202,47 @@ class SellersController extends Controller
     {
 
         $customer = new Customers();
-
         $form = $this->createForm(CustomersType::class);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            dump($form->getData()); exit;
+
+            $em = $this->getDoctrine()->getManager();
+
+            $data = $form->getData();
+            $customer->setHomeAddress($data['homeAddress']);
+            $customer->setWorkAddress($data['workAddress']);
+            $customer->setFixedNetworkPhone($data['fixedNetworkPhone']);
+            $customer->setCellPhone($data['cellPhone']);
+            $customer->setEmail($data['email']);
+            $customer->setAccountOpeningDate($data['accountOpeningDate']);
+            $customer->setAccountNumber($data['accountNumber']);
+            $customer->setAuthorizedCredit($data['authorizedCredit']);
+            $customer->setPaymentDateAgreed($data['paymentDateAgreed']);
+            $customer->setTotalCharge($data['totalCharge']);
+            $customer->setTotalDeposit($data['totalDeposit']);
+            $em->persist($customer);
+
+            $details = new Details();
+            $details->setQuantity($data['quantity']);
+            $details->setProduct($data['product']);
+            $details->setType(Details::DETAILS_SALE);
+
+            /** @var Users $user */
+            $user = $this->getUser();
+
+            $details->addMetadata('seller', [
+                'id' => $user->getId(),
+                'fullName' => $user->getFullName()
+            ]);
+
+            $details->addMetadata('customer', $customer);
+            $em->persist($details);
+
+            $em->flush();
+
+            return $this->redirectToRoute('sellers_customer_sale_details', array('id' => $details->getId()));
         }
 
         return $this->render('sellers/register/record.sale.html.twig', [
@@ -223,6 +257,17 @@ class SellersController extends Controller
     public function detailsRegisterAction(Details $details)
     {
         return $this->render('sellers/details/detail.html.twig', [
+            'detail' => $details
+        ]);
+    }
+
+    /**
+     * @param Details $details
+     * @return Response
+     */
+    public function detailSaleAction(Details $details)
+    {
+        return $this->render('sellers/details/sale.html.twig', [
             'detail' => $details
         ]);
     }
