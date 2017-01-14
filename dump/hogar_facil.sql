@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-01-2017 a las 14:41:34
+-- Tiempo de generación: 14-01-2017 a las 01:43:37
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -23,352 +23,390 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `bodega`
+-- Estructura de tabla para la tabla `cellar`
 --
 
-CREATE TABLE `bodega` (
+CREATE TABLE `cellar` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `bodega`
+-- Volcado de datos para la tabla `cellar`
 --
 
-INSERT INTO `bodega` (`id`, `nombre`) VALUES
-(1, 'casdasdasdasdasdasd'),
-(2, 'asdadsasasd');
+INSERT INTO `cellar` (`id`, `name`) VALUES
+(2, 'asdasd'),
+(3, 'asdasd'),
+(4, 'asdasd'),
+(5, 'asdasd');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Estructura de tabla para la tabla `collectors`
 --
 
-CREATE TABLE `clientes` (
+CREATE TABLE `collectors` (
   `id` int(11) NOT NULL,
-  `usuario_id` int(11) DEFAULT NULL,
-  `domicilio_particular` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `domicilio_laboral` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fono_red_fija` decimal(20,0) DEFAULT NULL,
-  `celular` decimal(20,0) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `percentage_commission` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `home_address` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `work_address` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fixed_network_phone` decimal(20,0) DEFAULT NULL,
+  `cell_phone` decimal(20,0) DEFAULT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_apertura_cuenta` date DEFAULT NULL,
-  `numero_cuenta` int(11) DEFAULT NULL,
-  `credito_autorizado` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_pago_pactada` date DEFAULT NULL,
-  `total_cargos` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `total_abonos` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `account_opening_date` date DEFAULT NULL,
+  `account_number` int(11) DEFAULT NULL,
+  `authorized_credit` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `payment_date_agreed` date DEFAULT NULL,
+  `total_charge` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `total_deposit` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `estado` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`id`, `usuario_id`, `domicilio_particular`, `domicilio_laboral`, `fono_red_fija`, `celular`, `email`, `fecha_apertura_cuenta`, `numero_cuenta`, `credito_autorizado`, `fecha_pago_pactada`, `total_cargos`, `total_abonos`, `estado`) VALUES
-(1, NULL, '12312', '3123', '123123', '12312', '312312', '2014-02-03', 123123, '123123', '2013-04-06', '1231', '23123', 'estado.activo');
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cobradores`
+-- Estructura de tabla para la tabla `details`
 --
 
-CREATE TABLE `cobradores` (
+CREATE TABLE `details` (
   `id` int(11) NOT NULL,
-  `usuario_id` int(11) DEFAULT NULL,
-  `porcentaje_comision` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle`
---
-
-CREATE TABLE `detalle` (
-  `id` int(11) NOT NULL,
-  `producto_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `numero` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_apertura_cuenta` date DEFAULT NULL,
-  `cantidad` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
+  `product_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `number` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateOfIssue` date DEFAULT NULL,
+  `quantity` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `metadata` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `detalle`
+-- Volcado de datos para la tabla `details`
 --
 
-INSERT INTO `detalle` (`id`, `producto_id`, `numero`, `fecha_apertura_cuenta`, `cantidad`) VALUES
-(1, '4a31756e-d565-11e6-a18f-c4b301b7a691', '123', '2013-03-04', '123');
+INSERT INTO `details` (`id`, `product_id`, `number`, `dateOfIssue`, `quantity`, `metadata`) VALUES
+(4, 'ac4ee5fe-da03-11e6-8f37-c4b301b7a691', '1212312', '2017-01-13', '3123123', 'a:1:{s:8:"supplier";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}}');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial_deudor`
+-- Estructura de tabla para la tabla `movements`
 --
 
-CREATE TABLE `historial_deudor` (
-  `id` int(11) NOT NULL,
-  `cliente_id` int(11) DEFAULT NULL,
-  `vendedor_id` int(11) DEFAULT NULL,
-  `documento_pendiente_pago` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `monto_total_deuda` decimal(30,0) DEFAULT NULL,
-  `fecha_ultimo_pago` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `historial_deudor`
---
-
-INSERT INTO `historial_deudor` (`id`, `cliente_id`, `vendedor_id`, `documento_pendiente_pago`, `monto_total_deuda`, `fecha_ultimo_pago`) VALUES
-(1, NULL, NULL, '123123', NULL, '2014-03-04');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `movimientos`
---
-
-CREATE TABLE `movimientos` (
+CREATE TABLE `movements` (
   `id` int(11) NOT NULL,
   `cliente_id` int(11) DEFAULT NULL,
   `cobrador_id` int(11) DEFAULT NULL,
-  `vendedor_id` int(11) DEFAULT NULL,
-  `glosa_id` int(11) DEFAULT NULL,
-  `numero_documento` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `detalle_transaccion` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `monto` decimal(30,0) DEFAULT NULL,
-  `fecha_movimiento` date DEFAULT NULL,
-  `forma_pago` date DEFAULT NULL,
-  `tipo_movimiento` int(11) DEFAULT NULL
+  `seller_id` int(11) DEFAULT NULL,
+  `gloss_id` int(11) DEFAULT NULL,
+  `document_number` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `transaction_detail` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rode` decimal(30,0) DEFAULT NULL,
+  `date_movement` date DEFAULT NULL,
+  `paid_form` date DEFAULT NULL,
+  `movement_type` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Estructura de tabla para la tabla `products`
 --
 
-CREATE TABLE `producto` (
+CREATE TABLE `products` (
   `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `bodega_id` int(11) DEFAULT NULL,
-  `nombre_producto` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cantidad` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `precio_neto` decimal(30,0) DEFAULT NULL,
-  `estado` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
+  `cellar_id` int(11) DEFAULT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `price_net` decimal(30,0) DEFAULT NULL,
+  `status` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `price` decimal(30,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `producto` (`id`, `bodega_id`, `nombre_producto`, `cantidad`, `precio_neto`, `estado`) VALUES
-('4a31756e-d565-11e6-a18f-c4b301b7a691', 1, '123', '12312', '123', 'estado.bueno'),
-('59009e96-d563-11e6-a18f-c4b301b7a691', 1, 'asdjaskd', '1', '1231231231', 'estado.bueno'),
-('7bd08aca-d564-11e6-a18f-c4b301b7a691', 1, '123', '123', '123', 'estado.bueno'),
-('8b608760-d564-11e6-a18f-c4b301b7a691', 2, '123123', '123123', '1123', 'estado.bueno');
+INSERT INTO `products` (`id`, `cellar_id`, `name`, `quantity`, `price_net`, `status`, `supplier_id`, `price`) VALUES
+('17dab904-da01-11e6-8f37-c4b301b7a691', 3, '12312', 3123123, '1231', 'status.good', 3, '2312312'),
+('4c5b94aa-da01-11e6-8f37-c4b301b7a691', 4, '12312', 3123123, '1231', 'status.good', 4, '2312312'),
+('ac4ee5fe-da03-11e6-8f37-c4b301b7a691', 5, '12312', 3123123, '1231', 'status.good', 5, '2312312'),
+('fd2d918a-da00-11e6-8f37-c4b301b7a691', 2, '12312', 3123123, '1231', 'status.good', 2, '2312312');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `record`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `record` (
   `id` int(11) NOT NULL,
-  `rut` int(11) DEFAULT NULL,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `apellido_parteno` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `apellido_marteno` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `contrasenia` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `estado` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `seller_id` int(11) DEFAULT NULL,
+  `document_pending_payment` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `amount_total_debt` decimal(30,0) DEFAULT NULL,
+  `last_payment_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sellers`
+--
+
+CREATE TABLE `sellers` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `percentage_commission` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `supplier`
+--
+
+CREATE TABLE `supplier` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `supplier`
+--
+
+INSERT INTO `supplier` (`id`, `name`, `address`) VALUES
+(2, '1asasd', '123123'),
+(3, '1asasd', '123123'),
+(4, '1asasd', '123123'),
+(5, '1asasd', '123123');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `username_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `confirmation_token` varchar(180) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `nombre_usuario` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `salto` varchar(32) COLLATE utf8_unicode_ci NOT NULL
+  `rut` int(11) DEFAULT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mothers_last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `usuarios` (`id`, `rut`, `nombre`, `apellido_parteno`, `apellido_marteno`, `contrasenia`, `estado`, `roles`, `nombre_usuario`, `salto`) VALUES
-(17, 1, 'asdasd', '112312', '3123', '9cb1229e16447a7f31b147b2c489fe4291ea71e8', 'estado.activo', 'a:5:{i:0;s:13:"ROLE_VENDEDOR";i:1;s:13:"ROLE_COBRADOR";i:2;s:21:"ROLE_GERENTE_FINANZAS";i:3;s:19:"ROLE_GERENTE_VENTAS";i:4;a:4:{i:0;s:13:"ROLE_VENDEDOR";i:1;s:13:"ROLE_COBRADOR";i:2;s:21:"ROLE_GERENTE_FINANZAS";i:3;s:19:"ROLE_GERENTE_VENTAS";}}', 'admin', '287a1bb7e8e42e11488812e57b4f57b0');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vendedores`
---
-
-CREATE TABLE `vendedores` (
-  `id` int(11) NOT NULL,
-  `usuarios_id` int(11) DEFAULT NULL,
-  `porcentaje_comision` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `rut`, `name`, `last_name`, `mothers_last_name`, `status`) VALUES
+(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-14 01:04:28', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
+(16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-14 01:05:59', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
+(18, '123123123', '123123123', 'adl@gmail.com', 'adl@gmail.com', 1, 'o0q4OZwRfFRM4NWuDqr.8R6QPK7ARGYhrg5mySISkJM', 'IuLbni8jwoylrxg6mUo1e+WUQw5kd6C6m/CUkJ5F/NckNoi/NmF8G5P3pcbVNnPSjJnrr5tKfoGzsDY4q48fPQ==', NULL, NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 123123, '123123', '12312', '1233', 'status.active');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `bodega`
+-- Indices de la tabla `cellar`
 --
-ALTER TABLE `bodega`
+ALTER TABLE `cellar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `clientes`
+-- Indices de la tabla `collectors`
 --
-ALTER TABLE `clientes`
+ALTER TABLE `collectors`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_50FE07D7DB38439E` (`usuario_id`);
+  ADD UNIQUE KEY `UNIQ_64AA1945A76ED395` (`user_id`);
 
 --
--- Indices de la tabla `cobradores`
+-- Indices de la tabla `customers`
 --
-ALTER TABLE `cobradores`
+ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_F91516C9DB38439E` (`usuario_id`);
+  ADD UNIQUE KEY `UNIQ_62534E21A76ED395` (`user_id`);
 
 --
--- Indices de la tabla `detalle`
+-- Indices de la tabla `details`
 --
-ALTER TABLE `detalle`
+ALTER TABLE `details`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_80397C307645698E` (`producto_id`);
+  ADD UNIQUE KEY `UNIQ_72260B8A4584665A` (`product_id`);
 
 --
--- Indices de la tabla `historial_deudor`
+-- Indices de la tabla `movements`
 --
-ALTER TABLE `historial_deudor`
+ALTER TABLE `movements`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_3BBBE47ADE734E51` (`cliente_id`),
-  ADD UNIQUE KEY `UNIQ_3BBBE47A8361A8B8` (`vendedor_id`);
+  ADD UNIQUE KEY `UNIQ_38237521DE734E51` (`cliente_id`),
+  ADD UNIQUE KEY `UNIQ_38237521E34DBF53` (`cobrador_id`),
+  ADD UNIQUE KEY `UNIQ_382375218DE820D9` (`seller_id`),
+  ADD UNIQUE KEY `UNIQ_382375215440649A` (`gloss_id`);
 
 --
--- Indices de la tabla `movimientos`
+-- Indices de la tabla `products`
 --
-ALTER TABLE `movimientos`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_AB16A839DE734E51` (`cliente_id`),
-  ADD UNIQUE KEY `UNIQ_AB16A839E34DBF53` (`cobrador_id`),
-  ADD UNIQUE KEY `UNIQ_AB16A8398361A8B8` (`vendedor_id`),
-  ADD UNIQUE KEY `UNIQ_AB16A839AE50FB8E` (`glosa_id`);
+  ADD UNIQUE KEY `UNIQ_B3BA5A5A2ADD6D8C` (`supplier_id`),
+  ADD KEY `IDX_B3BA5A5AD4A8C468` (`cellar_id`);
 
 --
--- Indices de la tabla `producto`
+-- Indices de la tabla `record`
 --
-ALTER TABLE `producto`
+ALTER TABLE `record`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_A7BB06158B1FDE9D` (`bodega_id`);
+  ADD UNIQUE KEY `UNIQ_9B349F919395C3F3` (`customer_id`),
+  ADD UNIQUE KEY `UNIQ_9B349F918DE820D9` (`seller_id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `sellers`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `sellers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_AFFE6BEFA76ED395` (`user_id`);
+
+--
+-- Indices de la tabla `supplier`
+--
+ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `vendedores`
+-- Indices de la tabla `users`
 --
-ALTER TABLE `vendedores`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_658C2856F01D3B25` (`usuarios_id`);
+  ADD UNIQUE KEY `UNIQ_1483A5E992FC23A8` (`username_canonical`),
+  ADD UNIQUE KEY `UNIQ_1483A5E9A0D96FBF` (`email_canonical`),
+  ADD UNIQUE KEY `UNIQ_1483A5E9C05FB297` (`confirmation_token`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `bodega`
+-- AUTO_INCREMENT de la tabla `cellar`
 --
-ALTER TABLE `bodega`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `cellar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT de la tabla `collectors`
 --
-ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `cobradores`
---
-ALTER TABLE `cobradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `detalle`
---
-ALTER TABLE `detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `historial_deudor`
---
-ALTER TABLE `historial_deudor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `movimientos`
---
-ALTER TABLE `movimientos`
+ALTER TABLE `collectors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `customers`
 --
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `vendedores`
+-- AUTO_INCREMENT de la tabla `details`
 --
-ALTER TABLE `vendedores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `movements`
+--
+ALTER TABLE `movements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `record`
+--
+ALTER TABLE `record`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `sellers`
+--
+ALTER TABLE `sellers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `clientes`
+-- Filtros para la tabla `collectors`
 --
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `FK_50FE07D7DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
+ALTER TABLE `collectors`
+  ADD CONSTRAINT `FK_64AA1945A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `cobradores`
+-- Filtros para la tabla `customers`
 --
-ALTER TABLE `cobradores`
-  ADD CONSTRAINT `FK_F91516C9DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
+ALTER TABLE `customers`
+  ADD CONSTRAINT `FK_62534E21A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `detalle`
+-- Filtros para la tabla `details`
 --
-ALTER TABLE `detalle`
-  ADD CONSTRAINT `FK_80397C307645698E` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`) ON DELETE CASCADE;
+ALTER TABLE `details`
+  ADD CONSTRAINT `FK_72260B8A4584665A` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `historial_deudor`
+-- Filtros para la tabla `movements`
 --
-ALTER TABLE `historial_deudor`
-  ADD CONSTRAINT `FK_3BBBE47A8361A8B8` FOREIGN KEY (`vendedor_id`) REFERENCES `vendedores` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_3BBBE47ADE734E51` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE;
+ALTER TABLE `movements`
+  ADD CONSTRAINT `FK_382375215440649A` FOREIGN KEY (`gloss_id`) REFERENCES `details` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_382375218DE820D9` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_38237521DE734E51` FOREIGN KEY (`cliente_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_38237521E34DBF53` FOREIGN KEY (`cobrador_id`) REFERENCES `collectors` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `movimientos`
+-- Filtros para la tabla `products`
 --
-ALTER TABLE `movimientos`
-  ADD CONSTRAINT `FK_AB16A8398361A8B8` FOREIGN KEY (`vendedor_id`) REFERENCES `vendedores` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_AB16A839AE50FB8E` FOREIGN KEY (`glosa_id`) REFERENCES `detalle` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_AB16A839DE734E51` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_AB16A839E34DBF53` FOREIGN KEY (`cobrador_id`) REFERENCES `cobradores` (`id`) ON DELETE CASCADE;
+ALTER TABLE `products`
+  ADD CONSTRAINT `FK_B3BA5A5A2ADD6D8C` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_B3BA5A5AD4A8C468` FOREIGN KEY (`cellar_id`) REFERENCES `cellar` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `producto`
+-- Filtros para la tabla `record`
 --
-ALTER TABLE `producto`
-  ADD CONSTRAINT `FK_A7BB06158B1FDE9D` FOREIGN KEY (`bodega_id`) REFERENCES `bodega` (`id`) ON DELETE CASCADE;
+ALTER TABLE `record`
+  ADD CONSTRAINT `FK_9B349F918DE820D9` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_9B349F919395C3F3` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `vendedores`
+-- Filtros para la tabla `sellers`
 --
-ALTER TABLE `vendedores`
-  ADD CONSTRAINT `FK_658C2856F01D3B25` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE;
+ALTER TABLE `sellers`
+  ADD CONSTRAINT `FK_AFFE6BEFA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
