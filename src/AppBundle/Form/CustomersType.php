@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -68,6 +69,18 @@ class CustomersType extends AbstractType
             ->add('totalDeposit', IntegerType::class, [
                 'label' => 'Total de depósito'
             ])
+            ->add('quantity', IntegerType::class, [
+                'label' => 'Cantidad de producto'
+            ])
+            ->add('product', EntityType::class, array(
+                'label' => 'Seleccione el producto',
+                'class' => 'AppBundle:Products',
+                'choice_label' => 'name',
+                'attr' => [
+                    'class ' => 'form-control',
+                    'placeholder' => 'seleccione el nombre del producto'
+                ],
+            ))
         ;
     }
     
@@ -77,7 +90,7 @@ class CustomersType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Customers'
+            'data_class' => null
         ));
     }
 
