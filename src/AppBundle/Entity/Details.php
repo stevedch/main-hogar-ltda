@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Details
 {
+    CONST DETAILS_SALE = 'detail.sale';
+    CONST DETAILS_PURCHASE = 'detail.purchase';
+
     /**
      * @var integer
      *
@@ -43,6 +46,12 @@ class Details
     protected $quantity;
 
     /**
+     * @var string
+     * @ORM\Column(name="type", type="string", length=30, nullable=false)
+     */
+    protected $type = self::DETAILS_PURCHASE;
+
+    /**
      * @ORM\Column(type="array", nullable=true)
      */
     protected $metadata = array();
@@ -53,6 +62,7 @@ class Details
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $product;
+
 
     /**
      * Details constructor.
@@ -68,6 +78,22 @@ class Details
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
     }
 
     /**

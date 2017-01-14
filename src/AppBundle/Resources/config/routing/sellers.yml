@@ -47,3 +47,8 @@ sellers_view_product:
     path:     /{id}/producto
     defaults: { _controller: "AppBundle:Sellers:showProduct" }
     methods:  [GET, POST]
+
+sellers_record_sale_product:
+    path:     /registrar-venta
+    defaults: { _controller: "AppBundle:Sellers:recordSale" }
+    methods:  [GET, POST]

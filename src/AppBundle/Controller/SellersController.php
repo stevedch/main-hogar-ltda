@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Customers;
+use AppBundle\Form\CustomersType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -187,7 +189,29 @@ class SellersController extends Controller
             return $this->redirectToRoute('sellers_details', array('id' => $details->getId()));
         }
 
-        return $this->render('sellers/register/register.html.twig', [
+        return $this->render('sellers/register/supplier.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function recordSaleAction(Request $request)
+    {
+
+        $customer = new Customers();
+
+        $form = $this->createForm(CustomersType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            dump($form->getData()); exit;
+        }
+
+        return $this->render('sellers/register/record.sale.html.twig', [
             'form' => $form->createView()
         ]);
     }

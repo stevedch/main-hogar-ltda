@@ -111,5 +111,204 @@ class Customers
      */
     protected $status = self::STATUS_ACTIVE;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHomeAddress()
+    {
+        return $this->homeAddress;
+    }
+
+    /**
+     * @param string $homeAddress
+     */
+    public function setHomeAddress(string $homeAddress)
+    {
+        $this->homeAddress = $homeAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWorkAddress()
+    {
+        return $this->workAddress;
+    }
+
+    /**
+     * @param string $workAddress
+     */
+    public function setWorkAddress(string $workAddress)
+    {
+        $this->workAddress = $workAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFixedNetworkPhone()
+    {
+        return $this->fixedNetworkPhone;
+    }
+
+    /**
+     * @param string $fixedNetworkPhone
+     */
+    public function setFixedNetworkPhone(string $fixedNetworkPhone)
+    {
+        $this->fixedNetworkPhone = $fixedNetworkPhone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCellPhone()
+    {
+        return $this->cellPhone;
+    }
+
+    /**
+     * @param string $cellPhone
+     */
+    public function setCellPhone(string $cellPhone)
+    {
+        $this->cellPhone = $cellPhone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getAccountOpeningDate()
+    {
+        return $this->accountOpeningDate;
+    }
+
+    /**
+     * @param \DateTime $accountOpeningDate
+     */
+    public function setAccountOpeningDate(\DateTime $accountOpeningDate)
+    {
+        $this->accountOpeningDate = $accountOpeningDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAccountNumber()
+    {
+        return $this->accountNumber;
+    }
+
+    /**
+     * @param int $accountNumber
+     */
+    public function setAccountNumber(int $accountNumber)
+    {
+        $this->accountNumber = $accountNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorizedCredit()
+    {
+        return $this->authorizedCredit;
+    }
+
+    /**
+     * @param string $authorizedCredit
+     */
+    public function setAuthorizedCredit(string $authorizedCredit)
+    {
+        $this->authorizedCredit = $authorizedCredit;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPaymentDateAgreed()
+    {
+        return $this->paymentDateAgreed;
+    }
+
+    /**
+     * @param \DateTime $paymentDateAgreed
+     */
+    public function setPaymentDateAgreed(\DateTime $paymentDateAgreed)
+    {
+        $this->paymentDateAgreed = $paymentDateAgreed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTotalCharge()
+    {
+        return $this->totalCharge;
+    }
+
+    /**
+     * @param string $totalCharge
+     */
+    public function setTotalCharge(string $totalCharge)
+    {
+        $this->totalCharge = $totalCharge;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTotalDeposit()
+    {
+        return $this->totalDeposit;
+    }
+
+    /**
+     * @param string $totalDeposit
+     */
+    public function setTotalDeposit(string $totalDeposit)
+    {
+        $this->totalDeposit = $totalDeposit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+    }
 }
 
