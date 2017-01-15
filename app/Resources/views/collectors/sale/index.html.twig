@@ -53,7 +53,7 @@
 
     {% set isCollector = detail|calculateMovements == 0 ? 'hidden' : '' %}
 
-    <table class="table table-bordered table-responsive {{ isCollector  }}">
+    <table class="table table-bordered table-responsive {{ isCollector }}">
         <caption>Formulario de pago</caption>
         {{ form_start(form) }}
         <tbody>
@@ -94,18 +94,20 @@
         {% for movement in movements %}
             <tr>
                 <td>
-                    <a href="{{ path('sellers_details', { 'id': movement.id }) }}">{{ movement.id }}</a>
+                    <a href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">{{ movement.id }}</a>
                 </td>
                 <td>{{ movement.dateMovement|date('Y-m-d') }}</td>
                 <td>{{ movement.rode }}</td>
                 <td>{{ movement.paidForm|trans }}</td>
                 <td>
                     <a class="btn btn-xs btn-success"
-                       href="{{ path('sellers_details', { 'id': movement.id }) }}">Ver</a>
+                       href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">Ver</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <br>
+    <div style="margin: 10px auto; position: relative;">
+        <a class="btn btn-xs btn-warning pull-right" href="{{ path('collectors_index') }}">Volver</a>
+    </div>
 {% endblock %}

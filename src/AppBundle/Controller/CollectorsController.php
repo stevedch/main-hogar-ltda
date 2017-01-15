@@ -115,4 +115,15 @@ class CollectorsController extends Controller
             'detail' => $detail
         ]);
     }
+
+    /**
+     * @param Movements $movement
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function movementsDetailAction(Movements $movement)
+    {
+        return $this->render('collectors/movements/index.html.twig', [
+            'movement' => $movement
+        ]);
+    }
 }

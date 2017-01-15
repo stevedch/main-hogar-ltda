@@ -7,3 +7,8 @@ collectors_sale:
     path:     /{id}/detalles-compra
     defaults: { _controller: "AppBundle:Collectors:collectorSale" }
     methods:  [GET, POST]
+
+collectors_movements_sale:
+    path:     /{id}/detalle-movimiento
+    defaults: { _controller: "AppBundle:Collectors:movementsDetail" }
+    methods:  [GET, POST]
