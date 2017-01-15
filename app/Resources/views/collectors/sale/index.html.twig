@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('deposito') %}
+        <div class="alert alert-danger fade in alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            <strong>Alerta!</strong> {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <h1>Nº {{ detail.number }}</h1>
+
+    {% set data = detail.metadata %}
+    {% set product = detail.metadata.product %}
+
+    <table class="table table-bordered table-responsive">
+        <tbody>
+        <tr>
+            <th>Fecha de emisión</th>
+            <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Tipo de venta</th>
+            <td>{{ detail.type|trans }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de vendedor</th>
+            <td>{{ data.seller.fullName }}</td>
+        </tr>
+        <tr>
+            <th>Nº de producto</th>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de producto</th>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <th>Precio de producto</th>
+            <td>{{ product.price }}</td>
+        </tr>
+        <tr>
+            <th>Cantidad</th>
+            <td>{{ detail.quantity }}</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>{{ product.price * detail.quantity }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h1>Formulario de pago</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-xs btn-warning" type="submit" value="Guardar"/>
+    {{ form_end(form) }}
+{% endblock %}

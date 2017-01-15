@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('pago') %}
+        <div class="alert alert-success fade in alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            <strong>Alerta!</strong> {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="table-header">
-        Listado
+        Listado pendiente de pago
     </div>
     <table id="table" class="table table-bordered table-condensed table-hover">
 
@@ -20,24 +28,26 @@
 
         {% for detail in details %}
             {% if (detail.type == 'detail.sale') %}
+
                 {% set data = detail.metadata %}
                 {% set product = data.product %}
                 {% set customer = data.customer %}
-                {% if product.price > 0 %}
-                    <tr>
-                        <td>
-                            <a href="{{ path('collectors_sale', { 'id': detail.id }) }}">{{ detail.number }}</a>
-                        </td>
-                        <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
-                        <td>{{ customer.getFullName() }}</td>
-                        <td>{{ product.price * detail.quantity }}</td>
-                        <td>{{ detail.type|trans }}</td>
-                        <td>
-                            <a class="btn btn-xs btn-success"
-                               href="{{ path('collectors_sale', { 'id': detail.id }) }}">Cobrar</a>
-                        </td>
-                    </tr>
-                {% endif %}
+
+                {% set disabled = product.price > 0 ? '' : 'disabled' %}
+
+                <tr>
+                    <td>
+                        <a href="{{ path('collectors_sale', { 'id': detail.id }) }}">{{ detail.number }}</a>
+                    </td>
+                    <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
+                    <td>{{ customer.getFullName() }}</td>
+                    <td>{{ product.price * detail.quantity }}</td>
+                    <td>{{ detail.type|trans }}</td>
+                    <td>
+                        <a class="btn btn-xs btn-success {{ disabled }}"
+                           href="{{ path('collectors_sale', { 'id': detail.id }) }}">Cobrar</a>
+                    </td>
+                </tr>
             {% endif %}
         {% endfor %}
         </tbody>
