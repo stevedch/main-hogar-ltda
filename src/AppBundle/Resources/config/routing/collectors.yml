@@ -1,0 +1,4 @@
+collectors_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Collectors:index" }
+    methods:  GET

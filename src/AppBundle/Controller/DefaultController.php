@@ -82,14 +82,12 @@ class DefaultController extends Controller
             $routeName = 'users_index';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE_FINANZAS')) {
             $routeName = '';
-        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE_FINANZAS')) {
-            $routeName = '';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE_VENTAS')) {
             $routeName = '';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_VENDEDOR')) {
             $routeName = 'sellers_index';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_COBRADOR')) {
-            $routeName = '';
+            $routeName = 'collectors_index';
         }
 
         return $this->redirectToRoute($routeName);
