@@ -3,7 +3,13 @@
 {% block body %}
     <h1>Formulario de compra</h1>
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_row(form.address) }}
+    {{ form_row(form.cellar.name) }}
+    {{ form_row(form.product.name) }}
+    {{ form_row(form.product.quantity) }}
+    {{ form_row(form.product.price) }}
     <input class="btn btn-xs btn-warning" type="submit" value="Guardar" />
     {{ form_end(form) }}
 {% endblock %}
