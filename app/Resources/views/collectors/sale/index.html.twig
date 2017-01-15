@@ -51,10 +51,61 @@
         </tbody>
     </table>
 
+    {% set isCollector = detail|calculateMovements == 0 ? 'hidden' : '' %}
 
-    <h1>Formulario de pago</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="btn btn-xs btn-warning" type="submit" value="Guardar"/>
-    {{ form_end(form) }}
+    <table class="table table-bordered table-responsive {{ isCollector  }}">
+        <caption>Formulario de pago</caption>
+        {{ form_start(form) }}
+        <tbody>
+        <tr>
+            <th>{{ form_label(form.deposit) }}</th>
+            <td>{{ form_widget(form.deposit) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.movementType) }}</th>
+            <td>{{ form_widget(form.movementType) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.paidForm) }}</th>
+            <td>{{ form_widget(form.paidForm) }}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input class="btn btn-xs btn-warning" type="submit" value="Realizar pago"/>
+            </td>
+        </tr>
+        </tbody>
+        {{ form_end(form) }}
+    </table>
+
+    <table id="table" class="table table-bordered table-condensed table-hover">
+        <caption>Movimientos</caption>
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Fecha de movimiento</th>
+            <th>Monto</th>
+            <th>Tipo de venta</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for movement in movements %}
+            <tr>
+                <td>
+                    <a href="{{ path('sellers_details', { 'id': movement.id }) }}">{{ movement.id }}</a>
+                </td>
+                <td>{{ movement.dateMovement|date('Y-m-d') }}</td>
+                <td>{{ movement.rode }}</td>
+                <td>{{ movement.paidForm|trans }}</td>
+                <td>
+                    <a class="btn btn-xs btn-success"
+                       href="{{ path('sellers_details', { 'id': movement.id }) }}">Ver</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
 {% endblock %}
