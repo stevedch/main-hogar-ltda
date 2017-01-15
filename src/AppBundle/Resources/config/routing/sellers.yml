@@ -10,7 +10,7 @@ sellers_supplier:
     methods:  [GET, POST]
 
 sellers_details_c:
-    path:     /detalles
+    path:     /lista-compra
     defaults: { _controller: "AppBundle:Sellers:listDetails" }
     methods:  GET
 
@@ -32,11 +32,16 @@ sellers_view_product:
 
 # Clientes
 sellers_customer_sale_details:
+    path:     /lista-venta
+    defaults: { _controller: "AppBundle:Sellers:listSale" }
+    methods:  GET
+
+sellers_customer_list_sale_details:
     path:     /{id}/detalle-venta
     defaults: { _controller: "AppBundle:Sellers:detailSale" }
     methods:  [GET, POST]
 
-sellers_record_sale_product:
+sellers_customer_record_sale_product:
     path:     /registrar-venta
     defaults: { _controller: "AppBundle:Sellers:recordSale" }
     methods:  [GET, POST]

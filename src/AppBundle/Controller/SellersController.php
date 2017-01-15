@@ -113,6 +113,10 @@ class SellersController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $data = $form->getData();
+            $customer->setRut($data['rut']);
+            $customer->setName($data['name']);
+            $customer->setLastName($data['lastName']);
+            $customer->setMothersLastName($data['mothersLastName']);
             $customer->setHomeAddress($data['homeAddress']);
             $customer->setWorkAddress($data['workAddress']);
             $customer->setFixedNetworkPhone($data['fixedNetworkPhone']);
@@ -176,15 +180,16 @@ class SellersController extends Controller
     }
 
     /**
+     * @deprecated
      * @param Details $details
      * @return Response
      */
-    public function detailPurchaseAction(Details $details)
+    /*public function detailPurchaseAction(Details $details)
     {
         return $this->render('sellers/details/purchase.html.twig', [
             'detail' => $details
         ]);
-    }
+    }*/
 
     /**
      * @param Products $product
@@ -221,6 +226,19 @@ class SellersController extends Controller
         $details = $em->getRepository('AppBundle:Details')->findAll();
 
         return $this->render('sellers/details/list.html.twig', [
+            'details' => $details
+        ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function listSaleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $details = $em->getRepository('AppBundle:Details')->findAll();
+
+        return $this->render('sellers/details/list.sale.html.twig', [
             'details' => $details
         ]);
     }
