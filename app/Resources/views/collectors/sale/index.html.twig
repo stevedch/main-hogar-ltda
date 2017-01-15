@@ -79,34 +79,36 @@
         {{ form_end(form) }}
     </table>
 
-    <table id="table" class="table table-bordered table-condensed table-hover">
-        <caption>Movimientos</caption>
-        <thead>
-        <tr>
-            <th>Nº</th>
-            <th>Fecha de movimiento</th>
-            <th>Monto</th>
-            <th>Tipo de venta</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for movement in movements %}
+    {% if movements %}
+        <table id="table" class="table table-bordered table-condensed table-hover">
+            <caption>Movimientos</caption>
+            <thead>
             <tr>
-                <td>
-                    <a href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">{{ movement.id }}</a>
-                </td>
-                <td>{{ movement.dateMovement|date('Y-m-d') }}</td>
-                <td>{{ movement.rode }}</td>
-                <td>{{ movement.paidForm|trans }}</td>
-                <td>
-                    <a class="btn btn-xs btn-success"
-                       href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">Ver</a>
-                </td>
+                <th>Nº</th>
+                <th>Fecha de movimiento</th>
+                <th>Monto</th>
+                <th>Tipo de venta</th>
+                <th></th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for movement in movements %}
+                <tr>
+                    <td>
+                        <a href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">{{ movement.id }}</a>
+                    </td>
+                    <td>{{ movement.dateMovement|date('Y-m-d') }}</td>
+                    <td>{{ movement.rode }}</td>
+                    <td>{{ movement.paidForm|trans }}</td>
+                    <td>
+                        <a class="btn btn-xs btn-success"
+                           href="{{ path('collectors_movements_sale', { 'id': movement.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
     <div style="margin: 10px auto; position: relative;">
         <a class="btn btn-xs btn-warning pull-right" href="{{ path('collectors_index') }}">Volver</a>
     </div>
