@@ -6,8 +6,10 @@ use AppBundle\Entity\Collectors;
 use AppBundle\Entity\Details;
 use AppBundle\Entity\Movements;
 use AppBundle\Entity\Products;
+use AppBundle\Entity\Record;
 use AppBundle\Entity\Sellers;
 use AppBundle\Form\PaymentType;
+use AppBundle\Twig\AppExtension;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -22,8 +24,14 @@ class CollectorsController extends Controller
         $details = $this->getDoctrine()
             ->getRepository('AppBundle:Details')->findAll();
 
+        $records = $this->getDoctrine()
+            ->getRepository('AppBundle:Record')->findAll();
+
+        // dump($records); exit;
+
         return $this->render('collectors/index.html.twig', [
-            'details' => $details
+            'details' => $details,
+            'records' => $records
         ]);
     }
 
@@ -36,6 +44,7 @@ class CollectorsController extends Controller
     {
 
         $em = $this->getDoctrine()->getEntityManager();
+        $appExtension = new AppExtension($em);
 
         $movements = $em->getRepository('AppBundle:Movements')->findBy([
             'documentNumber' => $detail->getId(),
@@ -74,12 +83,11 @@ class CollectorsController extends Controller
             }
 
             $movement->setDocumentNumber($detail);
-            $movement->setClient($metadata['customer']);
+            $movement->setClient($customer = $metadata['customer']);
 
-            if (is_null($seller = $em->getRepository('AppBundle:Sellers')->findOneBy(['id' => $metadata['seller']['id']]))) {
+            if (is_null($seller = $em->getRepository('AppBundle:Sellers')->findOneBy(['user' => $metadata['seller']['id']]))) {
 
                 $seller = new Sellers();
-
                 $seller->setUser($em->getReference('AppBundle:Users', $metadata['seller']['id']));
                 $em->persist($seller);
             }
@@ -98,6 +106,17 @@ class CollectorsController extends Controller
             }
 
             $movement->setCollector($collector);
+
+            if (($total = $appExtension->calculateMovements($detail) - $movement->getRode()) >= 1) {
+
+                $record = new Record();
+                $record->setDocumentPendingPayment($detail);
+                $record->setAmountTotalDebt($total);
+                $record->setSeller($seller);
+                $record->setCustomer($customer);
+                $em->persist($record);
+            }
+
             $em->persist($movement);
             $em->flush();
 

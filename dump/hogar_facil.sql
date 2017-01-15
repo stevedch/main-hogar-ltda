@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-01-2017 a las 14:53:43
+-- Tiempo de generación: 15-01-2017 a las 19:04:23
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -65,7 +65,11 @@ INSERT INTO `collectors` (`id`, `user_id`, `percentage_commission`) VALUES
 (13, 20, NULL),
 (14, 20, NULL),
 (15, 20, NULL),
-(16, 20, NULL);
+(16, 20, NULL),
+(17, 20, NULL),
+(18, 20, NULL),
+(19, 20, NULL),
+(20, 20, NULL);
 
 -- --------------------------------------------------------
 
@@ -109,7 +113,20 @@ INSERT INTO `customers` (`id`, `home_address`, `work_address`, `fixed_network_ph
 (19, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
 (20, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
 (21, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
-(22, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd');
+(22, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
+(23, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
+(24, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
+(25, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
+(26, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
+(27, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
+(28, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
+(29, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
+(30, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
+(32, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
+(33, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
+(34, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
+(35, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(36, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231');
 
 -- --------------------------------------------------------
 
@@ -134,7 +151,10 @@ INSERT INTO `details` (`id`, `number`, `dateOfIssue`, `quantity`, `metadata`, `t
 (10, '1212317', '2017-01-14', '1231', 'a:2:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"bab3fd32-dab7-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0quantity";i:1231;s:8:"\0*\0price";i:23123;s:11:"\0*\0priceNet";d:25617971.6999999992549419403076171875;s:9:"\0*\0cellar";O:23:"AppBundle\\Entity\\Cellar":2:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:4:"asda";}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:25:"AppBundle\\Entity\\Supplier":3:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:5:"asdas";s:10:"\0*\0address";s:4:"dasd";}}}', 'detail.purchase'),
 (15, '1212318', '2017-01-14', '123', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"4c5b94aa-da01-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:5:"12312";s:11:"\0*\0quantity";i:3123123;s:8:"\0*\0price";s:7:"2312312";s:11:"\0*\0priceNet";s:4:"1231";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123;s:7:"\0*\0name";s:8:"1asdasda";s:11:"\0*\0lastName";s:5:"sdasd";s:18:"\0*\0mothersLastName";s:6:"asdasd";s:14:"\0*\0homeAddress";s:6:"asdasd";s:14:"\0*\0workAddress";s:6:"sdasda";s:20:"\0*\0fixedNetworkPhone";s:3:"231";s:12:"\0*\0cellPhone";s:3:"123";s:8:"\0*\0email";s:16:"asdasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2016-03-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123123;s:19:"\0*\0authorizedCredit";s:3:"123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2014-03-02 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:5:"12312";s:15:"\0*\0totalDeposit";s:4:"3123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale'),
 (16, '1212319', '2017-01-14', '123123', 'a:2:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"d9891662-daca-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:3:"213";s:11:"\0*\0quantity";i:123123;s:8:"\0*\0price";i:123123;s:11:"\0*\0priceNet";d:13643345816.1000003814697265625;s:9:"\0*\0cellar";O:23:"AppBundle\\Entity\\Cellar":2:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:2:"21";}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:25:"AppBundle\\Entity\\Supplier":3:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:6:"123123";s:10:"\0*\0address";s:5:"sd123";}}}', 'detail.purchase'),
-(17, '1212320', '2017-01-15', '12312', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"93d4478a-dab7-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0quantity";i:1231;s:8:"\0*\0price";s:5:"23123";s:11:"\0*\0priceNet";s:8:"25617972";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:6;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:6;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123;s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0lastName";s:8:"asdasdas";s:18:"\0*\0mothersLastName";s:5:"asdsd";s:14:"\0*\0homeAddress";s:5:"12312";s:14:"\0*\0workAddress";s:4:"asda";s:20:"\0*\0fixedNetworkPhone";s:2:"sd";s:12:"\0*\0cellPhone";s:6:"123123";s:8:"\0*\0email";s:16:"asdasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2014-04-03 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:1231;s:19:"\0*\0authorizedCredit";s:5:"23123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2014-03-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:6:"123123";s:15:"\0*\0totalDeposit";s:3:"123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale');
+(17, '1212320', '2017-01-15', '12312', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"93d4478a-dab7-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0quantity";i:1231;s:8:"\0*\0price";s:5:"23123";s:11:"\0*\0priceNet";s:8:"25617972";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:6;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:6;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123;s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0lastName";s:8:"asdasdas";s:18:"\0*\0mothersLastName";s:5:"asdsd";s:14:"\0*\0homeAddress";s:5:"12312";s:14:"\0*\0workAddress";s:4:"asda";s:20:"\0*\0fixedNetworkPhone";s:2:"sd";s:12:"\0*\0cellPhone";s:6:"123123";s:8:"\0*\0email";s:16:"asdasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2014-04-03 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:1231;s:19:"\0*\0authorizedCredit";s:5:"23123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2014-03-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:6:"123123";s:15:"\0*\0totalDeposit";s:3:"123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale'),
+(18, '1212321', '2017-01-15', '23123', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"d9891662-daca-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:3:"213";s:11:"\0*\0quantity";i:123123;s:8:"\0*\0price";s:6:"123123";s:11:"\0*\0priceNet";s:11:"13643345816";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:9;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:9;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123;s:7:"\0*\0name";s:3:"312";s:11:"\0*\0lastName";s:4:"3123";s:18:"\0*\0mothersLastName";s:4:"2312";s:14:"\0*\0homeAddress";s:5:"31231";s:14:"\0*\0workAddress";s:3:"231";s:20:"\0*\0fixedNetworkPhone";s:4:"1231";s:12:"\0*\0cellPhone";s:5:"23123";s:8:"\0*\0email";s:14:"3123@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2014-04-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123112;s:19:"\0*\0authorizedCredit";s:7:"3123123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2015-04-02 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:5:"31231";s:15:"\0*\0totalDeposit";s:5:"12312";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale'),
+(19, '1212322', '2017-01-15', '1231', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"fd2d918a-da00-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:5:"12312";s:11:"\0*\0quantity";i:3123123;s:8:"\0*\0price";s:7:"2312312";s:11:"\0*\0priceNet";s:4:"1231";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:2;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:2;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123123;s:7:"\0*\0name";s:3:"sdf";s:11:"\0*\0lastName";s:9:"csdsdfsdf";s:18:"\0*\0mothersLastName";s:3:"sdf";s:14:"\0*\0homeAddress";s:4:"sdfs";s:14:"\0*\0workAddress";s:2:"df";s:20:"\0*\0fixedNetworkPhone";s:7:"sdfsdf1";s:12:"\0*\0cellPhone";s:4:"2313";s:8:"\0*\0email";s:16:"123123@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2015-07-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123123;s:19:"\0*\0authorizedCredit";s:3:"123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2016-04-02 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:6:"123123";s:15:"\0*\0totalDeposit";s:3:"123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale'),
+(20, '1212323', '2017-01-15', '123123', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"4c5b94aa-da01-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:5:"12312";s:11:"\0*\0quantity";i:3123123;s:8:"\0*\0price";s:7:"2312312";s:11:"\0*\0priceNet";s:4:"1231";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:1231;s:7:"\0*\0name";s:3:"231";s:11:"\0*\0lastName";s:6:"231231";s:18:"\0*\0mothersLastName";s:3:"231";s:14:"\0*\0homeAddress";s:2:"23";s:14:"\0*\0workAddress";s:6:"123123";s:20:"\0*\0fixedNetworkPhone";s:6:"231123";s:12:"\0*\0cellPhone";s:3:"123";s:8:"\0*\0email";s:15:"adasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2014-02-03 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123;s:19:"\0*\0authorizedCredit";s:6:"123123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2013-01-01 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:3:"123";s:15:"\0*\0totalDeposit";s:3:"123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale');
 
 -- --------------------------------------------------------
 
@@ -162,7 +182,17 @@ INSERT INTO `movements` (`id`, `seller_id`, `rode`, `date_movement`, `paid_form`
 (5, 6, 66755, '2017-01-15', 'payment.debit', 2, 13, 18, 15),
 (6, 7, 123123123, '2017-01-15', 'cash.payment', 1, 14, 19, 15),
 (7, 8, 1224498, '2017-01-15', 'cash.payment', 2, 15, 20, 15),
-(8, 9, 376, '2017-01-15', 'cash.payment', 1, 16, 22, 17);
+(8, 9, 376, '2017-01-15', 'cash.payment', 1, 16, 22, 17),
+(9, 10, 160000000, '2017-01-15', 'cash.payment', 2, 17, 23, 15),
+(10, 11, 284690000, '2017-01-15', 'payment.debit', 1, 18, 24, 17),
+(11, 12, 129, '2017-01-15', 'cash.payment', 2, 19, 26, 18),
+(12, 13, 2147483647, '2017-01-15', 'payment.check', 2, 20, 27, 18),
+(13, 14, 699489353, '2017-01-15', 'payment.credit', 1, 20, 28, 18),
+(14, 15, 2147483647, '2017-01-15', 'cash.payment', 1, 20, 30, 19),
+(15, 17, 698972424, '2017-01-15', 'payment.credit', 2, 20, 32, 19),
+(16, 18, 13123123, '2017-01-15', 'cash.payment', 1, 20, 33, 19),
+(17, 19, -13123122, '2017-01-15', 'payment.credit', 2, 20, 34, 19),
+(18, 20, 376, '2017-01-15', 'cash.payment', 1, 20, 36, 20);
 
 -- --------------------------------------------------------
 
@@ -205,10 +235,18 @@ CREATE TABLE `record` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `seller_id` int(11) DEFAULT NULL,
-  `document_pending_payment` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `amount_total_debt` decimal(30,0) DEFAULT NULL,
-  `last_payment_date` date DEFAULT NULL
+  `last_payment_date` date DEFAULT NULL,
+  `document_pending_payment_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `record`
+--
+
+INSERT INTO `record` (`id`, `customer_id`, `seller_id`, `amount_total_debt`, `last_payment_date`, `document_pending_payment_id`) VALUES
+(3, 32, 17, '1', '2017-01-15', 19),
+(4, 36, 20, '284698790000', '2017-01-15', 20);
 
 -- --------------------------------------------------------
 
@@ -230,7 +268,17 @@ INSERT INTO `sellers` (`id`, `user_id`, `percentage_commission`) VALUES
 (6, 16, NULL),
 (7, 16, NULL),
 (8, 16, NULL),
-(9, 16, NULL);
+(9, 16, NULL),
+(10, 16, NULL),
+(11, 16, NULL),
+(12, 16, NULL),
+(13, 16, NULL),
+(14, 16, NULL),
+(15, 16, NULL),
+(17, 16, NULL),
+(18, 16, NULL),
+(19, 16, NULL),
+(20, 16, NULL);
 
 -- --------------------------------------------------------
 
@@ -289,9 +337,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `rut`, `name`, `last_name`, `mothers_last_name`, `status`) VALUES
-(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-15 10:57:52', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
-(16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-15 14:51:12', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
-(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-15 14:52:02', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active');
+(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-15 17:45:11', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
+(16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-15 18:51:50', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
+(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-15 18:52:30', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active');
 
 --
 -- Índices para tablas volcadas
@@ -345,8 +393,9 @@ ALTER TABLE `products`
 --
 ALTER TABLE `record`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_9B349F919395C3F3` (`customer_id`),
-  ADD UNIQUE KEY `UNIQ_9B349F918DE820D9` (`seller_id`);
+  ADD KEY `IDX_9B349F919395C3F3` (`customer_id`),
+  ADD KEY `IDX_9B349F918DE820D9` (`seller_id`),
+  ADD KEY `IDX_9B349F91723CDDED` (`document_pending_payment_id`);
 
 --
 -- Indices de la tabla `sellers`
@@ -383,32 +432,32 @@ ALTER TABLE `cellar`
 -- AUTO_INCREMENT de la tabla `collectors`
 --
 ALTER TABLE `collectors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT de la tabla `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `movements`
 --
 ALTER TABLE `movements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `record`
 --
 ALTER TABLE `record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `supplier`
 --
@@ -449,6 +498,7 @@ ALTER TABLE `products`
 -- Filtros para la tabla `record`
 --
 ALTER TABLE `record`
+  ADD CONSTRAINT `FK_9B349F91723CDDED` FOREIGN KEY (`document_pending_payment_id`) REFERENCES `details` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_9B349F918DE820D9` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_9B349F919395C3F3` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE;
 

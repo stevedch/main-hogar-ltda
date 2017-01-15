@@ -52,4 +52,36 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="table-header">
+        Historico
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>Documento pendiente de Pago</th>
+            <th>Última fecha de pago</th>
+            <th>Total deuda</th>
+            <th>Cliente</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for record in records %}
+            {% set detail = record.documentPendingPayment %}
+            <tr>
+                <td>
+                    <a href="{{ path('collectors_sale', { 'id': detail.id }) }}">{{ detail.number }}</a>
+                </td>
+                <td>{{ record.lastPaymentDate|date('Y-m-d') }}</td>
+                <td>{{ record.amountTotalDebt }}</td>
+                <td>{{ record.customer.getFullName() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
