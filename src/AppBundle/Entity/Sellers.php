@@ -30,8 +30,7 @@ class Sellers
 
     /**
      * @var Users
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Users")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Users", inversedBy="", cascade={"persist", "remove" })
      */
     protected $user;
 

@@ -59,7 +59,8 @@ class UsersType extends AbstractType
                     'Gerente de finanzas' => 'ROLE_GERENTE_FINANZAS',
                     'Gerente de ventas' => 'ROLE_GERENTE_VENTAS',
                 )
-            ));
+            ))
+        ;
     }
 
     /**

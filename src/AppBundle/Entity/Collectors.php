@@ -30,8 +30,7 @@ class Collectors
 
     /**
      * @var Users
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Users")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Users", inversedBy="", cascade={"persist", "remove" })
      */
     protected $user;
 
@@ -41,6 +40,38 @@ class Collectors
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPercentageCommission()
+    {
+        return $this->percentageCommission;
+    }
+
+    /**
+     * @param string $percentageCommission
+     */
+    public function setPercentageCommission(string $percentageCommission)
+    {
+        $this->percentageCommission = $percentageCommission;
+    }
+
+    /**
+     * @return Users
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param Users $user
+     */
+    public function setUser(Users $user)
+    {
+        $this->user = $user;
     }
 }
 
