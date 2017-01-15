@@ -3,7 +3,7 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-.login {
+.login div#login {
     border: 1px solid #ccc;
     padding: 20px 40px;
     width: 450px;
@@ -277,4 +277,15 @@ input[type="checkbox"]{
         z-index: 2;
     }
 }
+
+.btn-right {
+    padding: 4px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin-left: 1800px;
+    margin-top: 10px;
+}
+
+
 

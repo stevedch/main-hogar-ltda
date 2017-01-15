@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Detalle de producto</h1>
-
-    <table class="table table-bordered table-responsive">
+    <div class="table-header">
+    Detalle de producto
+    </div>
+    <table id="table" class="table table-bordered table-responsive">
         <tbody>
         <tr>
-            <th>#</th>
+            <th>N° de producto</th>
             <td>{{ product.id }}</td>
         </tr>
         <tr>
@@ -33,7 +34,7 @@
     </table>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-xs btn-warning" href="{{ path('sellers_list_product') }}">Volver</a>
+            <a class="btn btn-xs btn-warning btn-right" href="{{ path('sellers_list_product') }}">Volver</a>
         </div>
     </div>
 {% endblock %}
