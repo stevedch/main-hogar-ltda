@@ -10,7 +10,7 @@
     {% endfor %}
 
     <div class="table-header">
-        Listado pendiente de pago
+        Listado de pagos pendientes
     </div>
     <table id="table" class="table table-bordered table-condensed table-hover">
 
@@ -41,7 +41,7 @@
                     </td>
                     <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
                     <td>{{ customer.getFullName() }}</td>
-                    <td>{{ product.price * detail.quantity }}</td>
+                    <td>{{ detail|calculateMovements }}</td>
                     <td>{{ detail.type|trans }}</td>
                     <td>
                         <a class="btn btn-xs btn-success {{ disabled }}"
