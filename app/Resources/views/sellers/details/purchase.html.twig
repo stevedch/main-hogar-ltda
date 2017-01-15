@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="table-header">
-    DETALLE DE COMPRA Nº {{ detail.number }}
+        DETALLE DE COMPRA Nº {{ detail.number }}
     </div>
 
     {% set data = detail.metadata %}
@@ -44,8 +44,9 @@
         </tr>
         </tbody>
     </table>
-        <div class="row">
-    <div class="col-md-12">
-        <a class="btn btn-xs btn-warning btn-right"  href="{{ path('sellers_details_c') }}">Volver</a>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-xs btn-warning btn-right" href="{{ path('sellers_details_c') }}">Volver</a>
+        </div>
     </div>
 {% endblock %}

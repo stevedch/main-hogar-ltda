@@ -1,15 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Formulario de compra</h1>
+    <div class="table-header">
+    Formulario de compra
+    </div>
     {{ form_start(form) }}
-    {{ form_label(form.name) }}
-    {{ form_widget(form.name) }}
-    {{ form_row(form.address) }}
-    {{ form_row(form.cellar.name) }}
-    {{ form_row(form.product.name) }}
-    {{ form_row(form.product.quantity) }}
-    {{ form_row(form.product.price) }}
-    <input class="btn btn-xs btn-warning" type="submit" value="Guardar" />
+    <table class="table table-bordered table-responsive">
+        <tbody>
+        <tr>
+            <th>{{ form_label(form.name) }}</th>
+            <td>{{ form_widget(form.name) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.address) }}</th>
+            <td>{{ form_widget(form.address) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.cellar.name) }}</th>
+            <td>{{ form_widget(form.cellar.name) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.product.name) }}</th>
+            <td>{{ form_widget(form.product.name) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.product.quantity) }}</th>
+            <td>{{ form_widget(form.product.quantity) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.product.price) }}</th>
+            <td>{{ form_widget(form.product.price) }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <input class="btn btn-xs btn-warning btn-right" type="submit" value="Guardar"/>
     {{ form_end(form) }}
 {% endblock %}
+
+
