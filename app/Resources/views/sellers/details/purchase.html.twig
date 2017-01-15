@@ -1,19 +1,53 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Seller</h1>
+    <h1>DETALLE DE VENTA Nº {{ detail.number }}</h1>
 
-    {{ dump(detail) }}
-    <table>
+    {% set data = detail.metadata %}
+    {% set product = detail.metadata.product %}
+    {% set customer = detail.metadata.customer %}
+
+    <table class="table table-bordered table-responsive">
         <tbody>
         <tr>
-            <th>Id</th>
-            <td>{#}{ seller.id }#}</td>
+            <th>Fecha de emisión</th>
+            <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
         </tr>
         <tr>
-            <th>Percentagecommission</th>
-            <td>{#{ seller.percentageCommission }#}</td>
+            <th>Tipo de venta</th>
+            <td>{{ detail.type|trans }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de vendedor</th>
+            <td>{{ data.seller.fullName }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de Cliente</th>
+            <td>{{ customer.id }}</td>
+        </tr>
+        <tr>
+            <th>Nº de producto</th>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de producto</th>
+            <td>{{ product.name }}</td>
+        </tr>
+        <tr>
+            <th>Precio de producto</th>
+            <td>{{ product.price }}</td>
+        </tr>
+        <tr>
+            <th>Cantidad</th>
+            <td>{{ detail.quantity }}</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>{{ product.price * detail.quantity }}</td>
         </tr>
         </tbody>
     </table>
+
+    {{ dump(detail) }}
+
 {% endblock %}

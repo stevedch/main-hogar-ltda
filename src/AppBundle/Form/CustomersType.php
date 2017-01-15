@@ -20,6 +20,18 @@ class CustomersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('rut', IntegerType::class, array(
+                'label' => 'Rut',
+            ))
+            ->add('name', TextType::class, array(
+                'label' => 'Nombres',
+            ))
+            ->add('lastName', TextType::class, array(
+                'label' => 'Apellido Paterno',
+            ))
+            ->add('mothersLastName', TextType::class, array(
+                'label' => 'Apellido Materno',
+            ))
             ->add('homeAddress', TextType::class, [
                 'label' => 'Dirección de casa'
             ])

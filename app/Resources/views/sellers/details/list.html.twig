@@ -16,15 +16,19 @@
         <tbody>
 
         {% for detail in details %}
-            <tr>
-                <td><a href="{{ path('sellers_view_detail_purchase', { 'id': detail.id }) }}">{{ detail.number }}</a></td>
-                <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
-                <td>{{ detail.type|trans }}</td>
-                <td>
-                    <a class="btn btn-xs btn-success"
-                       href="{{ path('sellers_view_detail_purchase', { 'id': detail.id }) }}">Ver</a>
-                </td>
-            </tr>
+            {% if (detail.type == 'detail.purchase') %}
+                <tr>
+                    <td>
+                        <a href="{{ path('sellers_details', { 'id': detail.id }) }}">{{ detail.number }}</a>
+                    </td>
+                    <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
+                    <td>{{ detail.type|trans }}</td>
+                    <td>
+                        <a class="btn btn-xs btn-success"
+                           href="{{ path('sellers_details', { 'id': detail.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
