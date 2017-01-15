@@ -1,0 +1,9 @@
+collectors_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Collectors:index" }
+    methods:  GET
+
+collectors_sale:
+    path:     /{id}/detalles-compra
+    defaults: { _controller: "AppBundle:Collectors:collectorSale" }
+    methods:  [GET, POST]

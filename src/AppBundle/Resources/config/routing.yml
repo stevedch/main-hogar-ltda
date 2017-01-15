@@ -4,4 +4,8 @@ app_users:
 
 app_sellers:
     resource: "@AppBundle/Resources/config/routing/sellers.yml"
-    prefix:   /vendedores
+    prefix:   /vendedor
+
+app_collectors:
+    resource: "@AppBundle/Resources/config/routing/collectors.yml"
+    prefix:   /cobrador
