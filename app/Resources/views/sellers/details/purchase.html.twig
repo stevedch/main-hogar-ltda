@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>DETALLE DE COMPRA Nº {{ detail.number }}</h1>
+    <div class="table-header">
+    DETALLE DE COMPRA Nº {{ detail.number }}
+    </div>
 
     {% set data = detail.metadata %}
     {% set product = detail.metadata.product %}
 
-    <table class="table table-bordered table-responsive">
+    <table id="table" class="table table-bordered table-responsive">
         <tbody>
         <tr>
             <th>Fecha de emisión</th>
@@ -42,4 +44,8 @@
         </tr>
         </tbody>
     </table>
+        <div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-xs btn-warning btn-right"  href="{{ path('sellers_details_c') }}">Volver</a>
+    </div>
 {% endblock %}
