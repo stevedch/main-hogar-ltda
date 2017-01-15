@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-01-2017 a las 23:10:15
+-- Tiempo de generación: 14-01-2017 a las 23:39:17
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -42,7 +42,8 @@ INSERT INTO `cellar` (`id`, `name`) VALUES
 (5, 'asdasd'),
 (6, 'asda'),
 (7, 'asda'),
-(8, 'asda');
+(8, 'asda'),
+(9, '21');
 
 -- --------------------------------------------------------
 
@@ -115,9 +116,9 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `number`, `dateOfIssue`, `quantity`, `metadata`, `type`) VALUES
-(9, '1212316', '2017-01-14', '1231', 'a:2:{s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0quantity";i:1231;s:8:"\0*\0price";i:23123;s:11:"\0*\0priceNet";N;s:9:"\0*\0cellar";N;s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";N;}s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}}', 'detail.purchase'),
 (10, '1212317', '2017-01-14', '1231', 'a:2:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"bab3fd32-dab7-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:6:"123123";s:11:"\0*\0quantity";i:1231;s:8:"\0*\0price";i:23123;s:11:"\0*\0priceNet";d:25617971.6999999992549419403076171875;s:9:"\0*\0cellar";O:23:"AppBundle\\Entity\\Cellar":2:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:4:"asda";}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:25:"AppBundle\\Entity\\Supplier":3:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:5:"asdas";s:10:"\0*\0address";s:4:"dasd";}}}', 'detail.purchase'),
-(15, '1212318', '2017-01-14', '123', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"4c5b94aa-da01-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:5:"12312";s:11:"\0*\0quantity";i:3123123;s:8:"\0*\0price";s:7:"2312312";s:11:"\0*\0priceNet";s:4:"1231";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123;s:7:"\0*\0name";s:8:"1asdasda";s:11:"\0*\0lastName";s:5:"sdasd";s:18:"\0*\0mothersLastName";s:6:"asdasd";s:14:"\0*\0homeAddress";s:6:"asdasd";s:14:"\0*\0workAddress";s:6:"sdasda";s:20:"\0*\0fixedNetworkPhone";s:3:"231";s:12:"\0*\0cellPhone";s:3:"123";s:8:"\0*\0email";s:16:"asdasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2016-03-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123123;s:19:"\0*\0authorizedCredit";s:3:"123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2014-03-02 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:5:"12312";s:15:"\0*\0totalDeposit";s:4:"3123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale');
+(15, '1212318', '2017-01-14', '123', 'a:3:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"4c5b94aa-da01-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:5:"12312";s:11:"\0*\0quantity";i:3123123;s:8:"\0*\0price";s:7:"2312312";s:11:"\0*\0priceNet";s:4:"1231";s:9:"\0*\0cellar";O:38:"Proxies\\__CG__\\AppBundle\\Entity\\Cellar":3:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:40:"Proxies\\__CG__\\AppBundle\\Entity\\Supplier":4:{s:17:"__isInitialized__";b:0;s:5:"\0*\0id";i:4;s:7:"\0*\0name";N;s:10:"\0*\0address";N;}}s:8:"customer";O:26:"AppBundle\\Entity\\Customers":17:{s:5:"\0*\0id";N;s:6:"\0*\0rut";i:123123;s:7:"\0*\0name";s:8:"1asdasda";s:11:"\0*\0lastName";s:5:"sdasd";s:18:"\0*\0mothersLastName";s:6:"asdasd";s:14:"\0*\0homeAddress";s:6:"asdasd";s:14:"\0*\0workAddress";s:6:"sdasda";s:20:"\0*\0fixedNetworkPhone";s:3:"231";s:12:"\0*\0cellPhone";s:3:"123";s:8:"\0*\0email";s:16:"asdasd@gmail.com";s:21:"\0*\0accountOpeningDate";O:8:"DateTime":3:{s:4:"date";s:26:"2016-03-04 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:16:"\0*\0accountNumber";i:123123;s:19:"\0*\0authorizedCredit";s:3:"123";s:20:"\0*\0paymentDateAgreed";O:8:"DateTime":3:{s:4:"date";s:26:"2014-03-02 00:00:00.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:16:"America/Santiago";}s:14:"\0*\0totalCharge";s:5:"12312";s:15:"\0*\0totalDeposit";s:4:"3123";s:9:"\0*\0status";s:13:"status.active";}}', 'detail.sale'),
+(16, '1212319', '2017-01-14', '123123', 'a:2:{s:6:"seller";a:2:{s:2:"id";i:16;s:8:"fullName";s:22:"Steven Delgado Chacón";}s:7:"product";O:25:"AppBundle\\Entity\\Products":8:{s:5:"\0*\0id";s:36:"d9891662-daca-11e6-8f37-c4b301b7a691";s:7:"\0*\0name";s:3:"213";s:11:"\0*\0quantity";i:123123;s:8:"\0*\0price";i:123123;s:11:"\0*\0priceNet";d:13643345816.1000003814697265625;s:9:"\0*\0cellar";O:23:"AppBundle\\Entity\\Cellar":2:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:2:"21";}s:9:"\0*\0status";s:11:"status.good";s:11:"\0*\0supplier";O:25:"AppBundle\\Entity\\Supplier":3:{s:5:"\0*\0id";N;s:7:"\0*\0name";s:6:"123123";s:10:"\0*\0address";s:5:"sd123";}}}', 'detail.purchase');
 
 -- --------------------------------------------------------
 
@@ -167,6 +168,7 @@ INSERT INTO `products` (`id`, `cellar_id`, `name`, `quantity`, `price_net`, `sta
 ('a0138524-dab7-11e6-8f37-c4b301b7a691', 7, '123123', 1231, '25617972', 'status.good', 7, '23123'),
 ('ac4ee5fe-da03-11e6-8f37-c4b301b7a691', 5, '12312', 3123123, '1231', 'status.good', 5, '2312312'),
 ('bab3fd32-dab7-11e6-8f37-c4b301b7a691', 8, '123123', 1231, '25617972', 'status.good', 8, '23123'),
+('d9891662-daca-11e6-8f37-c4b301b7a691', 9, '213', 123123, '13643345816', 'status.good', 9, '123123'),
 ('fd2d918a-da00-11e6-8f37-c4b301b7a691', 2, '12312', 3123123, '1231', 'status.good', 2, '2312312');
 
 -- --------------------------------------------------------
@@ -219,7 +221,8 @@ INSERT INTO `supplier` (`id`, `name`, `address`) VALUES
 (5, '1asasd', '123123'),
 (6, 'asdas', 'dasd'),
 (7, 'asdas', 'dasd'),
-(8, 'asdas', 'dasd');
+(8, 'asdas', 'dasd'),
+(9, '123123', 'sd123');
 
 -- --------------------------------------------------------
 
@@ -341,7 +344,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `cellar`
 --
 ALTER TABLE `cellar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `collectors`
 --
@@ -356,7 +359,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT de la tabla `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `movements`
 --
@@ -376,7 +379,7 @@ ALTER TABLE `sellers`
 -- AUTO_INCREMENT de la tabla `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
