@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="table-header">
+        Cliente: {{ customer.getFullName() }}
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
+        <thead>
+        <tbody>
+        <tr>
+            <th>Rut</th>
+            <td>{{ customer.rut }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+            <th>Télefono fijo</th>
+            <td>{{ customer.fixedNetworkPhone }}</td>
+        </tr>
+        <tr>
+            <th>Télefono celular</th>
+            <td>{{ customer.cellPhone }}</td>
+        </tr>
+        <tr>
+            <th>Direción de casa</th>
+            <td>{{ customer.homeAddress }}</td>
+        </tr>
+        <tr>
+            <th>Direción de trabajo</th>
+            <td>{{ customer.workAddress }}</td>
+        </tr>
+        <tr>
+            <th>Nº de cuenta</th>
+            <td>{{ customer.accountNumber }}</td>
+        </tr>
+        <tr>
+            <th>Fecha de apertura cuenta</th>
+            <td>{{ customer.accountOpeningDate|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Crédito autorizado</th>
+            <td>{{ customer.authorizedCredit }}</td>
+        </tr>
+        <tr>
+            <th>Fecha de pago</th>
+            <td>{{ customer.paymentDateAgreed|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Cargo total</th>
+            <td>{{ customer.totalCharge }}</td>
+        </tr>
+        <tr>
+            <th>Déposito total</th>
+            <td>{{ customer.totalDeposit }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ customer.status|trans }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    {% if records %}
+        <div class="table-header">
+            Historico
+        </div>
+        <table id="table" class="table table-bordered table-condensed table-hover">
+            <thead>
+            <tr>
+                <th>Documento pendiente de Pago</th>
+                <th>Última fecha de pago</th>
+                <th>Total deuda</th>
+                <th>Cliente</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for record in records %}
+                {% set detail = record.documentPendingPayment %}
+                <tr>
+                    <td>
+                        {{ detail.number }}
+                    </td>
+                    <td>{{ record.lastPaymentDate|date('Y-m-d') }}</td>
+                    <td>{{ record.amountTotalDebt }}</td>
+                    <td>{{ record.customer.getFullName() }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+    {% endif %}
+{% endblock %}

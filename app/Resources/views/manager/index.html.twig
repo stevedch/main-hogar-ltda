@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="table-header">
+        Listado de Clientes
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Nombre de cliente</th>
+            <th>Télefono celular</th>
+            <th>Direción de casa</th>
+            <th>Direción de trabajo</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>
+                    <a href="{{ path('manager_customer_detail', { 'id': customer.id }) }}">{{ customer.id }}</a>
+                </td>
+                <td>{{ customer.getFullName() }}</td>
+                <td>{{ customer.cellPhone }}</td>
+                <td>{{ customer.homeAddress }}</td>
+                <td>{{ customer.workAddress }}</td>
+                <td>
+                    <a class="btn btn-xs btn-success"
+                       href="{{ path('manager_customer_detail', { 'id': customer.id }) }}">Ver informe</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

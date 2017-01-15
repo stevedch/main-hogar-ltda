@@ -83,12 +83,11 @@ class CollectorsController extends Controller
             }
 
             $movement->setDocumentNumber($detail);
-            $movement->setClient($metadata['customer']);
+            $movement->setClient($customer = $metadata['customer']);
 
-            if (is_null($seller = $em->getRepository('AppBundle:Sellers')->findOneBy(['id' => $metadata['seller']['id']]))) {
+            if (is_null($seller = $em->getRepository('AppBundle:Sellers')->findOneBy(['user' => $metadata['seller']['id']]))) {
 
                 $seller = new Sellers();
-
                 $seller->setUser($em->getReference('AppBundle:Users', $metadata['seller']['id']));
                 $em->persist($seller);
             }
@@ -114,7 +113,7 @@ class CollectorsController extends Controller
                 $record->setDocumentPendingPayment($detail);
                 $record->setAmountTotalDebt($total);
                 $record->setSeller($seller);
-                $record->setCustomer($metadata['customer']);
+                $record->setCustomer($customer);
                 $em->persist($record);
             }
 
