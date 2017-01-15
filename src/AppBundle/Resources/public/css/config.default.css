@@ -3,7 +3,7 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-.login div#login {
+.login  {
     border: 1px solid #ccc;
     padding: 20px 40px;
     width: 450px;
