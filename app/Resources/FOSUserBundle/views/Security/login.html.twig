@@ -2,7 +2,7 @@
 
 {% block main_content %}
     {% if app.user is null %}
-        <div class="row login">
+        <div class=" login">
             <div>
                 <h2 class="text-center">Iniciar sesión</h2>
 
@@ -23,9 +23,9 @@
                         <input type="password" placeholder=" Ingresar Contraseña" id="password" name="_password" required="required" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <div class="pull-right">
+                        <div>
                             <input type="submit" class="btn btn-warning" id="_submit" name="_submit"
-                                   value="Iniciar Sesión"/>
+                                   value="Iniciar Sesión" style="margin: 0; padding: 0;"/>
                         </div>
                     </div>
                 </form>
