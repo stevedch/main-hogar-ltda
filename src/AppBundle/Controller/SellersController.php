@@ -30,7 +30,17 @@ class SellersController extends Controller
      */
     public function indexAction()
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $details = $em->getRepository('AppBundle:Details')->findAll();
+
+        /** @var ProductsRepository $products */
+        $products = $this->getDoctrine()
+            ->getRepository('AppBundle:Products')->findAll();
+
         return $this->render('sellers/index.html.twig', array(
+            'details' => $details,
+            'products' => $products,
         ));
     }
 
