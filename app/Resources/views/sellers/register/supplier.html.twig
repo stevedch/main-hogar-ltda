@@ -2,39 +2,41 @@
 
 {% block body %}
     <div class="table-header">
-    Formulario de compra
+    Formulario de Compra
     </div>
     {{ form_start(form) }}
     <table class="table table-bordered table-responsive">
         <tbody>
-        <tr>
-            <th>{{ form_label(form.name) }}</th>
-            <td>{{ form_widget(form.name) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.address) }}</th>
-            <td>{{ form_widget(form.address) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.cellar.name) }}</th>
-            <td>{{ form_widget(form.cellar.name) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.product.name) }}</th>
-            <td>{{ form_widget(form.product.name) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.product.quantity) }}</th>
-            <td>{{ form_widget(form.product.quantity) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.product.price) }}</th>
-            <td>{{ form_widget(form.product.price) }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <input class="btn btn-xs btn-warning btn-right" type="submit" value="Guardar"/>
+               <tr>
+                   <th>{{ form_label(form.name) }}</th>
+                   <td>{{ form_widget(form.name) }}</td>
+               </tr>
+               <tr>
+                   <th>{{ form_label(form.address) }}</th>
+                   <td>{{ form_widget(form.address) }}</td>
+               </tr>
+               <tr>
+                   <th>{{ form_label(form.cellar.name) }}</th>
+                   <td>{{ form_widget(form.cellar.name) }}</td>
+               </tr>
+               <tr>
+                   <th>{{ form_label(form.product.name) }}</th>
+                   <td>{{ form_widget(form.product.name) }}</td>
+               </tr>
+               <tr>
+                   <th>{{ form_label(form.product.quantity) }}</th>
+                   <td>{{ form_widget(form.product.quantity) }}</td>
+               </tr>
+               <tr>
+                   <th>{{ form_label(form.product.price) }}</th>
+                   <td>{{ form_widget(form.product.price) }}</td>
+               </tr>
+               <th></th>
+               <td>
+                   <input class="btn btn-xs btn-warning" type="submit" value="Guardar" />
+               </td>
+               </tr>
+            </tbody>
+        </table>
     {{ form_end(form) }}
 {% endblock %}
-
-

@@ -8,8 +8,9 @@
             <strong>Alerta!</strong> {{ flashMessage }}
         </div>
     {% endfor %}
-
-    <h1>Nº {{ detail.number }}</h1>
+    <div class="table-header">
+    Nº {{ detail.number }}
+    </div>
 
     {% set data = detail.metadata %}
     {% set product = detail.metadata.product %}
@@ -54,7 +55,9 @@
     {% set isCollector = detail|calculateMovements == 0 ? 'hidden' : '' %}
 
     <table class="table table-bordered table-responsive {{ isCollector }}">
-        <caption>Formulario de pago</caption>
+        <div class="table-header">
+        Formulario de pago
+        </div>
         {{ form_start(form) }}
         <tbody>
         <tr>
@@ -80,7 +83,9 @@
     </table>
 
     <table id="table" class="table table-bordered table-condensed table-hover">
-        <caption>Movimientos</caption>
+        <div class="table-header">
+            Movimientos
+        </div>
         <thead>
         <tr>
             <th>Nº</th>

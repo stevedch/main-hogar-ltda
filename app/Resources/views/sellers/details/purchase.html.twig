@@ -42,11 +42,10 @@
             <th>Total</th>
             <td>{{ product.price * detail.quantity }}</td>
         </tr>
+        <th></th>
+        <td>
+            <a class="btn btn-xs btn-warning" href="{{ path('sellers_details_c') }}">Volver</a>
+        </td>
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-xs btn-warning btn-right" href="{{ path('sellers_details_c') }}">Volver</a>
-        </div>
-    </div>
 {% endblock %}

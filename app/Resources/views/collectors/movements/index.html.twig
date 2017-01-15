@@ -7,7 +7,9 @@
     {% set customer = data.customer %}
     {% set collector = movement.collector.user %}
 
-    <h1>Nº {{ movement.id }} / Cliente: {{ customer.getFullName() }}</h1>
+    <div class="table-header">
+    Nº {{ movement.id }} / Cliente: {{ customer.getFullName() }}
+    </div>
 
     <table class="table table-bordered table-responsive">
 
