@@ -1,6 +1,10 @@
 status:
-   active: Activo
-   good: En buen estado
+    active: Activo
+    good: En buen estado
 
 registration:
-      submit: Enviar
+    submit: Enviar
+
+detail:
+    sale: Venta
+    purchase: Compra

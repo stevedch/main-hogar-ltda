@@ -3,41 +3,23 @@ sellers_index:
     defaults: { _controller: "AppBundle:Sellers:index" }
     methods:  GET
 
-sellers_show:
-    path:     /{id}/show
-    defaults: { _controller: "AppBundle:Sellers:show" }
-    methods:  GET
-
-sellers_new:
-    path:     /new
-    defaults: { _controller: "AppBundle:Sellers:new" }
-    methods:  [GET, POST]
-
-sellers_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "AppBundle:Sellers:edit" }
-    methods:  [GET, POST]
-
-sellers_delete:
-    path:     /{id}/delete
-    defaults: { _controller: "AppBundle:Sellers:delete" }
-    methods:  DELETE
-
+# Compra
 sellers_supplier:
     path:     /registrar-proveedor
     defaults: { _controller: "AppBundle:Sellers:registerSupplier" }
     methods:  [GET, POST]
+
+sellers_details_c:
+    path:     /lista-compra
+    defaults: { _controller: "AppBundle:Sellers:listDetails" }
+    methods:  GET
 
 sellers_details:
     path:     /{id}/detalles-compra
     defaults: { _controller: "AppBundle:Sellers:detailsRegister" }
     methods:  [GET, POST]
 
-sellers_details_c:
-    path:     /detalles
-    defaults: { _controller: "AppBundle:Sellers:listDetails" }
-    methods:  GET
-
+# Productos
 sellers_list_product:
     path:     /lista-productos
     defaults: { _controller: "AppBundle:Sellers:listProducts" }
@@ -48,18 +30,20 @@ sellers_view_product:
     defaults: { _controller: "AppBundle:Sellers:showProduct" }
     methods:  [GET, POST]
 
-sellers_record_sale_product:
-    path:     /registrar-venta
-    defaults: { _controller: "AppBundle:Sellers:recordSale" }
-    methods:  [GET, POST]
-
+# Clientes
 sellers_customer_sale_details:
+    path:     /lista-venta
+    defaults: { _controller: "AppBundle:Sellers:listSale" }
+    methods:  GET
+
+sellers_customer_list_sale_details:
     path:     /{id}/detalle-venta
     defaults: { _controller: "AppBundle:Sellers:detailSale" }
     methods:  [GET, POST]
 
-sellers_view_detail_purchase:
-    path:     /{id}/detalle-compra
-    defaults: { _controller: "AppBundle:Sellers:detailPurchase" }
+sellers_customer_record_sale_product:
+    path:     /registrar-venta
+    defaults: { _controller: "AppBundle:Sellers:recordSale" }
     methods:  [GET, POST]
+
 
