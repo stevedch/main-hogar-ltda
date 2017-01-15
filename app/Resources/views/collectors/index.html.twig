@@ -1,5 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    cobradores
+    <div class="table-header">
+        Listado
+    </div>
+    <table id="table" class="table table-bordered table-condensed table-hover">
+
+        <thead>
+        <tr>
+            <th>Numero de boleta</th>
+            <th>Fecha de emisión</th>
+            <th>Cliente</th>
+            <th>Monto de la cuenta</th>
+            <th>Tipo de venta</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for detail in details %}
+            {% if (detail.type == 'detail.sale') %}
+                {% set data = detail.metadata %}
+                {% set product = data.product %}
+                {% set customer = data.customer %}
+                {% if product.price > 0 %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('collectors_sale', { 'id': detail.id }) }}">{{ detail.number }}</a>
+                        </td>
+                        <td>{{ detail.dateOfIssue|date('Y-m-d') }}</td>
+                        <td>{{ customer.getFullName() }}</td>
+                        <td>{{ product.price * detail.quantity }}</td>
+                        <td>{{ detail.type|trans }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-success"
+                               href="{{ path('collectors_sale', { 'id': detail.id }) }}">Cobrar</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
