@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>DETALLE DE VENTA Nº {{ detail.number }}</h1>
+    <h1>DETALLE DE COMPRA Nº {{ detail.number }}</h1>
 
     {% set data = detail.metadata %}
     {% set product = detail.metadata.product %}
-    {% set customer = detail.metadata.customer %}
 
     <table class="table table-bordered table-responsive">
         <tbody>
@@ -20,10 +19,6 @@
         <tr>
             <th>Nombre de vendedor</th>
             <td>{{ data.seller.fullName }}</td>
-        </tr>
-        <tr>
-            <th>Nombre de Cliente</th>
-            <td>{{ customer.id }}</td>
         </tr>
         <tr>
             <th>Nº de producto</th>

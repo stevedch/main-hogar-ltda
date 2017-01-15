@@ -163,7 +163,7 @@ class SellersController extends Controller
      */
     public function detailsRegisterAction(Details $details)
     {
-        return $this->render('sellers/details/detail.html.twig', [
+        return $this->render('sellers/details/purchase.html.twig', [
             'detail' => $details
         ]);
     }
@@ -178,18 +178,6 @@ class SellersController extends Controller
             'detail' => $details
         ]);
     }
-
-    /**
-     * @deprecated
-     * @param Details $details
-     * @return Response
-     */
-    /*public function detailPurchaseAction(Details $details)
-    {
-        return $this->render('sellers/details/purchase.html.twig', [
-            'detail' => $details
-        ]);
-    }*/
 
     /**
      * @param Products $product
