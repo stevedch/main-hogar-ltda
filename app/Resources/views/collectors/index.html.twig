@@ -44,8 +44,9 @@
                     <td>{{ detail|calculateMovements }}</td>
                     <td>{{ detail.type|trans }}</td>
                     <td>
+                        {% set estadoCuenta = detail|calculateMovements == 0 ? 'Ver estado de cuenta' : 'cobrar' %}
                         <a class="btn btn-xs btn-success {{ disabled }}"
-                           href="{{ path('collectors_sale', { 'id': detail.id }) }}">Cobrar</a>
+                           href="{{ path('collectors_sale', { 'id': detail.id }) }}">{{ estadoCuenta }}</a>
                     </td>
                 </tr>
             {% endif %}

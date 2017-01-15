@@ -8,3 +8,11 @@ registration:
 detail:
     sale: Venta
     purchase: Compra
+
+cash:
+  payment: Efectivo
+
+payment:
+   debit: Débito
+   credit: Crédito
+   check: Cheque

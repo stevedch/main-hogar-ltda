@@ -35,12 +35,18 @@ class CollectorsController extends Controller
     public function collectorSaleAction(Details $detail, Request $request)
     {
 
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $movements = $em->getRepository('AppBundle:Movements')->findBy([
+            'documentNumber' => $detail->getId(),
+        ], [
+            'id' => 'DESC'
+        ]);
+
         $form = $this->createForm(PaymentType::class);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
-            $em = $this->getDoctrine()->getEntityManager();
 
             $movement = new Movements();
 
@@ -62,6 +68,7 @@ class CollectorsController extends Controller
 
                 return $this->render('collectors/sale/index.html.twig', [
                     'form' => $form->createView(),
+                    'movements' => $movements,
                     'detail' => $detail
                 ]);
             }
@@ -104,6 +111,7 @@ class CollectorsController extends Controller
 
         return $this->render('collectors/sale/index.html.twig', [
             'form' => $form->createView(),
+            'movements' => $movements,
             'detail' => $detail
         ]);
     }
