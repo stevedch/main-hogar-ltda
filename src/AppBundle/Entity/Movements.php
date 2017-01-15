@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Movements
  *
  * @ORM\Table(name="movements")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MovementsRepository")
  */
 class Movements
 {
