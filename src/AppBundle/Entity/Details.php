@@ -56,12 +56,6 @@ class Details
      */
     protected $metadata = array();
 
-    /**
-     * @var Products
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Products", inversedBy="")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $product;
 
 
     /**
@@ -95,6 +89,7 @@ class Details
     {
         $this->type = $type;
     }
+
 
     /**
      * @return string
@@ -142,22 +137,6 @@ class Details
     public function setQuantity(string $quantity)
     {
         $this->quantity = $quantity;
-    }
-
-    /**
-     * @return Products
-     */
-    public function getProduct()
-    {
-        return $this->product;
-    }
-
-    /**
-     * @param Products $product
-     */
-    public function setProduct(Products $product)
-    {
-        $this->product = $product;
     }
 
     /**

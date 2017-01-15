@@ -173,7 +173,6 @@ class SellersController extends Controller
 
             $details = new Details();
             $details->setQuantity($product->getQuantity());
-            $details->setProduct($product);
 
             /** @var Users $user */
             $user = $this->getUser();
@@ -182,6 +181,8 @@ class SellersController extends Controller
                 'id' => $user->getId(),
                 'fullName' => $user->getFullName()
             ]);
+
+            $details->addMetadata('product', $product);
 
             $em->persist($details);
             $em->flush();
@@ -226,7 +227,6 @@ class SellersController extends Controller
 
             $details = new Details();
             $details->setQuantity($data['quantity']);
-            $details->setProduct($data['product']);
             $details->setType(Details::DETAILS_SALE);
 
             /** @var Users $user */
@@ -236,6 +236,8 @@ class SellersController extends Controller
                 'id' => $user->getId(),
                 'fullName' => $user->getFullName()
             ]);
+
+            $details->addMetadata('product', $data['product']);
 
             $details->addMetadata('customer', $customer);
             $em->persist($details);
