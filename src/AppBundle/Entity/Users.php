@@ -29,7 +29,7 @@ class Users extends BaseUser
     /**
      * @var integer
      *
-     * @ORM\Column(name="rut", type="integer", nullable=true)
+     * @ORM\Column(name="rut", type="integer", nullable=false)
      */
     protected $rut;
 
@@ -61,13 +61,7 @@ class Users extends BaseUser
      */
     protected $status = self::STATUS_ACTIVE;
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
 
     /**
      * @return int

@@ -2,12 +2,9 @@
 
 namespace AppBundle\Twig;
 
-use AppBundle\Entity\{
-    Details, Movements, Products
-};
+use AppBundle\Entity\Details;
+use AppBundle\Entity\Products;
 
-use AppBundle\Repository\MovementsRepository;
-use AppBundle\Repository\Repository;
 use Doctrine\ORM\EntityManager;
 
 /**
