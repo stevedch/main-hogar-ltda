@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 15-01-2017 a las 21:23:42
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-01-2017 a las 07:40:23
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -102,30 +102,30 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `home_address`, `work_address`, `fixed_network_phone`, `cell_phone`, `email`, `account_opening_date`, `account_number`, `authorized_credit`, `payment_date_agreed`, `total_charge`, `total_deposit`, `status`, `rut`, `name`, `last_name`, `mothers_last_name`) VALUES
-(7, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
-(18, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
-(19, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
-(20, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
-(21, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
-(22, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
-(23, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
-(24, '12312', 'asda', 'sd', '123123', 'asdasd@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, '123123', 'asdasdas', 'asdsd'),
-(25, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
-(26, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
-(27, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
-(28, '31231', '231', '1231', '23123', '3123@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, '312', '3123', '2312'),
-(29, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
-(30, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
-(32, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
-(33, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
-(34, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
-(35, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(36, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(37, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(38, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(39, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(40, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(41, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231');
+(7, 'Los molinos 0982', 'Villa Norte 9332', '25437684', '098756347', 'juanp@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 169530890, 'Juan Pablo', 'Carreño', 'Fernandez'),
+(18, 'Los Muros', 'Las Parcelas', '26713247', '089754634', 'luisam@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 88308662, 'Luisa Maria', 'Fernandez', 'Rodriguez'),
+(19, 'Las Golondrinas', 'Las naciones', '29574537', '097735333', 'tomasr@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 99120266, 'TomásEduardo', 'Romero', 'Perez'),
+(20, 'av. Cuadrado 64', 'Las Peredices', '024467445', '0897885432', 'lucasm@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 149101209, 'Lucas Mateo', 'Gonzalez', 'Martinez'),
+(21, 'Miraflores', 'Colon', '024758784', '0984651324', 'vicente@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, 'Vicente Agustín', 'Calderon', 'Lazcano'),
+(22, 'Los Molinos', 'Conquistador 399', '029585351', '0897845217', 'martinf@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, 'Martín Fabian', 'Carrasco', 'Lopez'),
+(23, 'Santo Domingo 12', 'av. Partt', '023513957', '0954555532', 'fabians@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, 'Fabian Alfredo', 'Perez', 'Sanchez'),
+(24, 'Las Peredices', 'av.Conquistador', '029865328', '0885462347', 'joser@gmail.com', '2014-04-03', 1231, '23123', '2014-03-04', '123123', '123', 'status.active', 123123, 'Jose Miguel', 'Prato', 'Riquelme'),
+(25, 'av. Cuadrado 64', 'Las Peredices', '027845365', '0996486662', 'leandrob@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, 'Leandro Agustin', 'Benavides', 'Sepulveda'),
+(26, 'Villa Norte 9332', 'Las Golondrinas', '024659874', '0874589678', 'ricardoa@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, 'Ricardo Andres', 'Opazo', 'Sotelo'),
+(27, 'Las Golondrinas', 'Av. Pajaritos', '028521365', '0996857423', 'lucasm@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '12312', 'status.active', 123, 'Lucas Martin', 'Sotelo', 'Romero'),
+(28, 'Los Muros', 'Las Parcelas', '024587412', '0998653212', 'luism@gmail.com', '2014-04-04', 123112, '3123123', '2015-04-02', '31231', '', 'status.active', 123, '312', '3123', '2312'),
+(29, 'Los Alerces ', 'Los Copihues', '029856327', '0866635527', 'juan@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 148437041, 'Juan Manuel', 'Alvarez', 'Castillo'),
+(30, 'Los Aromos', 'Caupolicán', '029996325', '0865324517', 'marcos@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 98937935, 'Marcos Julián', 'Medina', 'Diaz'),
+(32, 'La Florida', 'Arturo Prat', '027525558', '0999685666', 'segio@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 50539369, 'Sergio  Luciano', 'Herrera', 'Campos'),
+(33, 'Calle Tranquila', 'Pasaje Marilyn Monroe', '025555863', '0999963524', 'cesar@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 242677994, 'César Guillermo', 'Campos', 'Navarro'),
+(34, 'calle Estado', 'Santiago', '027142514', '0898959636', 'juan@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 139843444, 'Juan Andrés', 'Garrido', 'Ortega'),
+(35, 'Colonial 23', '21 de Mayo', '026963953', '0978797654', 'cristobal@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, 'Cristóbal Roberto', 'Morales', 'Serrano'),
+(36, 'Santo Domingo', 'Miraflores', '027485963', '0886856936', 'diego@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 158937735, 'Diego Alejandro', 'Flores', 'Salazar'),
+(37, 'Amunátegui', 'Las Claras', '023656329', '0887656666', 'sebastian@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', '', 1231, '231', '231231', '231'),
+(38, 'Gabriela Mistral', 'Las Rosas', '023333568', '099986588', 'angel@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 205497110, 'Ángel Samuel', 'Gonzalez', 'Jimenez'),
+(39, 'Lautaro', 'Caupolicán', '025544114', '0889954263', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 234813277, 'David  Adrián', 'Ramirez', 'Vazquez'),
+(40, 'Los Copihues', 'Las Rosas', '02444478', '099966555', 'emiliano@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 159070379, 'Emiliano Andrés', 'Dominguez', 'Vega'),
+(41, 'Manuel Rodríguez', 'Los Aromos', '025556664', '0888855996', 'francisco@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 230832617, 'Francisco Manuel', 'Reyes', 'Ferrer');
 
 -- --------------------------------------------------------
 
@@ -347,11 +347,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `rut`, `name`, `last_name`, `mothers_last_name`, `status`) VALUES
-(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-15 21:21:53', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
+(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-16 00:44:51', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
 (16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-15 21:22:11', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
-(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-15 20:28:03', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active'),
-(21, 'gerenteVentas', 'gerenteventas', 'dadasd@gmail.com', 'dadasd@gmail.com', 1, 'iIAWiOIF8MzxaEVaLRFrMu9Ulx/KhUkh87tY/uMKsCI', 'k8AOofiMSvMMiH96aNxsrFiDeTMGoUdAyAhMm7rhc5ubcPQdqE3shGMkOLOlzJBsSVn4HbWb6bW4WdO42RvngQ==', '2017-01-15 20:16:15', NULL, NULL, 'a:1:{i:0;s:19:"ROLE_GERENTE_VENTAS";}', 23123123, 'adadasd', 'asdasd', 'asdas', 'status.active'),
-(22, 'gerenteFinanzas', 'gerentefinanzas', 'asdasasd@gmail.com', 'asdasasd@gmail.com', 1, 'uB59sT4Vc.8UgiBWu5DwUrNMsR.45xcdn/YgVmN0fEk', 'pJZqABHMtvnbUo7+DWIIaMdeFHOHnyrUAk5+/62wYBhYT3XvV/72EyZBUuj3/TNFGufO+4r/SraKpK+vl9hGqA==', '2017-01-15 20:34:27', NULL, NULL, 'a:1:{i:0;s:21:"ROLE_GERENTE_FINANZAS";}', 1231212, '3123123', 'saasdada', 'asdasas', 'status.active');
+(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-16 02:36:54', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active'),
+(21, 'gerenteVentas', 'gerenteventas', 'dadasd@gmail.com', 'dadasd@gmail.com', 1, 'iIAWiOIF8MzxaEVaLRFrMu9Ulx/KhUkh87tY/uMKsCI', 'k8AOofiMSvMMiH96aNxsrFiDeTMGoUdAyAhMm7rhc5ubcPQdqE3shGMkOLOlzJBsSVn4HbWb6bW4WdO42RvngQ==', '2017-01-16 00:46:50', NULL, NULL, 'a:1:{i:0;s:19:"ROLE_GERENTE_VENTAS";}', 23123123, 'adadasd', 'asdasd', 'asdas', 'status.active'),
+(22, 'gerenteFinanzas', 'gerentefinanzas', 'asdasasd@gmail.com', 'asdasasd@gmail.com', 1, 'uB59sT4Vc.8UgiBWu5DwUrNMsR.45xcdn/YgVmN0fEk', 'pJZqABHMtvnbUo7+DWIIaMdeFHOHnyrUAk5+/62wYBhYT3XvV/72EyZBUuj3/TNFGufO+4r/SraKpK+vl9hGqA==', '2017-01-16 00:48:28', NULL, NULL, 'a:1:{i:0;s:21:"ROLE_GERENTE_FINANZAS";}', 1231212, '3123123', 'saasdada', 'asdasas', 'status.active');
 
 --
 -- Índices para tablas volcadas
