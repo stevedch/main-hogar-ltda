@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-01-2017 a las 19:04:23
+-- Tiempo de generación: 15-01-2017 a las 21:23:42
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 7.0.13
 
@@ -102,12 +102,6 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `home_address`, `work_address`, `fixed_network_phone`, `cell_phone`, `email`, `account_opening_date`, `account_number`, `authorized_credit`, `payment_date_agreed`, `total_charge`, `total_deposit`, `status`, `rut`, `name`, `last_name`, `mothers_last_name`) VALUES
-(1, 'asdasd', 'asda', 'sd2', '12312', '3123@gmail.com', '2015-04-03', 123, '123123', '2015-03-03', '1231', '23123', 'status.active', NULL, NULL, NULL, NULL),
-(2, 'asdasd', 'asda', 'sd2', '12312', '3123@gmail.com', '2015-04-03', 123, '123123', '2015-03-03', '1231', '23123', 'status.active', NULL, NULL, NULL, NULL),
-(3, 'asdasd', 'asdas', 'dasd', 'asd', 'asdasd@gmail.com', '2014-04-03', 12123, '123123', '2015-03-02', '1231', '32123', 'status.active', NULL, NULL, NULL, NULL),
-(4, '12312', 'as', '12312', '1231', 'asdads@gmail.com', '2015-04-03', 123123, '123123', '2014-02-03', '123123', '312312', 'status.active', NULL, NULL, NULL, NULL),
-(5, '123123', '123123', '123123', '1231', 'asdasd@gmail.com', '2014-05-04', 123123, '123123', '2014-03-03', '123', '123', 'status.active', NULL, NULL, NULL, NULL),
-(6, 'sdasd', 'asd123', '123123', '123', '123123@gmail.com', '2015-03-03', 123123, '123', '2014-03-02', '123', '123123', 'status.active', NULL, NULL, NULL, NULL),
 (7, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
 (18, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
 (19, 'asdasd', 'sdasda', '231', '123', 'asdasd@gmail.com', '2016-03-04', 123123, '123', '2014-03-02', '12312', '3123', 'status.active', 123123, '1asdasda', 'sdasd', 'asdasd'),
@@ -126,7 +120,12 @@ INSERT INTO `customers` (`id`, `home_address`, `work_address`, `fixed_network_ph
 (33, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
 (34, 'sdfs', 'df', 'sdfsdf1', '2313', '123123@gmail.com', '2015-07-04', 123123, '123', '2016-04-02', '123123', '123', 'status.active', 123123123, 'sdf', 'csdsdfsdf', 'sdf'),
 (35, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
-(36, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231');
+(36, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(37, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(38, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(39, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(40, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231'),
+(41, '23', '123123', '231123', '123', 'adasd@gmail.com', '2014-02-03', 123, '123123', '2013-01-01', '123', '123', 'status.active', 1231, '231', '231231', '231');
 
 -- --------------------------------------------------------
 
@@ -192,7 +191,12 @@ INSERT INTO `movements` (`id`, `seller_id`, `rode`, `date_movement`, `paid_form`
 (15, 17, 698972424, '2017-01-15', 'payment.credit', 2, 20, 32, 19),
 (16, 18, 13123123, '2017-01-15', 'cash.payment', 1, 20, 33, 19),
 (17, 19, -13123122, '2017-01-15', 'payment.credit', 2, 20, 34, 19),
-(18, 20, 376, '2017-01-15', 'cash.payment', 1, 20, 36, 20);
+(18, 20, 376, '2017-01-15', 'cash.payment', 1, 20, 36, 20),
+(19, 21, 90000, '2017-01-15', 'cash.payment', 2, 20, 37, 20),
+(20, 22, 700000, '2017-01-15', 'payment.credit', 2, 20, 38, 20),
+(21, 6, 2234, '2017-01-15', 'cash.payment', 2, 20, 39, 20),
+(22, 6, 66, '2017-01-15', 'payment.check', 1, 20, 40, 20),
+(23, 6, 12, '2017-01-15', 'payment.credit', 1, 20, 41, 20);
 
 -- --------------------------------------------------------
 
@@ -246,7 +250,11 @@ CREATE TABLE `record` (
 
 INSERT INTO `record` (`id`, `customer_id`, `seller_id`, `amount_total_debt`, `last_payment_date`, `document_pending_payment_id`) VALUES
 (3, 32, 17, '1', '2017-01-15', 19),
-(4, 36, 20, '284698790000', '2017-01-15', 20);
+(4, 36, 20, '284698790000', '2017-01-15', 20),
+(5, 37, 21, '284698700000', '2017-01-15', 20),
+(6, 38, 22, '284698000000', '2017-01-15', 20),
+(7, 39, 6, '284697997766', '2017-01-15', 20),
+(8, 40, 6, '284697997700', '2017-01-15', 20);
 
 -- --------------------------------------------------------
 
@@ -278,7 +286,9 @@ INSERT INTO `sellers` (`id`, `user_id`, `percentage_commission`) VALUES
 (17, 16, NULL),
 (18, 16, NULL),
 (19, 16, NULL),
-(20, 16, NULL);
+(20, 16, NULL),
+(21, 16, NULL),
+(22, 16, NULL);
 
 -- --------------------------------------------------------
 
@@ -325,7 +335,7 @@ CREATE TABLE `users` (
   `confirmation_token` varchar(180) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `rut` int(11) DEFAULT NULL,
+  `rut` int(11) NOT NULL,
   `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mothers_last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -337,9 +347,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `rut`, `name`, `last_name`, `mothers_last_name`, `status`) VALUES
-(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-15 17:45:11', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
-(16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-15 18:51:50', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
-(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-15 18:52:30', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active');
+(15, 'adminGeneral', 'admingeneral', 'sistema@gmail.com', 'sistema@gmail.com', 1, '7Yg3RJgKldbHOgCxAcv7s3Kz3uimV.HdOCXS2vN0Qj0', 'QMZFk5m3DxMWog8+HjNiQO2oXDQwvRMbTiczvKHOPh2+82u5GDkMPKneFt3kX+rggN+TdFL1Aelnsc1yI3Ui3w==', '2017-01-15 21:21:53', NULL, NULL, 'a:1:{i:0;s:18:"ROLE_ADMIN_GENERAL";}', 23283822, 'Administrador', 'General', 'Sistema', 'status.active'),
+(16, 'vendedor', 'vendedor', 'steven@gmail.com', 'steven@gmail.com', 1, 'bC0628Dyy.zaqnq4O9Jq9io0VIUrLKdjfIdSxthP9kY', 'qJAmbYKr9+AM/4NqoamdGCWxy/4MeMh1DxGMfJovamLCoK5s1froy+DNFkyNZgBj9ZvFA5EYyJUQTu2TpGGT3A==', '2017-01-15 21:22:11', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_VENDEDOR";}', 22755862, 'Steven', 'Delgado', 'Chacón', 'status.active'),
+(20, 'cobrador', 'cobrador', 'cobrador@gmail.com', 'cobrador@gmail.com', 1, 'Qf8AbDfqmaHf57bBVbfGHV7r2Hr5wvQK7uipDnRaQME', 'r44Qyp8xMlUX0VD9UBJZec5lZEIEXVECoijGR4a/MqXPWk8Ux0qyu/W7hpJgI+2gDrPDAFQhYylaHNK5CtMgbA==', '2017-01-15 20:28:03', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_COBRADOR";}', 18902483, 'Cobrador', 'Test', 'Test', 'status.active'),
+(21, 'gerenteVentas', 'gerenteventas', 'dadasd@gmail.com', 'dadasd@gmail.com', 1, 'iIAWiOIF8MzxaEVaLRFrMu9Ulx/KhUkh87tY/uMKsCI', 'k8AOofiMSvMMiH96aNxsrFiDeTMGoUdAyAhMm7rhc5ubcPQdqE3shGMkOLOlzJBsSVn4HbWb6bW4WdO42RvngQ==', '2017-01-15 20:16:15', NULL, NULL, 'a:1:{i:0;s:19:"ROLE_GERENTE_VENTAS";}', 23123123, 'adadasd', 'asdasd', 'asdas', 'status.active'),
+(22, 'gerenteFinanzas', 'gerentefinanzas', 'asdasasd@gmail.com', 'asdasasd@gmail.com', 1, 'uB59sT4Vc.8UgiBWu5DwUrNMsR.45xcdn/YgVmN0fEk', 'pJZqABHMtvnbUo7+DWIIaMdeFHOHnyrUAk5+/62wYBhYT3XvV/72EyZBUuj3/TNFGufO+4r/SraKpK+vl9hGqA==', '2017-01-15 20:34:27', NULL, NULL, 'a:1:{i:0;s:21:"ROLE_GERENTE_FINANZAS";}', 1231212, '3123123', 'saasdada', 'asdasas', 'status.active');
 
 --
 -- Índices para tablas volcadas
@@ -437,7 +449,7 @@ ALTER TABLE `collectors`
 -- AUTO_INCREMENT de la tabla `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `details`
 --
@@ -447,17 +459,17 @@ ALTER TABLE `details`
 -- AUTO_INCREMENT de la tabla `movements`
 --
 ALTER TABLE `movements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `record`
 --
 ALTER TABLE `record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `supplier`
 --
@@ -467,7 +479,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Restricciones para tablas volcadas
 --
