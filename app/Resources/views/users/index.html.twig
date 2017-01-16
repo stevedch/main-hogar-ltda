@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado de usuarios</h1>
+<div class="table-header">
+    Listado de usuarios
+</div>
     <table class="table table-bordered table-responsive">
         <thead>
         <tr>
-            <th>#</th>
+            <th>Nº</th>
             <th>Rut</th>
             <th>Nombres</th>
             <th>Apellido Paterno</th>
@@ -32,9 +34,9 @@
         {% endfor %}
         </tbody>
     </table>
-    <ul>
-        <li>
-            <a href="{{ path('users_new') }}">Create a new user</a>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-xs btn-warning" href="{{ path('users_new') }}">Crear Nuevo Usuario</a>
+        </div>
+    </div>
 {% endblock %}
