@@ -34,25 +34,39 @@
 
 
     <tr>
+        <th>{{ form_label(edit_form.plainPassword.first) }}</th>
+        <td>{{ form_widget(edit_form.plainPassword.first) }}</td>
+    </tr>
+    <tr>
+        <th>{{ form_label(edit_form.plainPassword.second) }}</th>
+        <td>{{ form_widget(edit_form.plainPassword.second) }}</td>
+    </tr>
+
+    <tr>
         <th>{{ form_label(edit_form.roles) }}</th>
         <td>{{ form_widget(edit_form.roles) }}</td>
     </tr>
+    <tr>
+        <th></th>
+        <td>
+            <input class="btn btn-xs btn-warning" type="submit" value="Editar" />
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-xs btn-warning" type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </td>
+    </tr>
     </tbody>
     </table>
-        {{ form_widget(edit_form) }}
-        <input class="btn btn-xs btn-warning" type="submit" value="Editar" />
     {{ form_end(edit_form) }}
 
     <div class="row">
         <div class="col-md-12">
             <a class="btn btn-xs btn-warning" href="{{ path('users_index') }}">Volver a la Lista</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            {{ form_start(delete_form) }}
-            <input class="btn btn-xs btn-warning" type="submit" value="Eliminar">
-            {{ form_end(delete_form) }}
         </div>
     </div>
 {% endblock %}
