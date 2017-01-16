@@ -3,8 +3,9 @@
 {% block body %}
     {% set is_hidden = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'hidden' %}
 
-    <h1>Perfil de usuario</h1>
-
+    <div class="table-header">
+        Perfil de usuario
+    </div>
     <table class="table table-bordered table-responsive">
         <tbody>
         <tr>
