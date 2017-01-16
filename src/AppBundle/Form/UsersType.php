@@ -42,6 +42,7 @@ class UsersType extends AbstractType
                 'translation_domain' => 'FOSUserBundle'
             ))
             ->add('plainPassword', RepeatedType::class, array(
+                'required' => false,
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'form.password'),

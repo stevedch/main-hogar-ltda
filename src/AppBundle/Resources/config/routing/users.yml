@@ -16,7 +16,7 @@ users_new:
 users_edit:
     path:     /{id}/edit
     defaults: { _controller: "AppBundle:Users:edit" }
-    methods:  [GET, POST]
+    methods:  [POST, DELETE, GET ]
 
 users_delete:
     path:     /{id}/delete

@@ -6,6 +6,7 @@ use AppBundle\Entity\Users;
 use AppBundle\Form\UsersType;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -111,13 +112,27 @@ class UsersController extends Controller
     public function editAction(Request $request, Users $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('AppBundle\Form\UsersType', $user);
+        $editForm = $this->createForm(UsersType::class, $user);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        /** @var $userManager UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
 
-            return $this->redirectToRoute('users_edit', array('id' => $user->getId()));
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            /** @var Users $data */
+            $data = $editForm->getData();
+
+            if (is_null($data->getPlainPassword())) {
+                $userManager->updateUser($user);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('users_index');
         }
 
         return $this->render('users/edit.html.twig', array(
