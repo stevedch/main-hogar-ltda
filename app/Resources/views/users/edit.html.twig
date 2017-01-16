@@ -52,7 +52,14 @@
             <input class="btn btn-xs btn-warning" type="submit" value="Editar" />
         </td>
     </tr>
-
+    <tr>
+        <th></th>
+        <td>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-xs btn-warning" type="submit" value="Eliminar">
+            {{ form_end(delete_form) }}
+        </td>
+    </tr>
     </tbody>
     </table>
     {{ form_end(edit_form) }}

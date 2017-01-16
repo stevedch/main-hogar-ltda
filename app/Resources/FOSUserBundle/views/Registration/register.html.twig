@@ -2,9 +2,54 @@
 
 {% block main_content %}
     {{ form_start(form, {'method': 'post', 'action': path('users_new'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}"/>
-    </div>
+    <table class="table table-bordered table-responsive">
+        <tbody>
+        <tr>
+            <th>{{ form_label(form.rut) }}</th>
+            <td>{{ form_widget(form.rut) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.name) }}</th>
+            <td>{{ form_widget(form.name) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.lastName) }}</th>
+            <td>{{ form_widget(form.lastName) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.mothersLastName) }}</th>
+            <td>{{ form_widget(form.mothersLastName) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.email) }}</th>
+            <td>{{ form_widget(form.email) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.username) }}</th>
+            <td>{{ form_widget(form.username) }}</td>
+        </tr>
+
+
+        <tr>
+            <th>{{ form_label(form.plainPassword.first) }}</th>
+            <td>{{ form_widget(form.plainPassword.first) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.plainPassword.second) }}</th>
+            <td>{{ form_widget(form.plainPassword.second) }}</td>
+        </tr>
+
+        <tr>
+            <th>{{ form_label(form.roles) }}</th>
+            <td>{{ form_widget(form.roles) }}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input class="btn btn-xs btn-warning" type="submit" value="{{ 'registration.submit'|trans }}">
+            </td>
+        </tr>
+        </tbody>
+    </table>
     {{ form_end(form) }}
 {% endblock %}
