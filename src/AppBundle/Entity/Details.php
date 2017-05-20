@@ -32,11 +32,22 @@ class Details
     protected $number;
 
     /**
+     * @var Users
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="detail", cascade={"persist", "remove"})
+     */
+    protected $user;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateOfIssue", type="date", nullable=true)
+     * @ORM\Column(name="dateOfIssue", type="datetime", nullable=true)
      */
     protected $dateOfIssue;
+
+    /**
+     * @ORM\Column(name="unit_value", type="decimal", precision=30, scale=0, nullable=true)
+     */
+    protected $unitValue;
 
     /**
      * @var string
@@ -46,16 +57,48 @@ class Details
     protected $quantity;
 
     /**
+     * @ORM\Column(name="iva", type="decimal", precision=30, scale=0, nullable=true)
+     */
+    protected $iva;
+
+    /**
+     * @ORM\Column(name="discount", type="decimal", precision=30, scale=0, nullable=true)
+     */
+    protected $discount;
+
+    /**
+     * @ORM\Column(name="value_total", type="decimal", precision=30, scale=0, nullable=true)
+     */
+    protected $valueTotal;
+
+    /**
      * @var string
      * @ORM\Column(name="type", type="string", length=30, nullable=false)
      */
     protected $type = self::DETAILS_PURCHASE;
 
     /**
+     * @var Supplier
+     * @ORM\ManyToOne(targetEntity="Supplier", inversedBy="detail", cascade={"persist", "remove"})
+     */
+    protected $supplier;
+
+    /**
+     * @var Customers
+     * @ORM\ManyToOne(targetEntity="Customers", inversedBy="detail", cascade={"persist", "remove"})
+     */
+    protected $customer;
+
+    /**
+     * @var Products
+     * @ORM\ManyToOne(targetEntity="Products", inversedBy="detail", cascade={"persist", "remove"})
+     */
+    protected $product;
+
+    /**
      * @ORM\Column(type="array", nullable=true)
      */
     protected $metadata = array();
-
 
 
     /**
@@ -89,7 +132,6 @@ class Details
     {
         $this->type = $type;
     }
-
 
     /**
      * @return string
@@ -140,6 +182,70 @@ class Details
     }
 
     /**
+     * @return mixed
+     */
+    public function getUnitValue()
+    {
+        return $this->unitValue;
+    }
+
+    /**
+     * @param mixed $unitValue
+     */
+    public function setUnitValue($unitValue)
+    {
+        $this->unitValue = $unitValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIva()
+    {
+        return $this->iva;
+    }
+
+    /**
+     * @param mixed $iva
+     */
+    public function setIva($iva)
+    {
+        $this->iva = $iva;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    /**
+     * @param mixed $discount
+     */
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValueTotal()
+    {
+        return $this->valueTotal;
+    }
+
+    /**
+     * @param mixed $valueTotal
+     */
+    public function setValueTotal($valueTotal)
+    {
+        $this->valueTotal = $valueTotal;
+    }
+
+    /**
      * @param $metadata
      * @return $this
      */
@@ -156,6 +262,22 @@ class Details
     public function getMetadata()
     {
         return $this->metadata;
+    }
+
+    /**
+     * @return Users
+     */
+    public function getUser(): Users
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param Users $user
+     */
+    public function setUser(Users $user)
+    {
+        $this->user = $user;
     }
 
     /**

@@ -61,6 +61,11 @@ class Users extends BaseUser
      */
     protected $status = self::STATUS_ACTIVE;
 
+    /**
+     * @var Details
+     * @ORM\OneToMany(targetEntity="Details", mappedBy="user", cascade={"persist", "remove"})
+     */
+    protected $detail;
 
     /**
      * @return int
@@ -142,6 +147,21 @@ class Users extends BaseUser
         $this->status = $status;
     }
 
+    /**
+     * @return Details
+     */
+    public function getDetail(): Details
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @param Details $detail
+     */
+    public function setDetail(Details $detail)
+    {
+        $this->detail = $detail;
+    }
 
     public function getFullName()
     {

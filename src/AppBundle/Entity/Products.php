@@ -14,7 +14,6 @@ class Products
 {
     const STATUS_GOOD = 'status.good';
     const STATUS_BAD = 'status.bad';
-    const STATUS_NOT_MARKETED = 'status.not.marketed';
 
     /**
      * @ORM\Id @ORM\Column(type="guid")
@@ -61,11 +60,10 @@ class Products
     protected $status = self::STATUS_GOOD;
 
     /**
-     * @var Supplier
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Supplier", inversedBy="")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @var Details
+     * @ORM\OneToMany(targetEntity="Details", mappedBy="user", cascade={"persist", "remove"})
      */
-    protected $supplier;
+    protected $detail;
 
     /**
      * @return mixed
@@ -172,19 +170,19 @@ class Products
     }
 
     /**
-     * @return Supplier
+     * @return Details
      */
-    public function getSupplier()
+    public function getDetail(): Details
     {
-        return $this->supplier;
+        return $this->detail;
     }
 
     /**
-     * @param Supplier $supplier
+     * @param Details $detail
      */
-    public function setSupplier(Supplier $supplier)
+    public function setDetail(Details $detail)
     {
-        $this->supplier = $supplier;
+        $this->detail = $detail;
     }
 }
 

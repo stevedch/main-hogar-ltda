@@ -44,6 +44,12 @@ class Supplier
     protected $address;
 
     /**
+     * @var Details
+     * @ORM\OneToMany(targetEntity="Details", mappedBy="user", cascade={"persist", "remove"})
+     */
+    protected $detail;
+
+    /**
      * @return int
      */
     public function getId()
@@ -54,7 +60,7 @@ class Supplier
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode()
     {
         return $this->code;
     }
@@ -97,6 +103,22 @@ class Supplier
     public function setAddress(string $address)
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return Details
+     */
+    public function getDetail(): Details
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @param Details $detail
+     */
+    public function setDetail(Details $detail)
+    {
+        $this->detail = $detail;
     }
 }
 
