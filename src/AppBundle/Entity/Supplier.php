@@ -45,7 +45,7 @@ class Supplier
 
     /**
      * @var Details
-     * @ORM\OneToMany(targetEntity="Details", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Details", mappedBy="supplier", cascade={"persist", "remove"})
      */
     protected $detail;
 

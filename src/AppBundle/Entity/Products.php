@@ -61,7 +61,7 @@ class Products
 
     /**
      * @var Details
-     * @ORM\OneToMany(targetEntity="Details", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Details", mappedBy="product", cascade={"persist", "remove"})
      */
     protected $detail;
 
