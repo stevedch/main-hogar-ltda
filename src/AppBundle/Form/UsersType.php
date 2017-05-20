@@ -21,28 +21,49 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rut', IntegerType::class, array(
+            ->add('rut', TextType::class, array(
                 'label' => 'Rut',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ))
             ->add('name', TextType::class, array(
                 'label' => 'Nombres',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ))
             ->add('lastName', TextType::class, array(
                 'label' => 'Apellido Paterno',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ))
             ->add('mothersLastName', TextType::class, array(
                 'label' => 'Apellido Materno',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ))
             ->add('email', EmailType::class, array(
                 'label' => 'form.email',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
                 'translation_domain' => 'FOSUserBundle'
             ))
             ->add('username', null, array(
                 'label' => 'form.username',
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
                 'translation_domain' => 'FOSUserBundle'
             ))
             ->add('plainPassword', RepeatedType::class, array(
                 'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'form.password'),
@@ -51,17 +72,17 @@ class UsersType extends AbstractType
             ))
             ->add('roles', ChoiceType::class, array(
                 'label' => 'Tipo de rol',
+                'attr' => [
+                    'class' => 'uk-select',
+                ],
                 'required' => false,
                 'multiple' => true,
                 'choices' => array(
                     'Administrador general' => 'ROLE_ADMIN_GENERAL',
-                    'Vendedor' => 'ROLE_VENDEDOR',
-                    'Cobrador' => 'ROLE_COBRADOR',
-                    'Gerente de finanzas' => 'ROLE_GERENTE_FINANZAS',
-                    'Gerente de ventas' => 'ROLE_GERENTE_VENTAS',
+                    'Gerente' => 'ROLE_GERENTE',
+                    'Operador' => 'ROLE_OPERADOR'
                 )
-            ))
-        ;
+            ));
     }
 
     /**

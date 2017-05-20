@@ -32,11 +32,11 @@
 
         <tr>
             <th>{{ form_label(form.plainPassword.first) }}</th>
-            <td>{{ form_widget(form.plainPassword.first) }}</td>
+            <td>{{ form_widget(form.plainPassword.first, {'attr': {'class': 'uk-input'}}) }}</td>
         </tr>
         <tr>
             <th>{{ form_label(form.plainPassword.second) }}</th>
-            <td>{{ form_widget(form.plainPassword.second) }}</td>
+            <td>{{ form_widget(form.plainPassword.second, {'attr': {'class': 'uk-input'}}) }}</td>
         </tr>
 
         <tr>
@@ -46,7 +46,7 @@
         <tr>
             <th></th>
             <td>
-                <input class="btn btn-xs btn-warning" type="submit" value="{{ 'registration.submit'|trans }}">
+                <input class="uk-button uk-button-primary" type="submit" value="{{ 'registration.submit'|trans }}">
             </td>
         </tr>
         </tbody>
