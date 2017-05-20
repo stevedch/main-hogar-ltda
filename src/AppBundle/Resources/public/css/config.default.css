@@ -3,91 +3,28 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-.login  {
-    border: 1px solid #ccc;
-    padding: 20px 40px;
-    width: 450px;
-    margin: 150px auto;
-    background: #fff;
-    border-radius: 5px;
-    border-top: 5px solid #ff656c;
+.color-rgba-blue {
+    background: rgba(0, 0, 255, 0.1);
 }
 
-.login .help {
-    margin: 30px 0
+.uk-alert-danger {
+    background: #ff4469 !important;
+    color: #ffffff !important;
 }
 
-.login .error {
-    padding: 10px;
-    margin-top: 30px
+.uk-placeholder {
+    border: 1px dashed #749dd1 !important;
 }
 
-.login .h2 {
-    text-align: center;
-    color: #000;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top: 0;
-    margin-bottom: 20px;
+.second-back {
+    background-color: rgba(0, 0, 0, 0.29);
+    color: snow;
 }
 
-.login input {
-    width: 100%;
-    height: 42px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    font-size: 15px;
-    font-family: Montserrat;
-    padding: 0 20px 0 50px;
-    outline: none;
+.login-position {
+    position: relative;
+    top: 15%;
 }
-
-.login input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login input:active, .login input:focus {
-    border: 1px solid #ff656c;
-}
-
-.login input#_submit {
-    width: 100%;
-    height: 40px;
-    background: #e15960;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ff656c;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: Montserrat;
-    outline: none;
-    cursor: pointer;
-}
-
-.login input#_submit:hover {
-    background: #ff7b81;
-}
-
 
 .table-header {
     display: block;
@@ -98,7 +35,7 @@ body {
     color: #fff;
     font-size: 20px;
     line-height: 55px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
     box-sizing: border-box;
 }
 
@@ -121,10 +58,9 @@ body {
     color: #fff;
     font-size: 20px;
     line-height: 55px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
     box-sizing: border-box;
 }
-
 
 .header-row {
     background: #8b8b8b;
@@ -148,14 +84,12 @@ body {
     text-align: left;
 }
 
-
 input[type="radio"],
-input[type="checkbox"]{
+input[type="checkbox"] {
     display: none;
 }
 
-
-@media only screen and (max-width: 760px)  {
+@media only screen and (max-width: 760px) {
 
     body {
         padding: 0;
@@ -200,21 +134,20 @@ input[type="checkbox"]{
         content: "";
         display: block;
         position: absolute;
-        right:20px;
-        top:18px;
+        right: 20px;
+        top: 18px;
         z-index: 2;
         width: 0;
         height: 0;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
-        border-right:10px solid #ccc;
+        border-right: 10px solid #ccc;
 
     }
 
     .cell:nth-of-type(n+2) {
         display: none;
     }
-
 
     input[type="radio"],
     input[type="checkbox"] {
@@ -262,18 +195,18 @@ input[type="checkbox"]{
     }
 
     input[type="radio"]:checked ~ .primary,
-    input[type="checkbox"]:checked ~ .primary  {
+    input[type="checkbox"]:checked ~ .primary {
         border-bottom: 2px solid #999;
     }
 
     input[type="radio"]:checked ~ .primary:after,
     input[type="checkbox"]:checked ~ .primary:after {
         position: absolute;
-        right:18px;
-        top:22px;
+        right: 18px;
+        top: 22px;
         border-right: 10px solid transparent;
         border-left: 10px solid transparent;
-        border-top:10px solid #ccc;
+        border-top: 10px solid #ccc;
         z-index: 2;
     }
 }

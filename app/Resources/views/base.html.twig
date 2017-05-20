@@ -5,20 +5,27 @@
     <title>{% block title %}Hogar facil ltda{% endblock %}</title>
 
     {% stylesheets
-    'bundles/app/css/bootstrap.min.css'
-    'bundles/app/css/config.default.css'
-    %}
+    'bundles/app/css/uikit.min.css'
+    'bundles/app/css/uikit-rtl.min.css'
+    'bundles/app/css/config.default.css' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    {% javascripts
+    'bundles/app/js/jquery-3.1.1.min.js'
+    'bundles/app/js/uikit.min.js'
+    'bundles/app/js/uikit-icons.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 </head>
 <body>
 {% if app.user %}
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div>
             <div class="navbar-header navbar-right">
-                <a class="navbar-brand" href="#">Hogar facil ltda.</a>
+                <a class="navbar-brand" href="#">Tu Oficina S.A</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
@@ -74,16 +81,11 @@
     </nav>
 {% endif %}
 
-<div class="container-fluid">
-    {% block body %}
-        {% block main_content %}{% endblock %}
-    {% endblock %}
-</div>
+{% block body %}
+    {% block main_content %}{% endblock %}
+{% endblock %}
 
-{% javascripts
-'bundles/app/js/jquery-3.1.1.min.js'
-'bundles/app/js/bootstrap.js'
-'bundles/app/js/config.default.js' %}
+{% javascripts 'bundles/app/js/config.default.js' %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 

@@ -6,10 +6,6 @@ app_sellers:
     resource: "@AppBundle/Resources/config/routing/sellers.yml"
     prefix:   /vendedor
 
-app_collectors:
-    resource: "@AppBundle/Resources/config/routing/collectors.yml"
-    prefix:   /cobrador
-
 app_manager:
     resource: "@AppBundle/Resources/config/routing/manager.yml"
     prefix:   /generente

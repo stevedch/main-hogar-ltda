@@ -2,33 +2,55 @@
 
 {% block main_content %}
     {% if app.user is null %}
-        <div class="login">
-            <div>
-                <h2 class="text-center">Iniciar sesión</h2>
+        <div class="uk-background-primary" style="height: 100vh;  overflow: hidden;">
+            <div class="uk-child-width-expand@s uk-padding-xlarge" style="margin: 7% auto;" uk-grid>
 
-                {% if error %}
-                    <div class="error bg-danger">
-                        {{ error.messageKey|trans(error.messageData, 'security') }}
-                    </div>
-                {% endif %}
-                <form action="{{ path("fos_user_security_check") }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-                    <div class="form-group">
-                        <input type="text" placeholder=" Nombre de Usuario" id="username" name="_username" value="{{ last_username }}"
-                               required="required"
-                               class="form-control"/>
-                    </div>
+                <div class="uk-card  uk-card-body color-rgba-blue">
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        <fieldset class="uk-fieldset uk-placeholder uk-text-center">
+                            {% if error %}
+                                <div class="uk-alert-danger uk-alert">
+                                    <p> {{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                                </div>
+                            {% endif %}
+                            <div class="uk-legend uk-tile uk-placeholder uk-tile-primary">
+                                <p class="uk-h4 uk-text-default">
+                                    Tu Oficina S.A</p>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                            <div class="uk-margin">
+                                <input class="uk-input uk-form-width-xlarge" type="text"
+                                       placeholder="Nombre de Usuario"
+                                       name="_username"
+                                       value="{{ last_username }}">
+                            </div>
+                            <div class="uk-margin">
+                                <input class="uk-input uk-form-width-xlarge" type="password"
+                                       placeholder="Ingresar Contraseña"
+                                       id="password"
+                                       name="_password"
+                                       value="{{ last_username }}">
+                            </div>
+                            <button type="submit" id="_submit" name="_submit"
+                                    class="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom">
+                                Iniciar
+                                Sesión
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
 
-                    <div class="form-group">
-                        <input type="password" placeholder=" Ingresar Contraseña" id="password" name="_password" required="required" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <input type="submit" class="btn btn-warning" id="_submit" name="_submit"
-                                   value="Iniciar Sesión" style="margin: 0; padding: 0;"/>
-                        </div>
-                    </div>
-                </form>
+                <div>
+                    <h3 class="uk-background-default color-rgba-blue" style="color: snow; padding: 0 12px;">
+                        <span class="uk-icon" uk-icon="icon: home"></span>
+                        <span> Sistema de Gestión de inventario </span>
+                    </h3>
+                    <p class="" style="color: snow;">Tu <strong> Oficina S.A</strong>, en virtud de modernizar sus
+                        procedimientos, ha implementado una herramienta que permite agilizar y automatizar la
+                        transferencia de compra y venta de productos y permite el envío de cantidades masivas de
+                        información, facilitando la labor de administración y gestión de inventarios.
+                    </p>
+                </div>
             </div>
         </div>
     {% endif %}
