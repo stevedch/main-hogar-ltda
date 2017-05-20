@@ -150,7 +150,7 @@ class Users extends BaseUser
     /**
      * @return Details
      */
-    public function getDetail(): Details
+    public function getDetail()
     {
         return $this->detail;
     }

@@ -254,7 +254,7 @@ class Details
     /**
      * @return Users
      */
-    public function getUser(): Users
+    public function getUser()
     {
         return $this->user;
     }

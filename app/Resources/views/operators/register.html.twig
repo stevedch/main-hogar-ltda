@@ -6,11 +6,6 @@
             {{ form_start(create_form) }}
 
             <div class="uk-margin">
-                {{ form_label(create_form.number) }}
-                {{ form_widget(create_form.number) }}
-            </div>
-
-            <div class="uk-margin">
                 {{ form_label(create_form.quantity) }}
                 {{ form_widget(create_form.quantity) }}
             </div>
@@ -31,8 +26,8 @@
             </div>
 
             <ul uk-accordion>
-                <li class="uk-open">
-                    <h3 class="uk-accordion-title">Cliente</h3>
+                <li id="user-register-customer" class="uk-open" data-type="CUSTOMER">
+                    <h3 class="uk-accordion-title">Formulario de Venta Cliente</h3>
                     <div class="uk-accordion-content">
                         <div class="uk-margin">
                             {{ form_label(create_form.customer.rut) }}
@@ -60,41 +55,37 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <h3 class="uk-accordion-title">Proveedor</h3>
+                <li id="user-register-supplier" data-type="SUPPLIER">
+                    <h3 class="uk-accordion-title">Formulario de Compra Proveedor</h3>
                     <div class="uk-accordion-content">
-
-                        {% if create_form.supplier is defined %}
-                            <div class="uk-margin">
-                                {{ form_label(create_form.supplier.name) }}
-                                {{ form_widget(create_form.supplier.name) }}
-                            </div>
-                            <div class="uk-margin">
-                                {{ form_label(create_form.supplier.address) }}
-                                {{ form_widget(create_form.supplier.address) }}
-                            </div>
-                            --- ---------
-                            <div class="uk-margin">
-                                {{ form_label(create_form.product.name) }}
-                                {{ form_widget(create_form.product.name) }}
-                            </div>
-                            <div class="uk-margin">
-                                {{ form_label(create_form.product.quantity) }}
-                                {{ form_widget(create_form.product.quantity) }}
-                            </div>
-                            <div class="uk-margin">
-                                {{ form_label(create_form.product.price) }}
-                                {{ form_widget(create_form.product.price) }}
-                            </div>
-                            <div class="uk-margin">
-                                {{ form_label(create_form.product.cellar.name) }}
-                                {{ form_widget(create_form.product.cellar.name) }}
-                            </div>
-                            <div class="uk-margin">
-                                {{ form_label(create_form.product.cellar.address) }}
-                                {{ form_widget(create_form.product.cellar.address) }}
-                            </div>
-                        {% endif %}
+                        <div class="uk-margin">
+                            {{ form_label(create_form.supplier.name) }}
+                            {{ form_widget(create_form.supplier.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.supplier.address) }}
+                            {{ form_widget(create_form.supplier.address) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.name) }}
+                            {{ form_widget(create_form.product.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.quantity) }}
+                            {{ form_widget(create_form.product.quantity) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.price) }}
+                            {{ form_widget(create_form.product.price) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.cellar.name) }}
+                            {{ form_widget(create_form.product.cellar.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.cellar.address) }}
+                            {{ form_widget(create_form.product.cellar.address) }}
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -103,4 +94,31 @@
             {{ form_end(create_form) }}
         </div>
     </div>
+
+    <script>
+        (function ($) {
+            $('#user-register-supplier').on('click', function () {
+
+                $("#appbundle_details_customer_rut," +
+                    " #appbundle_details_customer_name," +
+                    " #appbundle_details_customer_lastName," +
+                    " #appbundle_details_customer_mothersLastName," +
+                    " #appbundle_details_customer_address," +
+                    " #appbundle_details_customer_email").val('');
+
+            });
+
+            $('#user-register-customer').on('click', function () {
+
+                $("#appbundle_details_supplier_name," +
+                    " #appbundle_details_supplier_address," +
+                    " #appbundle_details_product_name," +
+                    " #appbundle_details_product_quantity," +
+                    " #appbundle_details_product_price," +
+                    " #appbundle_details_product_cellar_name," +
+                    " #appbundle_details_product_cellar_address").val('');
+
+            });
+        }(jQuery));
+    </script>
 {% endblock %}

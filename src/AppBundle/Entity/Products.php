@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -172,7 +173,7 @@ class Products
     /**
      * @return Details
      */
-    public function getDetail(): Details
+    public function getDetail()
     {
         return $this->detail;
     }
@@ -190,7 +191,7 @@ class Products
      */
     public function __construct()
     {
-        $this->detail = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->detail = new ArrayCollection();
     }
 
     /**

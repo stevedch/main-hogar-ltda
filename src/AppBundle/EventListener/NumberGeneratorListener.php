@@ -2,6 +2,7 @@
 
 namespace AppBundle\EventListener;
 
+use AppBundle\Entity\Supplier;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use AppBundle\Entity\Details;
@@ -16,7 +17,8 @@ class NumberGeneratorListener
     const INIT_NUMBER = 10000;
 
     private static $allowedClasses = [
-        Details::class
+        Details::class,
+        Supplier::class
     ];
 
     /**
@@ -31,8 +33,21 @@ class NumberGeneratorListener
             return;
         }
 
-        $next = $this->getNextNumber($args->getEntityManager());
-        $entity->setNumber(++$next);
+        $details = new Details();
+
+        if (self::$allowedClasses instanceof $details) {
+
+            $number = $this->getNextNumber($args->getEntityManager());
+            $entity->setNumber(++$number);
+        }
+
+        $supplier = new Supplier();
+
+        if (self::$allowedClasses instanceof $supplier) {
+
+            $code = $this->getNextCode($args->getEntityManager());
+            $entity->setCode(++$code);
+        }
     }
 
     public function getNextNumber(EntityManager $em)
@@ -50,6 +65,26 @@ class NumberGeneratorListener
 
             $number = $result['number'];
             $numbers[] = is_numeric($number) ? $number : self::INIT_NUMBER;
+        }
+
+        return max($numbers);
+    }
+
+    public function getNextCode(EntityManager $em)
+    {
+        $numbers = [];
+
+        foreach (self::$allowedClasses as $cls) {
+            $result = $em->getRepository($cls)
+                ->createQueryBuilder('o')
+                ->select('o.code')
+                ->orderBy('o.code', 'DESC')
+                ->getQuery()
+                ->setMaxResults(1)
+                ->getOneOrNullResult();
+
+            $code = $result['code'];
+            $numbers[] = is_numeric($code) ? $code : self::INIT_NUMBER;
         }
 
         return max($numbers);

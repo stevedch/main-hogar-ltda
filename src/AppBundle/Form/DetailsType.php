@@ -17,11 +17,6 @@ class DetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('number', IntegerType::class, [
-                'attr' => [
-                    'class' => 'uk-input',
-                ],
-            ])
             ->add('quantity', IntegerType::class, [
                 'attr' => [
                     'class' => 'uk-input',

@@ -17,6 +17,9 @@ use Symfony\Component\HttpFoundation\Request;
 class OperatorController extends Controller
 {
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
 
@@ -28,16 +31,23 @@ class OperatorController extends Controller
         ));
     }
 
+    /**
+     * @param Details $details
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction(Details $details)
     {
 
         return $this->render('operators/show.html.twig', array());
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function registerAction(Request $request)
     {
-        $customer = $request->request->get('appbundle_details')['customer'];
-
+        $rut = $request->request->get('appbundle_details')['customer'];
         $form = $this->createForm(DetailsType::class, null);
         $form->handleRequest($request);
 
@@ -51,18 +61,20 @@ class OperatorController extends Controller
                 $detail = $form->getData();
 
                 $details = new Details();
-                $details->setUser($detail->getUser());
+
+                $details->setUser($this->getUser());
                 $details->setUnitValue($detail->getUnitValue());
                 $details->setQuantity($detail->getQuantity());
                 $details->setIva($detail->getIva());
                 $details->setDiscount($detail->getDiscount());
                 $details->setValueTotal($detail->getValueTotal());
 
-                if (!empty($customer)) {
+                if (!empty($rut['rut'])) {
 
                     /** @var Customers $customer */
-                    $customer = $details->getSupplier();
+                    $customer = $detail->getCustomer();
                     $customers = new Customers();
+
                     $customers->setRut($customer->getRut());
                     $customers->setName($customer->getName());
                     $customers->setLastName($customer->getLastName());
@@ -70,32 +82,35 @@ class OperatorController extends Controller
                     $customers->setAddress($customer->getAddress());
                     $customers->setEmail($customer->getEmail());
 
-                    $details->setType(Details::DETAILS_PURCHASE);
+                    $details->setType(Details::DETAILS_SALE);
                     $details->setCustomer($customers);
                 } else {
 
                     /** @var Supplier $supplier */
-                    $supplier = $details->getSupplier();
+                    $supplier = $detail->getSupplier();
+
                     $suppliers = new Supplier();
                     $suppliers->setAddress($supplier->getAddress());
-                    $suppliers->setCode($supplier->getCode());
                     $suppliers->setName($supplier->getName());
 
-                    $details->setType(Details::DETAILS_SALE);
-                    $details->setCustomer($suppliers);
+                    /** @var Products $product */
+                    $product = $detail->getProduct();
+                    $details->setProduct($product);
+
+                    $details->setType(Details::DETAILS_PURCHASE);
+                    $details->setSupplier($suppliers);
                 }
 
                 $em->persist($details);
                 $em->flush();
-                var_dump($em);
-                exit;
+
+                return $this->redirectToRoute('operators_show', array('id' => $details->getId()));
             }
         } catch (Exception $e) {
 
             throw new Exception($e->getMessage());
         }
 
-        // return $this->redirectToRoute('operators_show', array('id' => $data->getId()));
         return $this->render('operators/register.html.twig', array(
             'create_form' => $form->createView()
         ));
