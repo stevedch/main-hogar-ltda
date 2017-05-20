@@ -19,6 +19,7 @@ class ManagerController extends Controller
      */
     public function indexAction()
     {
+        echo 1; exit;
         $em = $this->getDoctrine()->getEntityManager();
         $customers = $em->getRepository('AppBundle:Customers')->findAll();
 
