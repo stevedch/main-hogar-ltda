@@ -17,6 +17,5 @@
 /.idea/*
 .idea/workspace.xml
 .idea/modules.xml
-.idea/main-hogar.iml
 var/
-web
+app/bootstrap.php.cache
