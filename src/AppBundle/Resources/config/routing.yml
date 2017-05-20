@@ -1,11 +1,3 @@
 app_users:
     resource: "@AppBundle/Resources/config/routing/users.yml"
     prefix:   /usuarios
-
-app_sellers:
-    resource: "@AppBundle/Resources/config/routing/operator.yml"
-    prefix:   /operador
-
-app_manager:
-    resource: "@AppBundle/Resources/config/routing/manager.yml"
-    prefix:   /gerente

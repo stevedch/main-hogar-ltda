@@ -50,7 +50,7 @@ class DefaultController extends Controller
             : null;
 
         if ($user = $this->getUser()) {
-            return $this->changeRoute($user);
+            // return $this->changeRoute($user);
         }
 
         return $this->renderLogin(array(

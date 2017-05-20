@@ -1,9 +1,0 @@
-manager_index:
-    path:     /
-    defaults: { _controller: "AppBundle:Manager:index" }
-    methods:  GET
-
-manager_customer_detail:
-    path:     /{id}/detalle-clientes
-    defaults: { _controller: "AppBundle:Manager:customerDetail" }
-    methods:  [GET, POST]
