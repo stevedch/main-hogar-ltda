@@ -1,0 +1,24 @@
+operators_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Operator:index" }
+    methods:  GET
+
+operators_show:
+    path:     /{id}/detalle
+    defaults: { _controller: "AppBundle:Operator:show" }
+    methods:  GET
+
+operators_edit:
+    path:     /{id}/registrar
+    defaults: { _controller: "AppBundle:Operator:register" }
+    methods:  [POST, DELETE, GET ]
+
+operators_edit:
+    path:     /{id}/editar
+    defaults: { _controller: "AppBundle:Operator:edit" }
+    methods:  [POST, DELETE, GET ]
+
+operators_delete:
+    path:     /{id}/eliminar
+    defaults: { _controller: "AppBundle:Operator:delete" }
+    methods:  DELETE

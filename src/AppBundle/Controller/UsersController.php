@@ -176,5 +176,4 @@ class UsersController extends Controller
             ->setMethod('DELETE')
             ->getForm();
     }
-
 }

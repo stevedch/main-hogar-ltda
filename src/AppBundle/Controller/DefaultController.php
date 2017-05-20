@@ -50,7 +50,8 @@ class DefaultController extends Controller
             : null;
 
         if ($user = $this->getUser()) {
-            // return $this->changeRoute($user);
+
+            return $this->changeRoute($user);
         }
 
         return $this->renderLogin(array(
@@ -80,14 +81,10 @@ class DefaultController extends Controller
 
         if ($this->checkRoles($user->getRoles(), 'ROLE_ADMIN_GENERAL')) {
             $routeName = 'users_index';
-        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE_FINANZAS')) {
-            $routeName = 'manager_index';
-        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE_VENTAS')) {
-            $routeName = 'manager_index';
-        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_VENDEDOR')) {
-            $routeName = 'sellers_index';
-        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_COBRADOR')) {
-            $routeName = 'collectors_index';
+        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE')) {
+            $routeName = 'managers_index';
+        } elseif ($this->checkRoles($user->getRoles(), 'ROLE_OPERADOR')) {
+            $routeName = 'operators_index';
         }
 
         return $this->redirectToRoute($routeName);
