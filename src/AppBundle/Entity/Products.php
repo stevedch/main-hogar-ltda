@@ -200,7 +200,7 @@ class Products
      *
      * @return Products
      */
-    public function addDetail(\AppBundle\Entity\Details $detail)
+    public function addDetail(Details $detail)
     {
         $this->detail[] = $detail;
 
@@ -212,8 +212,9 @@ class Products
      *
      * @param \AppBundle\Entity\Details $detail
      */
-    public function removeDetail(\AppBundle\Entity\Details $detail)
+    public function removeDetail(Details $detail)
     {
         $this->detail->removeElement($detail);
     }
+
 }

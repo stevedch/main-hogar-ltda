@@ -8,7 +8,7 @@ operators_show:
     defaults: { _controller: "AppBundle:Operator:show" }
     methods:  GET
 
-operators_edit:
+operators_register:
     path:     /registrar
     defaults: { _controller: "AppBundle:Operator:register" }
     methods:  [GET, POST]

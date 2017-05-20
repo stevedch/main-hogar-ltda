@@ -26,7 +26,7 @@
 <body>
 {% if app.user %}
     <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
-        <div class="uk-navbar-left">
+        <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
                 <li class="uk-active"><a href="#">Active</a></li>
                 <li>
@@ -34,12 +34,12 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li class="uk-active"><a href="#">Active</a></li>
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
+                            <li><a href="#">Items</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </li>
-                <li><a href="#">Item</a></li>
+                <li><a href="#">Tu Oficina S.A</a></li>
             </ul>
         </div>
     </nav>

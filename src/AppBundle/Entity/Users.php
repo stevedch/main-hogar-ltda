@@ -177,7 +177,7 @@ class Users extends BaseUser
      *
      * @return Users
      */
-    public function addDetail(\AppBundle\Entity\Details $detail)
+    public function addDetail(Details $detail)
     {
         $this->detail[] = $detail;
 
@@ -189,7 +189,7 @@ class Users extends BaseUser
      *
      * @param \AppBundle\Entity\Details $detail
      */
-    public function removeDetail(\AppBundle\Entity\Details $detail)
+    public function removeDetail(Details $detail)
     {
         $this->detail->removeElement($detail);
     }

@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="table-header">
-    Listado de usuarios
-</div>
+
     <table id="table-user" class="uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -27,8 +25,9 @@
                 <td>{{ user.status|trans }}</td>
                 <td>
                     <a class="btn btn-xs btn-success" href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
-                    {% set is_enabled = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'disabled'%}
-                    <a class="btn btn-xs btn-warning {{ is_enabled }}" href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
+                    {% set is_enabled = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'disabled' %}
+                    <a class="btn btn-xs btn-warning {{ is_enabled }}"
+                       href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
                 </td>
             </tr>
         {% endfor %}

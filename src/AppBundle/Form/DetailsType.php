@@ -41,10 +41,12 @@ class DetailsType extends AbstractType
                 'attr' => [
                     'class' => 'uk-input',
                 ],
-            ])
-            ->add('supplier', SupplierType::class, [])
-            ->add('product', ProductsType::class, [])
-            ->add('customer', CustomersType::class, []);
+            ]);
+
+        $builder->add('supplier', SupplierType::class, [])
+            ->add('product', ProductsType::class, []);
+
+        $builder->add('customer', CustomersType::class, []);
     }
 
     /**

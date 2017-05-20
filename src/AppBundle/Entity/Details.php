@@ -95,11 +95,6 @@ class Details
      */
     protected $product;
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    protected $metadata = array();
-
 
     /**
      * Details constructor.
@@ -257,14 +252,6 @@ class Details
     }
 
     /**
-     * @return null
-     */
-    public function getMetadata()
-    {
-        return $this->metadata;
-    }
-
-    /**
      * @return Users
      */
     public function getUser(): Users
@@ -280,17 +267,6 @@ class Details
         $this->user = $user;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return $this
-     */
-    public function addMetadata($key, $value)
-    {
-        $this->metadata[$key] = $value;
-
-        return $this;
-    }
 
     /**
      * Set supplier
@@ -299,7 +275,7 @@ class Details
      *
      * @return Details
      */
-    public function setSupplier(\AppBundle\Entity\Supplier $supplier = null)
+    public function setSupplier(Supplier $supplier = null)
     {
         $this->supplier = $supplier;
 
@@ -323,7 +299,7 @@ class Details
      *
      * @return Details
      */
-    public function setCustomer(\AppBundle\Entity\Customers $customer = null)
+    public function setCustomer(Customers $customer = null)
     {
         $this->customer = $customer;
 
@@ -347,7 +323,7 @@ class Details
      *
      * @return Details
      */
-    public function setProduct(\AppBundle\Entity\Products $product = null)
+    public function setProduct(Products $product = null)
     {
         $this->product = $product;
 

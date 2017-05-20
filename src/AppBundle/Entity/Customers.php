@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,7 +26,7 @@ class Customers
     /**
      * @var string
      *
-     * @ORM\Column(name="rut", type="string", length=12, nullable=false)
+     * @ORM\Column(name="rut", type="string", length=12, nullable=true)
      */
     protected $rut;
 
@@ -204,7 +205,7 @@ class Customers
      */
     public function __construct()
     {
-        $this->detail = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->detail = new ArrayCollection();
     }
 
     /**
@@ -214,7 +215,7 @@ class Customers
      *
      * @return Customers
      */
-    public function addDetail(\AppBundle\Entity\Details $detail)
+    public function addDetail(Details $detail)
     {
         $this->detail[] = $detail;
 
@@ -226,7 +227,7 @@ class Customers
      *
      * @param \AppBundle\Entity\Details $detail
      */
-    public function removeDetail(\AppBundle\Entity\Details $detail)
+    public function removeDetail(Details $detail)
     {
         $this->detail->removeElement($detail);
     }
