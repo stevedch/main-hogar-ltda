@@ -16,10 +16,21 @@ class CellarType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombre de Bodega'
+                'label' => 'Nombre de Bodega',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Dirección',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Details;
+use Doctrine\DBAL\Types\DecimalType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,10 +17,36 @@ class DetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('number', IntegerType::class, [])
-            ->add('quantity', IntegerType::class, []);
+            ->add('number', IntegerType::class, [
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('quantity', IntegerType::class, [
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('iva', IntegerType::class, [
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('discount', IntegerType::class, [
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('valueTotal', IntegerType::class, [
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])
+            ->add('supplier', SupplierType::class, [])
+            ->add('product', ProductsType::class, [])
+            ->add('customer', CustomersType::class, []);
     }
-    
+
     /**
      * {@inheritdoc}
      */

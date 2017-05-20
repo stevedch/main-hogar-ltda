@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Details
  *
  * @ORM\Table(name="details")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DetailsRepository")
  */
 class Details
 {
@@ -291,5 +291,76 @@ class Details
 
         return $this;
     }
-}
 
+    /**
+     * Set supplier
+     *
+     * @param \AppBundle\Entity\Supplier $supplier
+     *
+     * @return Details
+     */
+    public function setSupplier(\AppBundle\Entity\Supplier $supplier = null)
+    {
+        $this->supplier = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @return \AppBundle\Entity\Supplier
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \AppBundle\Entity\Customers $customer
+     *
+     * @return Details
+     */
+    public function setCustomer(\AppBundle\Entity\Customers $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \AppBundle\Entity\Customers
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \AppBundle\Entity\Products $product
+     *
+     * @return Details
+     */
+    public function setProduct(\AppBundle\Entity\Products $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \AppBundle\Entity\Products
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+}

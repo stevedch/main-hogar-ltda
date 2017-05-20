@@ -36,6 +36,13 @@ class Cellar
     protected $address;
 
     /**
+     * @var Products
+     * @ORM\OneToMany(targetEntity="Products", mappedBy="cellar", cascade={"persist", "remove"})
+     */
+    protected $product;
+
+
+    /**
      * @return int
      */
     public function getId()
@@ -74,5 +81,20 @@ class Cellar
     {
         $this->address = $address;
     }
-}
 
+    /**
+     * @return Products
+     */
+    public function getProduct(): Products
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param Products $product
+     */
+    public function setProduct(Products $product)
+    {
+        $this->product = $product;
+    }
+}

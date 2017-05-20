@@ -47,7 +47,7 @@ class Products
 
     /**
      * @var Cellar
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cellar", inversedBy="")
+     * @ORM\ManyToOne(targetEntity="Cellar", inversedBy="product", cascade={"persist", "remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $cellar;
@@ -184,5 +184,36 @@ class Products
     {
         $this->detail = $detail;
     }
-}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->detail = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     *
+     * @return Products
+     */
+    public function addDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail[] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Remove detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     */
+    public function removeDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail->removeElement($detail);
+    }
+}

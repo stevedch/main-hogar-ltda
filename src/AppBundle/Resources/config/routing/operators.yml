@@ -9,9 +9,9 @@ operators_show:
     methods:  GET
 
 operators_edit:
-    path:     /{id}/registrar
+    path:     /registrar
     defaults: { _controller: "AppBundle:Operator:register" }
-    methods:  [POST, DELETE, GET ]
+    methods:  [GET, POST]
 
 operators_edit:
     path:     /{id}/editar

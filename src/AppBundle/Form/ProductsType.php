@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Products;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,27 +18,40 @@ class ProductsType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombre de Producto'
+                'label' => 'Nombre de Producto',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ])
             ->add('quantity', IntegerType::class, [
-                'label' => 'Cantidad de Producto'
+                'label' => 'Cantidad de Producto',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ])
             ->add('price', IntegerType::class, [
-                'label' => 'Precio de Producto'
-            ])
-            /**->add('priceNet', IntegerType::class, [
-                'label' => 'Precio Neto'
-            ])*/
-        ;
+                'label' => 'Precio de Producto',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ])->add('cellar', CellarType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Products'
+            'data_class' => Products::class
         ));
     }
 

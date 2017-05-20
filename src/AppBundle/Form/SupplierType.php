@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Supplier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,18 +17,19 @@ class SupplierType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'nombre del proveedor'
+                'label' => 'nombre del proveedor',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
             ])
             ->add('address', TextType::class, [
-                'label' => 'Dirección del proveedor'
-            ])
-            ->add('cellar', CellarType::class, [
-                'label' => false
-            ])
-            ->add('product', ProductsType::class, [
-                'label' => false
-            ])
-        ;
+                'label' => 'Dirección del proveedor',
+                'required' => false,
+                'attr' => [
+                    'class' => 'uk-input',
+                ],
+            ]);
     }
 
     /**
@@ -35,9 +37,9 @@ class SupplierType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => null
-        ));
+        $resolver->setDefaults([
+            'data_class' => Supplier::class
+        ]);
     }
 
     /**

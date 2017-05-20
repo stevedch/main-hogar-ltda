@@ -199,5 +199,35 @@ class Customers
             $this->lastName,
             $this->mothersLastName);
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->detail = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     *
+     * @return Customers
+     */
+    public function addDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail[] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Remove detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     */
+    public function removeDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail->removeElement($detail);
+    }
+}

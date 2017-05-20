@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="uk-container-large">
+        <div class="uk-container">
+            {{ form_start(create_form) }}
+
+            <div class="uk-margin">
+                {{ form_label(create_form.number) }}
+                {{ form_widget(create_form.number) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.quantity) }}
+                {{ form_widget(create_form.quantity) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.iva) }}
+                {{ form_widget(create_form.iva) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.discount) }}
+                {{ form_widget(create_form.discount) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.valueTotal) }}
+                {{ form_widget(create_form.valueTotal) }}
+            </div>
+
+            <ul uk-accordion>
+                <li class="uk-open">
+                    <h3 class="uk-accordion-title">Cliente</h3>
+                    <div class="uk-accordion-content">
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.rut) }}
+                            {{ form_widget(create_form.customer.rut) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.name) }}
+                            {{ form_widget(create_form.customer.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.lastName) }}
+                            {{ form_widget(create_form.customer.lastName) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.mothersLastName) }}
+                            {{ form_widget(create_form.customer.mothersLastName) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.address) }}
+                            {{ form_widget(create_form.customer.address) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.customer.email) }}
+                            {{ form_widget(create_form.customer.email) }}
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h3 class="uk-accordion-title">Proveedor</h3>
+                    <div class="uk-accordion-content">
+                        <div class="uk-margin">
+                            {{ form_label(create_form.supplier.name) }}
+                            {{ form_widget(create_form.supplier.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.supplier.address) }}
+                            {{ form_widget(create_form.supplier.address) }}
+                        </div>
+                        --- ---------
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.name) }}
+                            {{ form_widget(create_form.product.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.quantity) }}
+                            {{ form_widget(create_form.product.quantity) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.price) }}
+                            {{ form_widget(create_form.product.price) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.cellar.name) }}
+                            {{ form_widget(create_form.product.cellar.name) }}
+                        </div>
+                        <div class="uk-margin">
+                            {{ form_label(create_form.product.cellar.address) }}
+                            {{ form_widget(create_form.product.cellar.address) }}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <input class="uk-button uk-button-primary uk-align-right" type="submit"
+                   value="{{ 'registration.submit'|trans }}">
+            {{ form_end(create_form) }}
+        </div>
+    </div>
+{% endblock %}

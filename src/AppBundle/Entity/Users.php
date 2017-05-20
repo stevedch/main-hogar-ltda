@@ -169,5 +169,28 @@ class Users extends BaseUser
             $this->lastName,
             $this->mothersLastName);
     }
-}
 
+    /**
+     * Add detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     *
+     * @return Users
+     */
+    public function addDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail[] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Remove detail
+     *
+     * @param \AppBundle\Entity\Details $detail
+     */
+    public function removeDetail(\AppBundle\Entity\Details $detail)
+    {
+        $this->detail->removeElement($detail);
+    }
+}
