@@ -27,9 +27,9 @@ class Users extends BaseUser
     protected $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="rut", type="integer", nullable=false)
+     * @ORM\Column(name="rut", type="string", length=12, nullable=false)
      */
     protected $rut;
 
@@ -68,7 +68,7 @@ class Users extends BaseUser
     protected $detail;
 
     /**
-     * @return int
+     * @return string
      */
     public function getRut()
     {
@@ -76,9 +76,9 @@ class Users extends BaseUser
     }
 
     /**
-     * @param int $rut
+     * @param string $rut
      */
-    public function setRut(int $rut)
+    public function setRut(string $rut)
     {
         $this->rut = $rut;
     }
