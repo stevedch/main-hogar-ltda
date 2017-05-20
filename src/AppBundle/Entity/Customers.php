@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User;
 
 /**
  * Customers
@@ -406,8 +405,11 @@ class Customers
 
     public function getFullName()
     {
-        return $this->getName() . ' ' . $this->getLastName() . ' ' . $this->getMothersLastName();
-    }
 
+        return sprintf("%s %s %s",
+            $this->name,
+            $this->lastName,
+            $this->mothersLastName);
+    }
 }
 

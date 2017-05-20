@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/main-hogar.iml" filepath="$PROJECT_DIR$/.idea/main-hogar.iml" />
+      <module fileurl="file://C:\Users\steve\Desktop\office\.idea\main-hogar.iml" filepath="C:\Users\steve\Desktop\office\.idea\main-hogar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/office.iml" filepath="$PROJECT_DIR$/.idea/office.iml" />
     </modules>
   </component>
 </project>

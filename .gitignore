@@ -16,3 +16,7 @@
 /web/bundles/
 /.idea/*
 .idea/workspace.xml
+.idea/modules.xml
+.idea/main-hogar.iml
+var/
+web

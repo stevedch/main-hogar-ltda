@@ -62,7 +62,6 @@ class Users extends BaseUser
     protected $status = self::STATUS_ACTIVE;
 
 
-
     /**
      * @return int
      */
@@ -146,7 +145,9 @@ class Users extends BaseUser
 
     public function getFullName()
     {
-        return $this->getName() . ' ' . $this->getLastName() . ' ' . $this->getMothersLastName();
+        return sprintf("%s %s %s", $this->name,
+            $this->lastName,
+            $this->mothersLastName);
     }
 }
 

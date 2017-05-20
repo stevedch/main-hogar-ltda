@@ -50,13 +50,6 @@ class Record
     protected $customer;
 
     /**
-     * @var Sellers
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sellers", inversedBy="", cascade={"persist", "remove" })
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $seller;
-
-    /**
      * @return int
      */
     public function getId()
@@ -132,22 +125,6 @@ class Record
     public function setCustomer(Customers $customer)
     {
         $this->customer = $customer;
-    }
-
-    /**
-     * @return Sellers
-     */
-    public function getSeller()
-    {
-        return $this->seller;
-    }
-
-    /**
-     * @param Sellers $seller
-     */
-    public function setSeller(Sellers $seller)
-    {
-        $this->seller = $seller;
     }
 }
 
