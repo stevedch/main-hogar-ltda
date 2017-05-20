@@ -15,7 +15,6 @@
 /vendor/
 /web/bundles/
 /.idea/*
-.idea/workspace.xml
-.idea/modules.xml
 var/
 app/bootstrap.php.cache
+/.idea/modules.xml/
