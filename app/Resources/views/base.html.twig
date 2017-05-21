@@ -29,17 +29,14 @@
     <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li>
-                    <a href="#">Parent</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Active</a></li>
-                            <li><a href="#">Items</a></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                </li>
+                {% if app.user.hasRole('ROLE_GERENTE') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
+                    <li class="uk-active"><a href="#">Active</a></li>
+                {% endif %}
+                {% if app.user.hasRole('ROLE_OPERADOR') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
+                    <li class="uk-active"><a href="{{ path('operators_index') }}">Ventas</a></li>
+                    <li class="uk-active"><a href="{{ path('fos_user_security_logout') }}">Productos</a></li>
+                {% endif %}
+                <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
                 <li><a href="#">Tu Oficina S.A</a></li>
             </ul>
         </div>
