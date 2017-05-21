@@ -28,6 +28,6 @@ $(document).ready(function () {
     };
 
 
-    $('#table-user').DataTable({ "oLanguage": data_table_language });
+    $('#table-supplier, #table-customer').DataTable({"oLanguage": data_table_language});
 
 });

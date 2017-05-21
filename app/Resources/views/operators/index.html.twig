@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table id="table-user" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+    <table id="table-supplier" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+        <caption>
+            <h4 class="uk-text-primary">Registro de Compra al Proveedor</h4>
+        </caption>
         <thead>
         <tr>
             <th>Nº</th>
             <th>Nombre de Operador</th>
             <th>Proveedor</th>
-            <th>Cliente</th>
             <th>Producto</th>
             <th>Fecha de emisión</th>
             <th></th>
@@ -24,12 +26,46 @@
                     {% endif %}
                 </td>
                 <td>
+                    {% if detail.product.fullData is defined %}
+                        {{ detail.product.fullData }}
+                    {% endif %}
+                </td>
+                <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
+                <td>
+                    <a class="uk-button uk-button-small uk-button-primary"
+                       href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table id="table-customer" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+        <caption>
+            <h4 class="uk-text-primary">Registro de Compra al Proveedor</h4>
+        </caption>
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Nombre de Operador</th>
+            <th>Cliente</th>
+            <th>Producto</th>
+            <th>Fecha de emisión</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for detail in details %}
+            <tr>
+                <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                <td>{{ detail.user.fullData }}</td>
+                <td>
                     {% if detail.customer.fullData is defined %}
                         {{ detail.customer.fullData }}
                     {% endif %}
                 </td>
                 <td>
-                    {% if detail.product.fullData is defined  %}
+                    {% if detail.product.fullData is defined %}
                         {{ detail.product.fullData }}
                     {% endif %}
                 </td>
