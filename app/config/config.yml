@@ -72,8 +72,28 @@ swiftmailer:
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
+    bundles: [ AppBundle ]
+    assets:
+      font-awesome-otf:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/FontAwesome.otf'
+        output: 'fonts/FontAwesome.otf'
+      font-awesome-eot:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.eot'
+        output: 'fonts/fontawesome-webfont.eot'
+      font-awesome-svg:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.svg'
+        output: 'fonts/fontawesome-webfont.svg'
+      font-awesome-ttf:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.ttf'
+        output: 'fonts/fontawesome-webfont.ttf'
+      font-awesome-woff:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.woff'
+        output: 'fonts/fontawesome-webfont.woff'
+      font-awesome-woff2:
+        inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.woff2'
+        output: 'fonts/fontawesome-webfont.woff2'
     filters:
-        cssrewrite: ~
+      cssrewrite: ~
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
@@ -88,3 +108,6 @@ jms_di_extra:
        all_bundles: false
        bundles: [AppBundle]
        directories: ["%kernel.root_dir%/../src"]
+
+
+# "%kernel.root_dir%/../web/bundles/app/fonts/"
