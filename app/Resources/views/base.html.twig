@@ -6,7 +6,6 @@
 
     {% stylesheets
     'bundles/app/css/font-awesome.min.css'
-    'bundles/app/css/uikit-rtl.min.css'
     'bundles/app/css/uikit.min.css'
     'bundles/app/css/dataTables.uikit.min.css'
     'bundles/app/css/config.default.css' %}
@@ -34,7 +33,7 @@
                 {% endif %}
                 {% if app.user.hasRole('ROLE_OPERADOR') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
                     <li class="uk-active"><a href="{{ path('operators_index') }}">Ventas</a></li>
-                    <li class="uk-active"><a href="{{ path('fos_user_security_logout') }}">Productos</a></li>
+                    <li class="uk-active"><a href="{{ path('product_operators_index') }}">Productos</a></li>
                 {% endif %}
                 <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
                 <li><a href="#">Tu Oficina S.A</a></li>

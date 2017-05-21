@@ -1,18 +1,10 @@
 status:
-    active: Activo
-    good: En buen estado
+    good: Con Stock
+    bad: Sin Stock
 
 registration:
-    submit: Enviar
+    submit: Guardar
 
 detail:
     sale: Venta
     purchase: Compra
-
-cash:
-  payment: Efectivo
-
-payment:
-   debit: Débito
-   credit: Crédito
-   check: Cheque

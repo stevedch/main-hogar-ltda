@@ -2,14 +2,14 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Cellar;
 use AppBundle\Entity\Customers;
 use AppBundle\Entity\Details;
 use AppBundle\Entity\Products;
 use AppBundle\Entity\Supplier;
-use AppBundle\Entity\Users;
 use AppBundle\Form\DetailsType;
-use AppBundle\Form\SupplierType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +28,31 @@ class OperatorController extends Controller
 
         return $this->render('operators/index.html.twig', array(
             'details' => $details
+        ));
+    }
+
+    public function productsAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository(Products::class)->findAll();
+
+        return $this->render('operators/products/index.html.twig', array(
+            'products' => $products
+        ));
+    }
+
+    /**
+     * @Route("operador/{id}")
+     * @ParamConverter("product", class="AppBundle:Products")
+     * @param Products $product
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function showProductAction(Products $product)
+    {
+
+        return $this->render('operators/products/show.html.twig', array(
+            'product' => $product
         ));
     }
 

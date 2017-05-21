@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table id="table-products"
+           class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
+        <caption>
+            <h4 class="uk-text-primary">Productos</h4>
+        </caption>
+        <thead>
+        <tr>
+            <th>Bodega</th>
+            <th>Nombre</th>
+            <th>Cantidad / Stock</th>
+            <th>Precio</th>
+            <th>Estado de Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ product.fullCellar }}</td>
+            <td> {{ product.name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                {% if product.status|trans == 'Con Stock' %}
+                    <span class="uk-label uk-label-success">{{ product.status|trans }}</span>
+                {% else %}
+                    <span class="uk-label uk-label-danger">{{ product.status|trans }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

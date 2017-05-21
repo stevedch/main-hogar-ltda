@@ -127,5 +127,9 @@ jms_di_extra:
        bundles: [AppBundle]
        directories: ["%kernel.root_dir%/../src"]
 
+sensio_framework_extra:
+    request:
+        converters: true
+        auto_convert: false
 
 # "%kernel.root_dir%/../web/bundles/app/fonts/"

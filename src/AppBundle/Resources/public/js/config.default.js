@@ -28,6 +28,8 @@ $(document).ready(function () {
     };
 
 
-    $('#table-supplier, #table-customer').DataTable({"oLanguage": data_table_language});
+    $('#table-supplier,' +
+        ' #table-customer,' +
+        ' #table-products').DataTable({"oLanguage": data_table_language});
 
 });

@@ -22,3 +22,13 @@ operators_delete:
     path:     /{id}/eliminar
     defaults: { _controller: "AppBundle:Operator:delete" }
     methods:  DELETE
+
+product_operators_index:
+    path:     /productos
+    defaults: { _controller: "AppBundle:Operator:products" }
+    methods:  GET
+
+product_operators_show:
+    path:      /{id}/producto
+    defaults: { _controller: "AppBundle:Operator:showProduct" }
+    methods:  GET
