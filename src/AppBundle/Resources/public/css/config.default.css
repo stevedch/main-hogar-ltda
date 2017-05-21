@@ -225,7 +225,8 @@ input[type="checkbox"] {
     margin-top: 10px;
 }
 
-
-
-
-
+.uk-button-xs {
+    padding: 0 7px;
+    line-height: 20px;
+    font-size: 10px;
+}

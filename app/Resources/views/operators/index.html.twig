@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table id="table-supplier" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+    <div class="uk-container-expand">
+        <a class="uk-button  uk-button-primary uk-button-small uk-align-right" href="{{ path('operators_register') }}">Generar
+            factura</a>
+    </div>
+    <div class="uk-clearfix"></div>
+    <table id="table-supplier"
+           class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
         <caption>
             <h4 class="uk-text-primary">Registro de Compra al Proveedor</h4>
         </caption>
@@ -17,32 +23,35 @@
         </thead>
         <tbody>
         {% for detail in details %}
-            <tr>
-                <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
-                <td>{{ detail.user.fullData }}</td>
-                <td>
-                    {% if detail.supplier.fullData is defined %}
-                        {{ detail.supplier.fullData }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if detail.product.fullData is defined %}
-                        {{ detail.product.fullData }}
-                    {% endif %}
-                </td>
-                <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
-                <td>
-                    <a class="uk-button uk-button-small uk-button-primary"
-                       href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
-                </td>
-            </tr>
+            {% if detail.supplier.fullData is defined %}
+                <tr>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td>{{ detail.user.fullData }}</td>
+                    <td>
+                        {% if detail.supplier.fullData is defined %}
+                            {{ detail.supplier.fullData }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if detail.product.fullData is defined %}
+                            {{ detail.product.fullData }}
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
+                    <td>
+                        <a class="uk-button uk-button-xs uk-button-primary"
+                           href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
-
-    <table id="table-customer" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+    <div class="uk-clearfix uk-padding-large"></div>
+    <table id="table-customer"
+           class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
         <caption>
-            <h4 class="uk-text-primary">Registro de Compra al Proveedor</h4>
+            <h4 class="uk-text-primary">Registro de Venta cliente</h4>
         </caption>
         <thead>
         <tr>
@@ -56,30 +65,28 @@
         </thead>
         <tbody>
         {% for detail in details %}
-            <tr>
-                <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
-                <td>{{ detail.user.fullData }}</td>
-                <td>
-                    {% if detail.customer.fullData is defined %}
-                        {{ detail.customer.fullData }}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if detail.product.fullData is defined %}
-                        {{ detail.product.fullData }}
-                    {% endif %}
-                </td>
-                <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
-                <td>
-                    <a class="uk-button uk-button-small uk-button-primary"
-                       href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
-                </td>
-            </tr>
+            {% if detail.customer.fullData is defined %}
+                <tr>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td>{{ detail.user.fullData }}</td>
+                    <td>
+                        {% if detail.customer.fullData is defined %}
+                            {{ detail.customer.fullData }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if detail.product.fullData is defined %}
+                            {{ detail.product.fullData }}
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
+                    <td>
+                        <a class="uk-button uk-button-xs uk-button-primary"
+                           href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
-    <div class="uk-container-expand">
-        <a class="uk-button  uk-button-primary uk-button-small" href="{{ path('operators_register') }}">Generar
-            factura</a>
-    </div>
 {% endblock %}
