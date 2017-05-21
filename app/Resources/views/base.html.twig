@@ -8,14 +8,17 @@
     'bundles/app/css/font-awesome.min.css'
     'bundles/app/css/uikit-rtl.min.css'
     'bundles/app/css/uikit.min.css'
+    'bundles/app/css/dataTables.uikit.min.css'
     'bundles/app/css/config.default.css' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
+
     {% javascripts
     'bundles/app/js/jquery-3.1.1.min.js'
+    'bundles/app/js/jquery.dataTables.min.js'
     'bundles/app/js/uikit.min.js'
     'bundles/app/js/uikit-icons.min.js' %}
     <script src="{{ asset_url }}"></script>
@@ -42,9 +45,12 @@
         </div>
     </nav>
 {% endif %}
-
-{% block body %}
-    {% block main_content %}{% endblock %}
+{% block main_content %}
+    {% block sub_header %} {% endblock %}
+    <div class="uk-container uk-container-large uk-padding-large">
+        {% block body %}
+        {% endblock %}
+    </div>
 {% endblock %}
 
 {% javascripts 'bundles/app/js/config.default.js' %}

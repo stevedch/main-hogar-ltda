@@ -107,6 +107,15 @@ class Supplier
     }
 
     /**
+     * @return string
+     */
+    public function getFullData()
+    {
+        return sprintf('(%s) %s', $this->code,
+            $this->name);
+    }
+
+    /**
      * @return Details
      */
     public function getDetail()
@@ -121,6 +130,7 @@ class Supplier
     {
         $this->detail = $detail;
     }
+
     /**
      * Constructor
      */

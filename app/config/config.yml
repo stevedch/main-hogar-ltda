@@ -95,6 +95,21 @@ assetic:
       bg_teaser:
         inputs: '%kernel.root_dir%/../web/bundles/app/img/bg_teaser.svg'
         output: 'img/bg_teaser.svg'
+      sort_asc:
+        inputs: '%kernel.root_dir%/../web/bundles/app/images/sort_asc.png'
+        output: 'images/sort_asc.png'
+      sort_asc_disabled:
+        inputs: '%kernel.root_dir%/../web/bundles/app/images/sort_asc_disabled.png'
+        output: 'images/sort_asc_disabled.png'
+      sort_both:
+        inputs: '%kernel.root_dir%/../web/bundles/app/images/sort_both.png'
+        output: 'images/sort_both.png'
+      sort_desc:
+        inputs: '%kernel.root_dir%/../web/bundles/app/images/sort_desc.png'
+        output: 'images/sort_desc.png'
+      sort_desc_disabled:
+        inputs: '%kernel.root_dir%/../web/bundles/app/images/sort_desc_disabled.png'
+        output: 'images/sort_desc_disabled.png'
     filters:
       cssrewrite: ~
 

@@ -122,6 +122,14 @@ class Products
         $this->priceNet = $priceNet;
     }
 
+
+    public function getFullData()
+    {
+        return sprintf('(%s) %s',
+            $this->id,
+            $this->name);
+    }
+
     /**
      * @return Cellar
      */

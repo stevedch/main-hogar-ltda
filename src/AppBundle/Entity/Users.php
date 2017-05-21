@@ -163,9 +163,10 @@ class Users extends BaseUser
         $this->detail = $detail;
     }
 
-    public function getFullName()
+    public function getFullData()
     {
-        return sprintf("%s %s %s", $this->name,
+        return sprintf("(%s) %s %s %s", $this->rut,
+            $this->name,
             $this->lastName,
             $this->mothersLastName);
     }

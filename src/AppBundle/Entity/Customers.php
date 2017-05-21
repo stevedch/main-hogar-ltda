@@ -67,7 +67,6 @@ class Customers
 
     /**
      * @var Details
-
      * @ORM\OneToMany(targetEntity="Details", mappedBy="customer", cascade={"persist", "remove"})
      */
     protected $detail;
@@ -192,14 +191,16 @@ class Customers
         $this->detail = $detail;
     }
 
-    public function getFullName()
+    public function getFullData()
     {
 
-        return sprintf("%s %s %s",
+        return sprintf("(%s) %s %s %s",
+            $this->rut,
             $this->name,
             $this->lastName,
             $this->mothersLastName);
     }
+
     /**
      * Constructor
      */
