@@ -18,21 +18,25 @@ class DetailsType extends AbstractType
     {
         $builder
             ->add('quantity', IntegerType::class, [
+                'label' => 'Cantidad',
                 'attr' => [
                     'class' => 'uk-input',
                 ],
             ])
             ->add('iva', IntegerType::class, [
+                'label' => 'I.V.A',
                 'attr' => [
                     'class' => 'uk-input',
                 ],
             ])
             ->add('discount', IntegerType::class, [
+                'label' => 'Descuento',
                 'attr' => [
                     'class' => 'uk-input',
                 ],
             ])
             ->add('valueTotal', IntegerType::class, [
+                'label' => 'Valor total',
                 'attr' => [
                     'class' => 'uk-input',
                 ],

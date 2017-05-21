@@ -4,27 +4,6 @@
     <div class="uk-container-large">
         <div class="uk-container">
             {{ form_start(create_form) }}
-
-            <div class="uk-margin">
-                {{ form_label(create_form.quantity) }}
-                {{ form_widget(create_form.quantity) }}
-            </div>
-
-            <div class="uk-margin">
-                {{ form_label(create_form.iva) }}
-                {{ form_widget(create_form.iva) }}
-            </div>
-
-            <div class="uk-margin">
-                {{ form_label(create_form.discount) }}
-                {{ form_widget(create_form.discount) }}
-            </div>
-
-            <div class="uk-margin">
-                {{ form_label(create_form.valueTotal) }}
-                {{ form_widget(create_form.valueTotal) }}
-            </div>
-
             <ul uk-accordion>
                 <li id="user-register-customer" class="uk-open" data-type="CUSTOMER">
                     <h3 class="uk-accordion-title">Formulario de Venta</h3>
@@ -89,6 +68,27 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.quantity) }}
+                {{ form_widget(create_form.quantity) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.iva) }}
+                {{ form_widget(create_form.iva) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.discount) }}
+                {{ form_widget(create_form.discount) }}
+            </div>
+
+            <div class="uk-margin">
+                {{ form_label(create_form.valueTotal) }}
+                {{ form_widget(create_form.valueTotal) }}
+            </div>
+
             <input class="uk-button uk-button-primary uk-align-right" type="submit"
                    value="{{ 'registration.submit'|trans }}">
             {{ form_end(create_form) }}
