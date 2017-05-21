@@ -1,5 +1,4 @@
-(function ($) {
-
+$(document).ready(function () {
 
     'use strict';
 
@@ -29,10 +28,6 @@
     };
 
 
-    $('#table-user').DataTable({
-        "language": {
-            "url": data_table_language
-        }
-    });
+    $('#table-user').DataTable({ "oLanguage": data_table_language });
 
-})(jQuery);
+});

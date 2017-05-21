@@ -1,38 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <table id="table-user" class="uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th>Nº</th>
-            <th>Rut</th>
-            <th>Nombres</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for detail in details %}
+    <div class="uk-container-expand">
+        <table id="table-user" class="uk-table uk-table-hover uk-table-striped dataTable uk-table-expand">
+            <thead>
             <tr>
-                <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
-                <td>{{ detail.number }}</td>
-                <td>{{ detail.number }}</td>
-                <td>{{ detail.number }}</td>
-                <td>{{ detail.number }}</td>
-                <td>{{ detail.number }}</td>
-                <td>
-                    <a class="btn btn-xs btn-success" href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
-                </td>
+                <th>Nº</th>
+                <th>Rut</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-xs btn-warning" href="{{ path('operators_register') }}">Generar factura</a>
+            </thead>
+            <tbody>
+            {% for detail in details %}
+                <tr>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td>{{ detail.number }}</td>
+                    <td>{{ detail.number }}</td>
+                    <td>{{ detail.number }}</td>
+                    <td>{{ detail.number }}</td>
+                    <td>{{ detail.number }}</td>
+                    <td>
+                        <a class="uk-button uk-button-small uk-button-primary"
+                           href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="uk-container-expand">
+            <a class="uk-button uk-button-large uk-button-primary" href="{{ path('operators_register') }}">Generar
+                factura</a>
         </div>
     </div>
 {% endblock %}
