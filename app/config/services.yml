@@ -10,6 +10,10 @@ services:
         class: AppBundle\EventListener\NumberGeneratorListener
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+    doctrine.supplier_listener:
+        class: AppBundle\EventListener\CodeGeneratorListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
     app.twig_extension:
         class: AppBundle\Twig\AppExtension
         public: false

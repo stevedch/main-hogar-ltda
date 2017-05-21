@@ -27,7 +27,7 @@ class Details
     /**
      * @var string
      *
-     * @ORM\Column(name="number", type="string", length=45, nullable=true)
+     * @ORM\Column(name="number", type="string", length=254, nullable=true)
      */
     protected $number;
 
