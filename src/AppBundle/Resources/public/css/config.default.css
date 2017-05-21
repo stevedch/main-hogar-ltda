@@ -3,6 +3,10 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+#uk-background-primary-icon {
+    background: #2ba3d4 url("../img/bg_teaser.svg") 50% 50% no-repeat;
+}
+
 .color-rgba-blue {
     background: rgba(0, 0, 255, 0.1);
 }

@@ -92,6 +92,9 @@ assetic:
       font-awesome-woff2:
         inputs: '%kernel.root_dir%/../web/bundles/app/fonts/fontawesome-webfont.woff2'
         output: 'fonts/fontawesome-webfont.woff2'
+      bg_teaser:
+        inputs: '%kernel.root_dir%/../web/bundles/app/img/bg_teaser.svg'
+        output: 'img/bg_teaser.svg'
     filters:
       cssrewrite: ~
 
