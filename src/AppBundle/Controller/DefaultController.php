@@ -82,7 +82,7 @@ class DefaultController extends Controller
         if ($this->checkRoles($user->getRoles(), 'ROLE_ADMIN_GENERAL')) {
             $routeName = 'users_index';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_GERENTE')) {
-            $routeName = 'managers_index';
+            $routeName = 'manager_index';
         } elseif ($this->checkRoles($user->getRoles(), 'ROLE_OPERADOR')) {
             $routeName = 'operators_index';
         }

@@ -5,3 +5,7 @@ app_users:
 app_operators:
     resource: "@AppBundle/Resources/config/routing/operators.yml"
     prefix:   /operador
+
+app_manager:
+    resource: "@AppBundle/Resources/config/routing/manager.yml"
+    prefix:   /gerente

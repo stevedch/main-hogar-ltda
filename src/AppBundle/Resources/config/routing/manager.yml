@@ -1,0 +1,19 @@
+manager_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Manager:index" }
+    methods:  GET
+
+manager_show:
+    path:     /{id}/detalle
+    defaults: { _controller: "AppBundle:Manager:show" }
+    methods:  GET
+
+product_operators_index:
+    path:     /productos
+    defaults: { _controller: "AppBundle:Operator:products" }
+    methods:  GET
+
+product_operators_show:
+    path:      /{id}/producto
+    defaults: { _controller: "AppBundle:Operator:showProduct" }
+    methods:  GET
