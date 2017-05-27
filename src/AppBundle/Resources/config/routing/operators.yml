@@ -23,6 +23,11 @@ operators_delete:
     defaults: { _controller: "AppBundle:Operator:delete" }
     methods:  DELETE
 
+product_operators_json_index:
+    path:     /json_productos
+    defaults: { _controller: "AppBundle:Operator:jsonProducts" }
+    methods:  GET
+
 product_operators_index:
     path:     /productos
     defaults: { _controller: "AppBundle:Operator:products" }

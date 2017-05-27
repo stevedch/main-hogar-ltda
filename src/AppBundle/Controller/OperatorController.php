@@ -7,12 +7,15 @@ use AppBundle\Entity\Details;
 use AppBundle\Entity\Products;
 use AppBundle\Entity\Supplier;
 use AppBundle\Form\DetailsType;
+use AppBundle\Repository\ProductsRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
 
 class OperatorController extends Controller
 {
@@ -31,6 +34,9 @@ class OperatorController extends Controller
         ));
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function productsAction()
     {
 
@@ -42,6 +48,24 @@ class OperatorController extends Controller
         ));
     }
 
+
+    /**
+     * @return Response
+     */
+    public function jsonProductsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var ProductsRepository $products */
+        $products = $em->getRepository(Products::class);
+
+        /** @var  Serializer $serializer */
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($products->productAll(), 'json');
+
+        return new Response($data);
+    }
+
     /**
      * @Route("operador/{id}")
      * @ParamConverter("product", class="AppBundle:Products")
@@ -50,7 +74,6 @@ class OperatorController extends Controller
      */
     public function showProductAction(Products $product)
     {
-
         return $this->render('operators/products/show.html.twig', array(
             'product' => $product
         ));

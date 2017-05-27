@@ -30,7 +30,6 @@ $(document).ready(function () {
 
     $('#table-supplier,' +
         ' #table-customer,' +
-        ' #table-products').DataTable({"oLanguage": data_table_language});
-
-
+        ' #table-products, ' +
+        ' #table-shopping-cart').DataTable({"oLanguage": data_table_language});
 });

@@ -8,11 +8,12 @@ use Doctrine\ORM\Query\Expr\Join;
 class ProductsRepository extends Repository
 {
 
-    public function productAll() {
+    public function productAll()
+    {
 
-        $qb =  $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('p');
 
-        return $qb->getQuery()->getResult();
+        return ['data' => $qb->getQuery()->getArrayResult()];
     }
 
 }

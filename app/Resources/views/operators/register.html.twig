@@ -32,7 +32,35 @@
                             {{ form_label(create_form.customer.email) }}
                             {{ form_widget(create_form.customer.email) }}
                         </div>
+
+                        <div class="uk-padding-small"></div>
+                        <hr class="uk-divider-icon">
+                        <div class="uk-padding-small"></div>
+
+                        <p class="uk-text-right" uk-margin>
+                            <a id="search-all-products" data-url="{{ path('product_operators_json_index') }}"
+                               class="uk-button uk-button-primary">Buscar
+                                productos</a>
+                        </p>
+
+                        <table id="table-shopping-cart"
+                               class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
+                            <caption>
+                                <h4 class="uk-text-primary">Carrito de compras</h4>
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Nombre de Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
+                    <div class="uk-padding-small"></div>
                 </li>
                 <li id="user-register-supplier" data-type="SUPPLIER">
                     <h3 class="uk-accordion-title">Formulario de Compra</h3>
@@ -97,8 +125,129 @@
 
     <script>
         (function ($) {
-            $('#user-register-supplier').on('click', function () {
 
+
+            'use strict';
+
+            $('#search-all-products').on('click', function (e) {
+
+                e.preventDefault();
+
+
+                const STATUS_GOOD = 'status.good';
+                const STATUS_BAD = 'status.bad';
+
+                var url = $(this).data('url'), data_table_language = {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando todos los productos...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }, dataTable;
+
+                $.confirm({
+                    title: 'Lista de Productos',
+                    theme: 'material',
+                    type: 'blue',
+                    content: '<table id="table-shopping-products"' +
+                    ' class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">' +
+                    '<thead><tr><th></th><th>Nombre</th>' +
+                    '<th>Cantidad / Stock</th>' +
+                    '<th>Precio</th>' +
+                    '<th>Estado de Stock</th></tr> </thead>' +
+                    '</table>',
+                    onContentReady: function () {
+
+                        dataTable = '#table-shopping-products';
+
+                        if ($.fn.DataTable.isDataTable(dataTable)) {
+                            $(dataTable).DataTable().destroy();
+                        }
+
+                        $(dataTable).DataTable({
+                            ajax: {
+                                url: url,
+                                dataSrc: "data"
+                            },
+                            "oLanguage": data_table_language,
+                            dom: "Bfrtip",
+                            drawCallback: function (settings) {
+                            },
+                            fnRowCallback: function (nRow, aData, iDisplayIndex) {
+                            },
+                            columns: [
+                                {
+                                    orderable: false,
+                                    render: function (data, type, row) {
+
+                                        data = (STATUS_GOOD === row.status) ? '<input type="checkbox" ' +
+                                            ' class="checkbox-js uk-checkbox"  value="' + row.id + '" ' +
+                                            ' style="display: inline-block !important;"/>' : '';
+
+                                        return data;
+                                    }
+                                },
+                                {
+                                    data: "name"
+                                }, {
+                                    data: "quantity"
+                                }, {
+                                    data: "price"
+                                }, {
+                                    data: "status",
+                                    render: function (data, type, row) {
+
+                                        return '<span class="uk-label uk-label-' + (STATUS_GOOD === data ? 'success'
+                                                : 'danger') + '">' + (STATUS_GOOD === data ? 'Con Stock' : 'Sin Stock')
+                                            + '</span>';
+                                    }
+                                }
+                            ]
+                        });
+                    },
+                    boxWidth: '50%',
+                    useBootstrap: false,
+                    buttons: {
+                        confirm: {
+                            text: 'Aceptar',
+                            btnClass: 'uk-button uk-button-primary uk-button-small',
+                            keys: ['enter', 'a'],
+                            action: function () {
+
+                            }
+                        },
+                        cancel: {
+                            text: 'Cancelar',
+                            btnClass: 'uk-button uk-button-danger uk-button-small',
+                            keys: ['enter', 'a'],
+                            action: function () {
+
+                            }
+                        }
+                    }
+                });
+            });
+
+            $('#user-register-supplier').on('click', function (e) {
+
+                e.preventDefault();
                 $("#appbundle_details_customer_rut," +
                     " #appbundle_details_customer_name," +
                     " #appbundle_details_customer_lastName," +
@@ -108,7 +257,9 @@
 
             });
 
-            $('#user-register-customer').on('click', function () {
+            $('#user-register-customer').on('click', function (e) {
+
+                e.preventDefault();
 
                 $("#appbundle_details_supplier_name," +
                     " #appbundle_details_supplier_address," +
