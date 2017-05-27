@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="uk-clearfix"></div>
-    <table id="table-supplier"
+    <div class="uk-clearfix uk-padding-large"></div>
+    <table id="table-customer"
            class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
         <caption>
-            <h4 class="uk-text-primary">Registro de Compra al Proveedor</h4>
+            <h4 class="uk-text-primary">Registro de Venta cliente</h4>
         </caption>
         <thead>
         <tr>
             <th>Nº</th>
             <th>Nombre de Operador</th>
-            <th>Proveedor</th>
+            <th>Cliente</th>
             <th>Producto</th>
             <th>Fecha de emisión</th>
             <th></th>
@@ -19,13 +19,13 @@
         </thead>
         <tbody>
         {% for detail in details %}
-            {% if detail.supplier.fullData is defined %}
+            {% if detail.customer.fullData is defined %}
                 <tr>
                     <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
                     <td>{{ detail.user.fullData }}</td>
                     <td>
-                        {% if detail.supplier.fullData is defined %}
-                            {{ detail.supplier.fullData }}
+                        {% if detail.customer.fullData is defined %}
+                            {{ detail.customer.fullData }}
                         {% endif %}
                     </td>
                     <td>
