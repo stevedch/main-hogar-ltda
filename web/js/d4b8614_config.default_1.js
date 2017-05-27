@@ -32,5 +32,4 @@ $(document).ready(function () {
         ' #table-customer,' +
         ' #table-products').DataTable({"oLanguage": data_table_language});
 
-
 });
