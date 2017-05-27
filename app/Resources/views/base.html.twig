@@ -36,8 +36,8 @@
                     <li class="uk-active"><a href="{{ path('product_operators_index') }}">Productos</a></li>
                 {% endif %}
                 {% if app.user.hasRole('ROLE_GERENTE') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
-                    <li class="uk-active"><a href="{{ path('manager_index') }}">Detale Ventas</a></li>
-                    <li class="uk-active"><a href="{{ path('product_operators_index') }}">Detalle Productos</a></li>
+                    <li class="uk-active"><a href="{{ path('manager_index') }}">Detalle de Ventas</a></li>
+                    <li class="uk-active"><a href="{{ path('manager_show') }}">Detalle Compra de Productos</a></li>
                 {% endif %}
                 <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
                 <li><a href="#">Tu Oficina S.A</a></li>
