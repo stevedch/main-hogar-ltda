@@ -58,7 +58,7 @@
             <th>Nº</th>
             <th>Nombre de Operador</th>
             <th>Cliente</th>
-            <th>Producto</th>
+            <th>Cantidad de productos comprados</th>
             <th>Fecha de emisión</th>
             <th></th>
         </tr>
@@ -75,8 +75,10 @@
                         {% endif %}
                     </td>
                     <td>
-                        {% if detail.product.fullData is defined %}
-                            {{ detail.product.fullData }}
+                        {% if detail.metadata.products is defined %}
+                            <span class="uk-badge">{{ detail.metadata.products|length }}</span>
+                        {% else %}
+                            <span class="uk-badge">0</span>
                         {% endif %}
                     </td>
                     <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>

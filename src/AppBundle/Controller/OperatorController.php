@@ -232,9 +232,6 @@ class OperatorController extends Controller
     public function showAction(Details $details)
     {
 
-        var_dump($details->getMetaData());
-        exit;
-
         return $this->render('operators/show.html.twig', array(
             'details' => $details
         ));
@@ -254,7 +251,7 @@ class OperatorController extends Controller
         try {
 
             if ($form->isValid()) {
-                
+
                 /** @var Details $detail */
                 $detail = $form->getData();
 
