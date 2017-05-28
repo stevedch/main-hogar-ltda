@@ -27,14 +27,15 @@ $(document).ready(function () {
         }
     };
 
+    var number = 'input[type="number"]';
 
-    $('input[type="number"]').keypress(function (e) {
+    $(number).keypress(function (e) {
         e.preventDefault();
     }).bind("cut copy paste", function (e) {
         e.preventDefault();
     });
 
-    $(document).keydown(function (e) {
+    $(number).keydown(function (e) {
         var elid = $(document.activeElement).hasClass('textInput');
 
         if (e.keyCode === 8 && !elid) {

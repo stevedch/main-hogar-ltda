@@ -214,7 +214,7 @@ class OperatorController extends Controller
      * @Route("operador/{id}")
      * @ParamConverter("product", class="AppBundle:Products")
      * @param Products $product
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function showProductAction(Products $product)
     {
@@ -224,13 +224,20 @@ class OperatorController extends Controller
     }
 
     /**
+     * @Route("operador/{id}")
+     * @ParamConverter("details", class="AppBundle:Details")
      * @param Details $details
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function showAction(Details $details)
     {
 
-        return $this->render('operators/show.html.twig', array());
+        var_dump($details->getMetaData());
+        exit;
+
+        return $this->render('operators/show.html.twig', array(
+            'details' => $details
+        ));
     }
 
     /**
@@ -239,6 +246,7 @@ class OperatorController extends Controller
      */
     public function registerAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $rut = $request->request->get('appbundle_details')['customer'];
         $form = $this->createForm(DetailsType::class, null);
         $form->handleRequest($request);
@@ -246,9 +254,7 @@ class OperatorController extends Controller
         try {
 
             if ($form->isValid()) {
-
-                $em = $this->getDoctrine()->getManager();
-
+                
                 /** @var Details $detail */
                 $detail = $form->getData();
 
@@ -276,6 +282,37 @@ class OperatorController extends Controller
 
                     $details->setType(Details::DETAILS_SALE);
                     $details->setCustomer($customers);
+
+                    $carts = $em->getRepository(Cart::class)->findAll();
+
+                    $metaData = array();
+
+                    if (!empty($carts)) {
+
+                        /**@var Cart $item */
+                        foreach ($carts as $item) {
+
+                            /** @var Products $product */
+                            $product = $em->find(Products::class, $item->getIdProduct());
+                            $product->setQuantity(intval($product->getQuantity()) - intval($item->getRequestedAmount()));
+
+                            if (0 >= intval($product->getQuantity())) {
+
+                                $product->setStatus(Products::STATUS_BAD);
+                                $product->setQuantity(0);
+                                $em->persist($product);
+                            }
+
+                            $metaData[$item->getIdProduct()]['idProduct'] = $item->getIdProduct();
+                            $metaData[$item->getIdProduct()]['name'] = $item->getName();
+                            $metaData[$item->getIdProduct()]['quantity'] = $item->getQuantity();
+                            $metaData[$item->getIdProduct()]['requestedAmount'] = $item->getRequestedAmount();
+                            $metaData[$item->getIdProduct()]['price'] = $item->getPrice();
+                            $em->remove($item);
+                        }
+                    }
+
+                    $details->setMetaData('products', $metaData);
                 } else {
 
                     /** @var Supplier $supplier */

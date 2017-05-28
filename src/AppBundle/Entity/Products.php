@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -200,37 +199,4 @@ class Products
     {
         $this->detail = $detail;
     }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->detail = new ArrayCollection();
-    }
-
-    /**
-     * Add detail
-     *
-     * @param \AppBundle\Entity\Details $detail
-     *
-     * @return Products
-     */
-    public function addDetail(Details $detail)
-    {
-        $this->detail[] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Remove detail
-     *
-     * @param \AppBundle\Entity\Details $detail
-     */
-    public function removeDetail(Details $detail)
-    {
-        $this->detail->removeElement($detail);
-    }
-
 }

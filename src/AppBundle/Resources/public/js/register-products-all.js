@@ -187,7 +187,6 @@
             $(id).DataTable().destroy();
         }
 
-
         $(id).DataTable({
             ajax: ajax,
             "oLanguage": dataTableLanguage,
@@ -209,7 +208,7 @@
                 });
 
 
-                $('.uk-input-change').on('change', function () {
+                $('.uk-input-change').on('blur', function () {
                     var url = $(this).data('url');
 
                     $.post(url, {'quantity': $(this).val()}, function () {
@@ -218,15 +217,17 @@
                     });
                 });
 
-                $('input[type="number"]').keypress(function (e) {
+                var number = 'input[type="number"]';
+
+                $(number).keypress(function (e) {
                     e.preventDefault();
                 }).bind("cut copy paste", function (e) {
                     e.preventDefault();
                 });
 
-                $(document).keydown(function (e) {
+                $(number).keydown(function (e) {
                     var elid = $(document.activeElement).hasClass('textInput');
-                    console.log(e.keyCode + ' && ' + elid);
+
                     if (e.keyCode === 8 && !elid) {
                         return false;
                     }
@@ -236,13 +237,15 @@
 
                 calculate();
 
-                $('input[type="number"]').keypress(function (e) {
+                var number = 'input[type="number"]';
+
+                $(number).keypress(function (e) {
                     e.preventDefault();
                 }).bind("cut copy paste", function (e) {
                     e.preventDefault();
                 });
 
-                $(document).keydown(function (e) {
+                $(number).keydown(function (e) {
                     var elid = $(document.activeElement).hasClass('textInput');
 
                     if (e.keyCode === 8 && !elid) {

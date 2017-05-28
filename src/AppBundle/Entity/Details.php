@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Details
@@ -95,13 +96,53 @@ class Details
      */
     protected $product;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="meta_data", type="array", nullable=true)
+     */
+    protected $metaData;
+
 
     /**
      * Details constructor.
      */
     public function __construct()
     {
+        $this->metaData = new ArrayCollection();
         $this->dateOfIssue = new \DateTime('now');
+    }
+
+    /**
+     * @return array|ArrayCollection
+     * @internal param $key
+     */
+    public function getMetaData()
+    {
+        return $this->metaData;
+    }
+
+    /**
+     * @param $key
+     * @param array $metaData
+     * @return Details
+     */
+    public function setMetaData($key, array $metaData)
+    {
+        $this->metaData[$key] = $metaData;
+
+        return $this;
+    }
+
+    /**
+     * @param array $metaData
+     * @return $this
+     */
+    public function removeMetaData(array $metaData)
+    {
+        $this->metaData->removeElement($metaData);
+
+        return $this;
     }
 
     /**
@@ -238,17 +279,6 @@ class Details
     public function setValueTotal($valueTotal)
     {
         $this->valueTotal = $valueTotal;
-    }
-
-    /**
-     * @param $metadata
-     * @return $this
-     */
-    public function setMetadata($metadata)
-    {
-        $this->metadata = $metadata;
-
-        return $this;
     }
 
     /**
