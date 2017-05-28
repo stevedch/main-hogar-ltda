@@ -116,26 +116,53 @@ class OperatorController extends Controller
         $em = $this->getDoctrine()->getManager();
         $data = $request->get('data');
 
+        $cart = $em->getRepository(Cart::class);
+        $cart = $cart->findAll();
+        $result = array();
+
         try {
 
             if (!empty($data)) {
 
                 $em = $this->getDoctrine()->getManager();
-
                 $products = $em->getRepository(Products::class)->findBy(array(
                     'id' => $data
                 ));
+
+                if (!empty($cart)) {
+
+                    /** @var Cart $item */
+                    foreach ($cart as $item) {
+
+                        $result[$item->getIdProduct()]['id'] = $item->getId();
+                        $result[$item->getIdProduct()]['idProduct'] = $item->getIdProduct();
+                        $result[$item->getIdProduct()]['name'] = $item->getName();
+                        $result[$item->getIdProduct()]['quantity'] = $item->getQuantity();
+                        $result[$item->getIdProduct()]['requestedAmount'] = $item->getRequestedAmount();
+                        $result[$item->getIdProduct()]['price'] = $item->getPrice();
+                    }
+                }
 
                 if (!empty($products)) {
 
                     /** @var  Products $product */
                     foreach ($products as $product) {
 
-                        $cart = new Cart();
-                        $cart->setIdProduct($product->getId());
-                        $cart->setName($product->getFullData());
-                        $cart->setQuantity($product->getQuantity());
-                        $cart->setPrice($product->getPrice());
+                        if (isset($result[$product->getId()])) {
+
+                            /** @var Cart $cart */
+                            $cart = $em->find(Cart::class, $result[$product->getId()]['id']);
+                            $cart->setRequestedAmount($cart->getRequestedAmount() + 1);
+                        } else {
+
+                            $cart = new Cart();
+                            $cart->setIdProduct($product->getId());
+                            $cart->setName($product->getFullData());
+                            $cart->setQuantity($product->getQuantity());
+                            $cart->setRequestedAmount(1);
+                            $cart->setPrice($product->getPrice());
+                        }
+
                         $em->persist($cart);
                     }
 
@@ -147,11 +174,12 @@ class OperatorController extends Controller
             throw  new Exception($e->getMessage());
         }
 
-        $cart = $em->getRepository(Cart::class);
+        $carts = $em->getRepository(Cart::class);
+        $carts = $carts->findAll();
 
         /** @var  Serializer $serializer */
         $serializer = $this->get('serializer');
-        $data = $serializer->serialize(['data' => $cart->findAll()], 'json');
+        $data = $serializer->serialize(['data' => $carts], 'json');
 
         return new Response($data);
     }

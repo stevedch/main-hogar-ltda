@@ -253,7 +253,7 @@
                     render: function (data, type, row) {
 
                         return '<input class="uk-input uk-form-small" type="number" min="1"' +
-                            ' max="' + row.quantity + '" value="1" />';
+                            ' max="' + row.quantity + '" value="' + row.requestedAmount + '" />';
                     }
                 }
                 , {

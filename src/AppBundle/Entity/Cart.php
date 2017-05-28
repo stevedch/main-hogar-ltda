@@ -45,6 +45,13 @@ class Cart
     protected $quantity;
 
     /**
+     * @var Int
+     *
+     * @ORM\Column(name="requested_amount", type="integer", length=30, nullable=true)
+     */
+    protected $requestedAmount;
+
+    /**
      * @ORM\Column(name="price", type="decimal", precision=30, scale=0, nullable=true)
      */
     protected $price;
@@ -111,6 +118,22 @@ class Cart
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return Int
+     */
+    public function getRequestedAmount()
+    {
+        return $this->requestedAmount;
+    }
+
+    /**
+     * @param Int $requestedAmount
+     */
+    public function setRequestedAmount(Int $requestedAmount)
+    {
+        $this->requestedAmount = $requestedAmount;
     }
 
     /**
