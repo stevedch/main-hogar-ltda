@@ -28,6 +28,16 @@ product_operators_json_index:
     defaults: { _controller: "AppBundle:Operator:jsonProducts" }
     methods:  GET
 
+json_cart_all_json_index:
+    path:     /json-cart-all-json
+    defaults: { _controller: "AppBundle:Operator:jsonCartAll" }
+    methods:  [ POST, GET ]
+
+json_shopping_cart_json_index:
+    path:     /json-shopping-cart
+    defaults: { _controller: "AppBundle:Operator:jsonShoppingCart" }
+    methods:  [ POST, GET ]
+
 product_operators_index:
     path:     /productos
     defaults: { _controller: "AppBundle:Operator:products" }

@@ -5,7 +5,8 @@
         <div class="uk-container">
             {{ form_start(create_form) }}
             <ul uk-accordion>
-                <li id="user-register-customer" class="uk-open" data-type="CUSTOMER">
+                <li id="user-register-customer" class="uk-open" data-url="{{ path('json_shopping_cart_json_index') }}"
+                    data-type="CUSTOMER">
                     <h3 class="uk-accordion-title">Formulario de Venta</h3>
                     <div class="uk-accordion-content">
                         <div class="uk-margin">
@@ -42,9 +43,9 @@
                                class="uk-button uk-button-primary">Buscar
                                 productos</a>
                         </p>
-
                         <table id="table-shopping-cart"
-                               class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
+                               class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand"
+                               data-url="{{ path('json_cart_all_json_index') }}">
                             <caption>
                                 <h4 class="uk-text-primary">Carrito de compras</h4>
                             </caption>
@@ -52,12 +53,12 @@
                             <tr>
                                 <th>Nº</th>
                                 <th>Nombre de Producto</th>
-                                <th>Cantidad</th>
+                                <th>Cantidad en Stock</th>
+                                <th>Cantidad ha solicitar</th>
                                 <th>Precio</th>
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
                         </table>
                     </div>
                     <div class="uk-padding-small"></div>
@@ -123,153 +124,7 @@
         </div>
     </div>
 
-    <script>
-        (function ($) {
-
-
-            'use strict';
-
-            $('#search-all-products').on('click', function (e) {
-
-                e.preventDefault();
-
-
-                const STATUS_GOOD = 'status.good';
-                const STATUS_BAD = 'status.bad';
-
-                var url = $(this).data('url'), data_table_language = {
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando todos los productos...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }, dataTable;
-
-                $.confirm({
-                    title: 'Lista de Productos',
-                    theme: 'material',
-                    type: 'blue',
-                    content: '<table id="table-shopping-products"' +
-                    ' class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">' +
-                    '<thead><tr><th></th><th>Nombre</th>' +
-                    '<th>Cantidad / Stock</th>' +
-                    '<th>Precio</th>' +
-                    '<th>Estado de Stock</th></tr> </thead>' +
-                    '</table>',
-                    onContentReady: function () {
-
-                        dataTable = '#table-shopping-products';
-
-                        if ($.fn.DataTable.isDataTable(dataTable)) {
-                            $(dataTable).DataTable().destroy();
-                        }
-
-                        $(dataTable).DataTable({
-                            ajax: {
-                                url: url,
-                                dataSrc: "data"
-                            },
-                            "oLanguage": data_table_language,
-                            dom: "Bfrtip",
-                            drawCallback: function (settings) {
-                            },
-                            fnRowCallback: function (nRow, aData, iDisplayIndex) {
-                            },
-                            columns: [
-                                {
-                                    orderable: false,
-                                    render: function (data, type, row) {
-
-                                        data = (STATUS_GOOD === row.status) ? '<input type="checkbox" ' +
-                                            ' class="checkbox-js uk-checkbox"  value="' + row.id + '" ' +
-                                            ' style="display: inline-block !important;"/>' : '';
-
-                                        return data;
-                                    }
-                                },
-                                {
-                                    data: "name"
-                                }, {
-                                    data: "quantity"
-                                }, {
-                                    data: "price"
-                                }, {
-                                    data: "status",
-                                    render: function (data, type, row) {
-
-                                        return '<span class="uk-label uk-label-' + (STATUS_GOOD === data ? 'success'
-                                                : 'danger') + '">' + (STATUS_GOOD === data ? 'Con Stock' : 'Sin Stock')
-                                            + '</span>';
-                                    }
-                                }
-                            ]
-                        });
-                    },
-                    boxWidth: '50%',
-                    useBootstrap: false,
-                    buttons: {
-                        confirm: {
-                            text: 'Aceptar',
-                            btnClass: 'uk-button uk-button-primary uk-button-small',
-                            keys: ['enter', 'a'],
-                            action: function () {
-
-                            }
-                        },
-                        cancel: {
-                            text: 'Cancelar',
-                            btnClass: 'uk-button uk-button-danger uk-button-small',
-                            keys: ['enter', 'a'],
-                            action: function () {
-
-                            }
-                        }
-                    }
-                });
-            });
-
-            $('#user-register-supplier').on('click', function (e) {
-
-                e.preventDefault();
-                $("#appbundle_details_customer_rut," +
-                    " #appbundle_details_customer_name," +
-                    " #appbundle_details_customer_lastName," +
-                    " #appbundle_details_customer_mothersLastName," +
-                    " #appbundle_details_customer_address," +
-                    " #appbundle_details_customer_email").val('');
-
-            });
-
-            $('#user-register-customer').on('click', function (e) {
-
-                e.preventDefault();
-
-                $("#appbundle_details_supplier_name," +
-                    " #appbundle_details_supplier_address," +
-                    " #appbundle_details_product_name," +
-                    " #appbundle_details_product_quantity," +
-                    " #appbundle_details_product_price," +
-                    " #appbundle_details_product_cellar_name," +
-                    " #appbundle_details_product_cellar_address").val('');
-
-            });
-        }(jQuery));
-    </script>
+    {% javascripts 'bundles/app/js/register-products-all.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

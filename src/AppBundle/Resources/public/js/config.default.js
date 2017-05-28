@@ -28,8 +28,21 @@ $(document).ready(function () {
     };
 
 
+    $('input[type="number"]').keypress(function (e) {
+        e.preventDefault();
+    }).bind("cut copy paste", function (e) {
+        e.preventDefault();
+    });
+
+    $(document).keydown(function (e) {
+        var elid = $(document.activeElement).hasClass('textInput');
+        console.log(e.keyCode + ' && ' + elid);
+        if (e.keyCode === 8 && !elid) {
+            return false;
+        }
+    });
+
     $('#table-supplier,' +
         ' #table-customer,' +
-        ' #table-products, ' +
-        ' #table-shopping-cart').DataTable({"oLanguage": data_table_language});
+        ' #table-products').DataTable({"oLanguage": data_table_language});
 });

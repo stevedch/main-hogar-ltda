@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Cart;
 use AppBundle\Entity\Customers;
 use AppBundle\Entity\Details;
 use AppBundle\Entity\Products;
@@ -62,6 +63,67 @@ class OperatorController extends Controller
         /** @var  Serializer $serializer */
         $serializer = $this->get('serializer');
         $data = $serializer->serialize($products->productAll(), 'json');
+
+        return new Response($data);
+    }
+
+    /**
+     * @return Response
+     */
+    public function jsonCartAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cart = $em->getRepository(Cart::class);
+
+        /** @var  Serializer $serializer */
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize(['data' => $cart->findAll()], 'json');
+
+        return new Response($data);
+    }
+
+    public function jsonShoppingCartAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $data = $request->get('data');
+
+        try {
+
+            if (!empty($data)) {
+
+                $em = $this->getDoctrine()->getManager();
+
+                $products = $em->getRepository(Products::class)->findBy(array(
+                    'id' => $data
+                ));
+
+                if (!empty($products)) {
+
+                    /** @var  Products $product */
+                    foreach ($products as $product) {
+
+                        $cart = new Cart();
+                        $cart->setIdProduct($product->getId());
+                        $cart->setName($product->getFullData());
+                        $cart->setQuantity($product->getQuantity());
+                        $cart->setPrice($product->getPrice());
+                        $em->persist($cart);
+                    }
+
+                    $em->flush();
+                }
+            }
+        } catch (\Exception $e) {
+
+            throw  new Exception($e->getMessage());
+        }
+
+        $cart = $em->getRepository(Cart::class);
+
+        /** @var  Serializer $serializer */
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize(['data' => $cart->findAll()], 'json');
 
         return new Response($data);
     }
