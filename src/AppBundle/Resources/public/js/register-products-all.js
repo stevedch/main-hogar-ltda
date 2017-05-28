@@ -129,13 +129,7 @@
                             return false;
                         }
 
-                        dataTable = '#table-shopping-cart';
-
-                        if ($.fn.DataTable.isDataTable(dataTable)) {
-                            $(dataTable).DataTable().destroy();
-                        }
-
-                        getCartAjaxAll(dataTable, {
+                        getCartAjaxAll(cart, {
                             url: urlJson,
                             data: {
                                 data: dataObj
@@ -189,12 +183,27 @@
      */
     function getCartAjaxAll(id, ajax, dataTableLanguage) {
 
+        if ($.fn.DataTable.isDataTable(id)) {
+            $(id).DataTable().destroy();
+        }
+
         $(id).DataTable({
             ajax: ajax,
             "oLanguage": dataTableLanguage,
             dom: "Bfrtip",
             drawCallback: function (settings) {
 
+                $('.delete-cart-js').on('click', function (e) {
+
+                    e.preventDefault();
+
+                    var url = $(this).data('url');
+
+                    getCartAjaxAll(cart, {
+                        url: url,
+                        dataSrc: "data"
+                    }, data_table_language);
+                });
 
                 $('input[type="number"]').keypress(function (e) {
                     e.preventDefault();
@@ -231,7 +240,7 @@
                     orderable: false,
                     render: function (data, type, row) {
 
-                        return null;
+                        return row.id;
                     }
                 },
                 {
@@ -253,13 +262,15 @@
                     orderable: false,
                     render: function (data, type, row) {
 
+                        var url = $('#table-shopping-cart').data('urlDelete');
+
                         return '<p uk-margin>' +
-                            '<a class="uk-button uk-button-danger uk-button-xs">Eliminar</a>' +
+                            '<a data-url="' + url.replace(/@DELETE/g, row.id) + '"' +
+                            ' class="delete-cart-js uk-button uk-button-danger uk-button-xs">Quitar</a>' +
                             '</p>';
                     }
                 }
             ]
         });
-
     }
 }(jQuery));

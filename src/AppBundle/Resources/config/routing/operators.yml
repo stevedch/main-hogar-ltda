@@ -38,6 +38,12 @@ json_shopping_cart_json_index:
     defaults: { _controller: "AppBundle:Operator:jsonShoppingCart" }
     methods:  [ POST, GET ]
 
+json_shopping_cart_json_delete:
+    path:     /{id}/eliminar
+    defaults: { _controller: "AppBundle:Operator:jsonShoppingDelete" }
+    methods:  [ DELETE, GET ]
+
+
 product_operators_index:
     path:     /productos
     defaults: { _controller: "AppBundle:Operator:products" }

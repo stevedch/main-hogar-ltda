@@ -83,6 +83,34 @@ class OperatorController extends Controller
         return new Response($data);
     }
 
+    /**
+     * @Route("operador/{id}")
+     * @ParamConverter("cart", class="AppBundle:Cart")
+     * @param Cart $cart
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function jsonShoppingDeleteAction(Cart $cart)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        try {
+
+            $em->remove($cart);
+            $em->flush($cart);
+
+            $cart = $em->getRepository(Cart::class);
+
+            /** @var  Serializer $serializer */
+            $serializer = $this->get('serializer');
+            $data = $serializer->serialize(['data' => $cart->findAll()], 'json');
+        } catch (\Exception $e) {
+
+            throw new Exception($e->getMessage());
+        }
+
+        return new Response($data);
+    }
+
     public function jsonShoppingCartAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
