@@ -1,72 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div class="table-header">
-       Editar Usuario
-    </div>
-    {{ form_start(edit_form) }}
-    <table class="table table-bordered table-responsive">
-    <tbody>
-    <tr>
-        <th>{{ form_label(edit_form.rut) }}</th>
-        <td>{{ form_widget(edit_form.rut) }}</td>
-    </tr>
-    <tr>
-        <th>{{ form_label(edit_form.name) }}</th>
-        <td>{{ form_widget(edit_form.name) }}</td>
-    </tr>
-    <tr>
-        <th>{{ form_label(edit_form.lastName) }}</th>
-        <td>{{ form_widget(edit_form.lastName) }}</td>
-    </tr>
-    <tr>
-        <th>{{ form_label(edit_form.mothersLastName) }}</th>
-        <td>{{ form_widget(edit_form.mothersLastName) }}</td>
-    </tr>
-    <tr>
-        <th>{{ form_label(edit_form.email) }}</th>
-        <td>{{ form_widget(edit_form.email) }}</td>
-    </tr><tr>
-        <th>{{ form_label(edit_form.username) }}</th>
-        <td>{{ form_widget(edit_form.username) }}</td>
-    </tr>
-
-
-    <tr>
-        <th>{{ form_label(edit_form.plainPassword.first) }}</th>
-        <td>{{ form_widget(edit_form.plainPassword.first) }}</td>
-    </tr>
-    <tr>
-        <th>{{ form_label(edit_form.plainPassword.second) }}</th>
-        <td>{{ form_widget(edit_form.plainPassword.second) }}</td>
-    </tr>
-
-    <tr>
-        <th>{{ form_label(edit_form.roles) }}</th>
-        <td>{{ form_widget(edit_form.roles) }}</td>
-    </tr>
-    <tr>
-        <th></th>
-        <td>
-            <input class="btn btn-xs btn-warning" type="submit" value="Editar" />
-        </td>
-    </tr>
-    <tr>
-        <th></th>
-        <td>
-            {{ form_start(delete_form) }}
-            <input class="btn btn-xs btn-warning" type="submit" value="Eliminar">
-            {{ form_end(delete_form) }}
-        </td>
-    </tr>
-    </tbody>
-    </table>
-    {{ form_end(edit_form) }}
-
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-xs btn-warning" href="{{ path('users_index') }}">Volver a la Lista</a>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            {{ form_start(edit_form) }}
+            <table class="uk-table uk-table-divider uk-table-responsive">
+                <tbody>
+                <tr>
+                    <th>{{ form_label(edit_form.rut) }}</th>
+                    <td>{{ form_widget(edit_form.rut) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.name) }}</th>
+                    <td>{{ form_widget(edit_form.name) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.lastName) }}</th>
+                    <td>{{ form_widget(edit_form.lastName) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.mothersLastName) }}</th>
+                    <td>{{ form_widget(edit_form.mothersLastName) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.email) }}</th>
+                    <td>{{ form_widget(edit_form.email) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.username) }}</th>
+                    <td>{{ form_widget(edit_form.username) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.plainPassword.first) }}</th>
+                    <td>{{ form_widget(edit_form.plainPassword.first, {'attr': {'class': 'uk-input'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.plainPassword.second) }}</th>
+                    <td>{{ form_widget(edit_form.plainPassword.second, {'attr': {'class': 'uk-input'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(edit_form.roles) }}</th>
+                    <td>{{ form_widget(edit_form.roles) }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td class="uk-text-right">
+                        <input class="uk-button uk-button-primary" type="submit" value="Editar"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {{ form_end(edit_form) }}
         </div>
     </div>
 {% endblock %}

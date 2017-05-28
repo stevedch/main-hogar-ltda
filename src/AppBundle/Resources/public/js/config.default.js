@@ -27,23 +27,8 @@ $(document).ready(function () {
         }
     };
 
-    var number = 'input[type="number"]';
-
-    $(number).keypress(function (e) {
-        e.preventDefault();
-    }).bind("cut copy paste", function (e) {
-        e.preventDefault();
-    });
-
-    $(number).keydown(function (e) {
-        var elid = $(document.activeElement).hasClass('textInput');
-
-        if (e.keyCode === 8 && !elid) {
-            return false;
-        }
-    });
-
-    $('#table-supplier,' +
+    $('#table-user, ' +
+        '#table-supplier,' +
         ' #table-customer,' +
         ' #table-products').DataTable({"oLanguage": data_table_language});
 });

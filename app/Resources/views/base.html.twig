@@ -28,21 +28,42 @@
 <body>
 {% if app.user %}
     <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+                        &nbsp; <span class="uk-text-primary">{{ app.user.username }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
-                {% if app.user.hasRole('ROLE_GERENTE') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
-                    <li class="uk-active"><a href="#">Active</a></li>
+                {% if app.user.hasRole('ROLE_ADMIN_GENERAL') %}
+                    <li class="uk-active">
+                        <a href="{{ path('users_index') }}">Listado de usuarios</a>
+                    </li>
                 {% endif %}
                 {% if app.user.hasRole('ROLE_OPERADOR') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
-                    <li class="uk-active"><a href="{{ path('operators_index') }}">Ventas</a></li>
-                    <li class="uk-active"><a href="{{ path('product_operators_index') }}">Productos</a></li>
+                    <li class="uk-active">
+                        <a href="{{ path('operators_index') }}">Ventas</a>
+                    </li>
+                    <li class="uk-active">
+                        <a href="{{ path('product_operators_index') }}">Productos</a>
+                    </li>
                 {% endif %}
                 {% if app.user.hasRole('ROLE_GERENTE') or app.user.hasRole('ROLE_ADMIN_GENERAL') %}
-                    <li class="uk-active"><a href="{{ path('manager_index') }}">Detalle de Ventas</a></li>
-                    <li class="uk-active"><a href="{{ path('manager_show') }}">Detalle Compra de Productos</a></li>
+                    <li class="uk-active">
+                        <a href="{{ path('manager_index') }}">Detalle de Ventas</a>
+                    </li>
                 {% endif %}
-                <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a></li>
-                <li><a href="#">Tu Oficina S.A</a></li>
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+                </li>
+                <li>
+                    <a href="#">Tu Oficina S.A</a>
+                </li>
             </ul>
         </div>
     </nav>

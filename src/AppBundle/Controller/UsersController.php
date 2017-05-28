@@ -8,11 +8,14 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\User;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use FOS\UserBundle\Event\FormEvent;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -90,24 +93,24 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds and displays a user entity.
-     *
+     * @Route("usuarios/{id}")
+     * @ParamConverter("user", class="AppBundle:Users")
+     * @param Users $user
+     * @return Response
      */
     public function showAction(Users $user)
     {
-        $deleteForm = $this->createDeleteForm($user);
-
         return $this->render('users/show.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
+            'user' => $user
         ));
     }
 
     /**
-     * Displays a form to edit an existing user entity.
+     * @Route("usuarios/{id}")
+     * @ParamConverter("user", class="AppBundle:Users")
      * @param Request $request
      * @param Users $user
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function editAction(Request $request, Users $user)
     {
@@ -143,21 +146,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes a user entity.
-     * @param Request $request
+     * @Route("usuarios/{id}")
+     * @ParamConverter("user", class="AppBundle:Users")
      * @param Users $user
-     * @return RedirectResponse
+     * @return Response
+     * @internal param Request $request
      */
-    public function deleteAction(Request $request, Users $user)
+    public function deleteAction(Users $user)
     {
-        $form = $this->createDeleteForm($user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush($user);
-        }
+        $em = $this->getDoctrine()->getManager();
+        $user->setStatus(Users::STATUS_INACTIVE);
+        $user->setEnabled(0);
+        $em->persist($user);
+        $em->flush();
 
         return $this->redirectToRoute('users_index');
     }

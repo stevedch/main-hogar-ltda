@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <table id="table-user" class="uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100%">
+    <div class="uk-container-large uk-text-right">
+        <a class="uk-button uk-button-primary uk-button-small" href="{{ path('users_new') }}">Crear Nuevo Usuario</a>
+    </div>
+    <div class="uk-clearfix"></div>
+    <table id="table-user" class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand"
+           cellspacing="0" width="100%">
         <thead>
         <tr>
             <th>Nº</th>
@@ -10,32 +14,60 @@
             <th>Nombres</th>
             <th>Apellido Paterno</th>
             <th>Apellido Materno</th>
+            <th>Usuario</th>
+            <th>Tipo de rol</th>
             <th>Estado</th>
-            <th>Acciones</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
-            <tr>
-                <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.rut }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>{{ user.mothersLastName }}</td>
-                <td>{{ user.status|trans }}</td>
-                <td>
-                    <a class="btn btn-xs btn-success" href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
-                    {% set is_enabled = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'disabled' %}
-                    <a class="btn btn-xs btn-warning {{ is_enabled }}"
-                       href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
-                </td>
-            </tr>
+            {% if user.status|trans == 'Activo' %}
+                <tr>
+                    <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                    <td>{{ user.rut }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.mothersLastName }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        {% if 0 != user.roles|length %}
+                            <table class="uk-table uk-table-divider">
+                                <tbody>
+                                {% for roles  in user.roles if roles|trans != 'Usuario' %}
+                                    <tr>
+                                        <td class="uk-text-primary">{{ roles|trans }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.status|trans == 'Activo' %}
+                            <span class="uk-label uk-label-success">{{ user.status|trans }}</span>
+                        {% else %}
+                            <span class="uk-label uk-label-danger">{{ user.status|trans }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <p uk-margin>
+                            <a class="uk-button uk-button-xs uk-button-primary"
+                               href="{{ path('users_show', { 'id': user.id }) }}">Ver</a>
+
+                            {% set is_enabled = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'disabled' %}
+
+                            {% if is_enabled == '' %}
+                                <a class="uk-button uk-button-xs uk-button-default uk-label-warning"
+                                   href="{{ path('users_edit', { 'id': user.id }) }}">Editar</a>
+                                <a class="uk-button uk-button-xs uk-button-default uk-label-danger"
+                                   href="{{ path('users_delete', { 'id': user.id }) }}">Eliminar</a>
+                            {% endif %}
+                        </p>
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-xs btn-warning" href="{{ path('users_new') }}">Crear Nuevo Usuario</a>
-        </div>
-    </div>
 {% endblock %}

@@ -171,6 +171,11 @@ class Users extends BaseUser
             $this->mothersLastName);
     }
 
+    public function getUserData()
+    {
+
+    }
+
     /**
      * Add detail
      *

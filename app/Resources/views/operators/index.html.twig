@@ -25,7 +25,7 @@
         {% for detail in details %}
             {% if detail.supplier.fullData is defined %}
                 <tr>
-                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ loop.index }}</a></td>
                     <td>{{ detail.user.fullData }}</td>
                     <td>
                         {% if detail.supplier.fullData is defined %}
@@ -67,7 +67,7 @@
         {% for detail in details %}
             {% if detail.customer.fullData is defined %}
                 <tr>
-                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ loop.index }}</a></td>
                     <td>{{ detail.user.fullData }}</td>
                     <td>
                         {% if detail.customer.fullData is defined %}

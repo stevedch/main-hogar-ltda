@@ -216,42 +216,10 @@
                         calculate();
                     });
                 });
-
-                var number = 'input[type="number"]';
-
-                $(number).keypress(function (e) {
-                    e.preventDefault();
-                }).bind("cut copy paste", function (e) {
-                    e.preventDefault();
-                });
-
-                $(number).keydown(function (e) {
-                    var elid = $(document.activeElement).hasClass('textInput');
-
-                    if (e.keyCode === 8 && !elid) {
-                        return false;
-                    }
-                });
             },
             fnRowCallback: function (nRow, aData, iDisplayIndex) {
 
                 calculate();
-
-                var number = 'input[type="number"]';
-
-                $(number).keypress(function (e) {
-                    e.preventDefault();
-                }).bind("cut copy paste", function (e) {
-                    e.preventDefault();
-                });
-
-                $(number).keydown(function (e) {
-                    var elid = $(document.activeElement).hasClass('textInput');
-
-                    if (e.keyCode === 8 && !elid) {
-                        return false;
-                    }
-                });
             },
             columns: [
                 {

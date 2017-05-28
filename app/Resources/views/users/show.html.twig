@@ -1,61 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% set is_hidden = user.hasRole('ROLE_ADMIN_GENERAL') == false ? '' : 'hidden' %}
-
-    <div class="table-header">
-        Perfil de usuario
-    </div>
-    <table class="table table-bordered table-responsive">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ user.id }}</td>
-        </tr>
-        <tr>
-            <th>Rut</th>
-            <td>{{ user.rut }}</td>
-        </tr>
-        <tr>
-            <th>Nombre</th>
-            <td>{{ user.name }}</td>
-        </tr>
-        <tr>
-            <th>Apellido Paterno</th>
-            <td>{{ user.lastName }}</td>
-        </tr>
-        <tr>
-            <th>Apellido Materno</th>
-            <td>{{ user.mothersLastName }}</td>
-        </tr>
-        <tr>
-            <th>Estado</th>
-            <td>{{ user.status|trans }}</td>
-        </tr>
-        <tr class="{{ is_hidden }}">
-            <th>Editar</th>
-            <td>
-                <a class="btn btn-xs btn-warning"
-                   href="{{ path('users_edit', { 'id': user.id }) }}">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
-        <tr class="{{ is_hidden }}">
-            <th>Eliminar</th>
-            <td>
-                {{ form_start(delete_form) }}
-                <button class="btn btn-xs  btn-danger" type="submit">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </button>
-                {{ form_end(delete_form) }}
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-xs btn-warning" href="{{ path('users_index') }}">Volver</a>
+    <div class="uk-container-large">
+        <div class="uk-container">
+            <table class="uk-table uk-table-divider">
+                <thead>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Usuario:</th>
+                    <th class="uk-text-muted">{{ user.username }}</th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary">Tipo de rol:</th>
+                    <th class="uk-text-muted">
+                        {% if 0 != user.roles|length %}
+                            {% for roles  in user.roles if roles|trans != 'Usuario' %}
+                                <span class="">{{ roles|trans }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary">Estado:</th>
+                    <th class="uk-text-muted">
+                        {% if user.status|trans == 'Activo' %}
+                            <span class="uk-label uk-label-success">{{ user.status|trans }}</span>
+                        {% else %}
+                            <span class="uk-label uk-label-danger">{{ user.status|trans }}</span>
+                        {% endif %}
+                    </th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Email:</th>
+                    <th class="uk-text-muted">{{ user.email }}</th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Rut:</th>
+                    <th class="uk-text-muted">{{ user.rut }}</th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Nombres:</th>
+                    <th class="uk-text-muted">{{ user.name }}</th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Apellido Paterno:</th>
+                    <th class="uk-text-muted">{{ user.lastName }}</th>
+                </tr>
+                <tr>
+                    <th class="uk-text-primary" width="16%">Apellido Materno:</th>
+                    <th class="uk-text-muted">{{ user.mothersLastName }}</th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 {% endblock %}

@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="uk-clearfix uk-padding-large"></div>
-    <table id="table-customer"
+    <table id="table-supplier"
            class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
         <caption>
-            <h4 class="uk-text-primary">Registro de Venta cliente</h4>
+            <h4 class="uk-text-primary">Detalle de Compra al Proveedor</h4>
         </caption>
         <thead>
         <tr>
             <th>Nº</th>
             <th>Nombre de Operador</th>
-            <th>Cliente</th>
+            <th>Proveedor</th>
             <th>Producto</th>
             <th>Fecha de emisión</th>
             <th></th>
@@ -19,13 +18,13 @@
         </thead>
         <tbody>
         {% for detail in details %}
-            {% if detail.customer.fullData is defined %}
+            {% if detail.supplier.fullData is defined %}
                 <tr>
-                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ detail.id }}</a></td>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ loop.index }}</a></td>
                     <td>{{ detail.user.fullData }}</td>
                     <td>
-                        {% if detail.customer.fullData is defined %}
-                            {{ detail.customer.fullData }}
+                        {% if detail.supplier.fullData is defined %}
+                            {{ detail.supplier.fullData }}
                         {% endif %}
                     </td>
                     <td>
@@ -36,7 +35,51 @@
                     <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
                     <td>
                         <a class="uk-button uk-button-xs uk-button-primary"
-                           href="{{ path('operators_show', { 'id': detail.id }) }}">Ver</a>
+                           href="{{ path('manager_show', { 'id': detail.id }) }}">Ver</a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="uk-clearfix uk-padding-large"></div>
+    <table id="table-customer"
+           class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
+        <caption>
+            <h4 class="uk-text-primary">Detalle de Venta cliente</h4>
+        </caption>
+        <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Nombre de Operador</th>
+            <th>Cliente</th>
+            <th>Cantidad de productos comprados</th>
+            <th>Fecha de emisión</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for detail in details %}
+            {% if detail.customer.fullData is defined %}
+                <tr>
+                    <td><a href="{{ path('operators_show', { 'id': detail.id }) }}">{{ loop.index }}</a></td>
+                    <td>{{ detail.user.fullData }}</td>
+                    <td>
+                        {% if detail.customer.fullData is defined %}
+                            {{ detail.customer.fullData }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if detail.metadata.products is defined %}
+                            <span class="uk-badge">{{ detail.metadata.products|length }}</span>
+                        {% else %}
+                            <span class="uk-badge">0</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.dateOfIssue|date('Y-m-d H:m:s') }}</td>
+                    <td>
+                        <a class="uk-button uk-button-xs uk-button-primary"
+                           href="{{ path('manager_show', { 'id': detail.id }) }}">Ver</a>
                     </td>
                 </tr>
             {% endif %}
@@ -44,3 +87,4 @@
         </tbody>
     </table>
 {% endblock %}
+

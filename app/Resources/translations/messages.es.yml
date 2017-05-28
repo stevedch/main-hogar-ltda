@@ -1,6 +1,8 @@
 status:
     good: Con Stock
     bad: Sin Stock
+    active: Activo
+    inactive: Inactivo
 
 registration:
     submit: Guardar
@@ -8,3 +10,9 @@ registration:
 detail:
     sale: Venta
     purchase: Compra
+
+
+ROLE_GERENTE: Gerente
+ROLE_ADMIN_GENERAL: Administrador general
+ROLE_OPERADOR: Operador
+ROLE_USER: Usuario

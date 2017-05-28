@@ -1,55 +1,58 @@
 {% extends '::base.html.twig' %}
 
 {% block main_content %}
-    {{ form_start(form, {'method': 'post', 'action': path('users_new'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    <table class="table table-bordered table-responsive">
-        <tbody>
-        <tr>
-            <th>{{ form_label(form.rut) }}</th>
-            <td>{{ form_widget(form.rut) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.name) }}</th>
-            <td>{{ form_widget(form.name) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.lastName) }}</th>
-            <td>{{ form_widget(form.lastName) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.mothersLastName) }}</th>
-            <td>{{ form_widget(form.mothersLastName) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.email) }}</th>
-            <td>{{ form_widget(form.email) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.username) }}</th>
-            <td>{{ form_widget(form.username) }}</td>
-        </tr>
+    <div class="uk-container-large" style="margin: 7% auto;">
+        <div class="uk-container">
+            {{ form_start(form, {'method': 'post', 'action': path('users_new'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <table class="uk-table uk-table-divider uk-table-responsive">
+                <tbody>
+                <tr>
+                    <th>{{ form_label(form.rut) }}</th>
+                    <td>{{ form_widget(form.rut) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.name) }}</th>
+                    <td>{{ form_widget(form.name) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.lastName) }}</th>
+                    <td>{{ form_widget(form.lastName) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.mothersLastName) }}</th>
+                    <td>{{ form_widget(form.mothersLastName) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.email) }}</th>
+                    <td>{{ form_widget(form.email) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.username) }}</th>
+                    <td>{{ form_widget(form.username) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.plainPassword.first) }}</th>
+                    <td>{{ form_widget(form.plainPassword.first, {'attr': {'class': 'uk-input'}}) }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form_label(form.plainPassword.second) }}</th>
+                    <td>{{ form_widget(form.plainPassword.second, {'attr': {'class': 'uk-input'}}) }}</td>
+                </tr>
 
-
-        <tr>
-            <th>{{ form_label(form.plainPassword.first) }}</th>
-            <td>{{ form_widget(form.plainPassword.first, {'attr': {'class': 'uk-input'}}) }}</td>
-        </tr>
-        <tr>
-            <th>{{ form_label(form.plainPassword.second) }}</th>
-            <td>{{ form_widget(form.plainPassword.second, {'attr': {'class': 'uk-input'}}) }}</td>
-        </tr>
-
-        <tr>
-            <th>{{ form_label(form.roles) }}</th>
-            <td>{{ form_widget(form.roles) }}</td>
-        </tr>
-        <tr>
-            <th></th>
-            <td>
-                <input class="uk-button uk-button-primary" type="submit" value="{{ 'registration.submit'|trans }}">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    {{ form_end(form) }}
+                <tr>
+                    <th>{{ form_label(form.roles) }}</th>
+                    <td>{{ form_widget(form.roles) }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td class="uk-text-right">
+                        <input class="uk-button uk-button-primary" type="submit"
+                               value="{{ 'registration.submit'|trans }}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
