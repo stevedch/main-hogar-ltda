@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     $(document).keydown(function (e) {
         var elid = $(document.activeElement).hasClass('textInput');
-        console.log(e.keyCode + ' && ' + elid);
+
         if (e.keyCode === 8 && !elid) {
             return false;
         }
