@@ -187,11 +187,14 @@
             $(id).DataTable().destroy();
         }
 
+
         $(id).DataTable({
             ajax: ajax,
             "oLanguage": dataTableLanguage,
             dom: "Bfrtip",
             drawCallback: function (settings) {
+
+                calculate();
 
                 $('.delete-cart-js').on('click', function (e) {
 
@@ -203,6 +206,16 @@
                         url: url,
                         dataSrc: "data"
                     }, data_table_language);
+                });
+
+
+                $('.uk-input-change').on('change', function () {
+                    var url = $(this).data('url');
+
+                    $.post(url, {'quantity': $(this).val()}, function () {
+
+                        calculate();
+                    });
                 });
 
                 $('input[type="number"]').keypress(function (e) {
@@ -220,6 +233,8 @@
                 });
             },
             fnRowCallback: function (nRow, aData, iDisplayIndex) {
+
+                calculate();
 
                 $('input[type="number"]').keypress(function (e) {
                     e.preventDefault();
@@ -252,12 +267,19 @@
                     orderable: false,
                     render: function (data, type, row) {
 
-                        return '<input class="uk-input uk-form-small" type="number" min="1"' +
+                        var url = $('#table-shopping-cart').data('urlUpdate');
+
+                        return '<input  data-url="' + url.replace(/@UPDATE/g, row.id) + '"' +
+                            ' class="uk-input-change uk-input uk-form-small" type="number" min="1"' +
                             ' max="' + row.quantity + '" value="' + row.requestedAmount + '" />';
                     }
                 }
                 , {
-                    data: "price"
+                    data: "price",
+                    render: function (data, type, row) {
+
+                        return '<span class="price-js">' + data + '</span>';
+                    }
                 }, {
                     orderable: false,
                     render: function (data, type, row) {
@@ -272,5 +294,21 @@
                 }
             ]
         });
+    }
+
+    function calculate() {
+
+        var dataTable = $('#table-shopping-cart').dataTable().fnGetNodes(),
+            quantity = 0, priceTotal = 0;
+
+        $.each(dataTable, function (k, v) {
+
+            quantity += parseInt($(v).find('input[type="number"]').val());
+            priceTotal += (parseInt($(v).find('input[type="number"]').val())
+            * parseInt($(v).find('span[class="price-js"]').text()));
+        });
+
+        $('#appbundle_details_quantity').val(quantity);
+        $('#appbundle_details_valueTotal').val(priceTotal);
     }
 }(jQuery));

@@ -21,7 +21,7 @@ class CustomersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rut', IntegerType::class, array(
+            ->add('rut', TextType::class, array(
                 'label' => 'Rut',
                 'required' => false,
                 'attr' => [

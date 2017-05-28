@@ -83,6 +83,32 @@ class OperatorController extends Controller
         return new Response($data);
     }
 
+
+    /**
+     * @Route("operador/{id}/json-shopping-cart-edit")
+     * @ParamConverter("cart", class="AppBundle:Cart")
+     * @param Request $request
+     * @param Cart $cart
+     * @return Response
+     */
+    public function jsonShoppingUpdateAction(Request $request, Cart $cart)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quantity = $request->get('quantity');
+
+        try {
+
+            $cart->setRequestedAmount($quantity);
+            $em->persist($cart);
+            $em->flush();
+        } catch (\Exception $e) {
+
+            throw new Exception($e->getMessage());
+        }
+
+        return new Response(json_encode(['success', 'ok']));
+    }
+
     /**
      * @Route("operador/{id}")
      * @ParamConverter("cart", class="AppBundle:Cart")

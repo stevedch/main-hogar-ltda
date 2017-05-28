@@ -39,10 +39,14 @@ json_shopping_cart_json_index:
     methods:  [ POST, GET ]
 
 json_shopping_cart_json_delete:
-    path:     /{id}/eliminar
+    path:     /{id}/json-shopping-cart-delete
     defaults: { _controller: "AppBundle:Operator:jsonShoppingDelete" }
     methods:  [ DELETE, GET ]
 
+json_shopping_cart_json_update:
+    path:     /{id}/json-shopping-cart-edit
+    defaults: { _controller: "AppBundle:Operator:jsonShoppingUpdate" }
+    methods:  POST
 
 product_operators_index:
     path:     /productos

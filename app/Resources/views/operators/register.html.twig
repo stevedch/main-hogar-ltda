@@ -46,7 +46,8 @@
                         <table id="table-shopping-cart"
                                class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand"
                                data-url="{{ path('json_cart_all_json_index') }}"
-                               data-url-delete="{{ path('json_shopping_cart_json_delete', {'id': '@DELETE' }) }}">
+                               data-url-delete="{{ path('json_shopping_cart_json_delete', {'id': '@DELETE' }) }}"
+                               data-url-update="{{ path('json_shopping_cart_json_update', {'id': '@UPDATE' }) }}">
                             <caption>
                                 <h4 class="uk-text-primary">Carrito de compras</h4>
                             </caption>
