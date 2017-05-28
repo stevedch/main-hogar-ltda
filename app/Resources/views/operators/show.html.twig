@@ -3,7 +3,11 @@
 {% block body %}
     <div class="uk-container-large">
         <div class="uk-container">
-            {{ dump(details) }}
+            {% if  details.supplier is not null %}
+                {% include 'operators/details/supplier.html.twig' %}
+            {% else %}
+                {% include 'operators/details/customer.html.twig' %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

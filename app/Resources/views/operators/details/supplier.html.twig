@@ -1,0 +1,65 @@
+<table class="uk-table uk-table-divider">
+    <thead>
+    <tr>
+        <th class="uk-text-primary" width="16%">N&deg; de compra:</th>
+        <th class="uk-text-muted">{{ details.number }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Fecha de emisión:</th>
+        <th class="uk-text-muted">{{ details.dateOfIssue|date('Y-m-d H:m:s') }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Tipo de venta:</th>
+        <th class="uk-text-muted">{{ details.type|trans }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Vendedor:</th>
+        <th class="uk-text-muted">{{ details.user.fulldata }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Proveedor:</th>
+        <th class="uk-text-muted">{{ details.supplier.fulldata }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Productos:</th>
+        <th>
+            <table class="uk-table uk-table-small uk-table-hover uk-table-striped dataTable uk-table-expand">
+                <thead>
+                <tr>
+                    <th>N&deg;</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>{{ details.product.name }}</td>
+                    <td>{{ details.product.quantity }}</td>
+                    <td>{{ details.product.price }}</td>
+                    <td>{{ details.product.price * details.product.quantity }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">I.V.A:</th>
+        <th class="uk-text-muted">{{ details.iva }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Descuento:</th>
+        <th class="uk-text-muted">{{ details.discount }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Cantidad total:</th>
+        <th class="uk-text-muted">{{ details.product.quantity }}</th>
+    </tr>
+    <tr>
+        <th class="uk-text-primary">Valor Total:</th>
+        <th class="uk-text-muted">{{ details.product.price * details.product.quantity }}</th>
+    </tr>
+    </thead>
+</table>
